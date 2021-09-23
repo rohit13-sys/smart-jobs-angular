@@ -1,0 +1,95 @@
+<div class="container mt-3 border border-2 rounded p-5 pt-3 pb-3"  style="width: 50%;">
+    <div class="page-header border-bottom mb-4">
+        <h1>Post Job</h1>
+    <!-- <p class="jumbotron mb-5" style="text-align: center;color: darkturquoise;">Post Job</p> -->
+    
+    </div>
+    <form [formGroup]="postJobForm" #postJobFormDir="ngForm" (ngSubmit)="save()" class="row">
+        <div class="col-12 form-group mb-2">
+            <label for="exampleFormControlInput7" class="form-label">Employer Email : </label>
+            <span class="text-muted"> john@gmail.com</span>
+            <!-- <input type="text" class="form-control" formControlName="empEmail" id="exampleFormControlInput7" disable value="john@gmail.com"> -->
+        </div>
+        <div class="col-6">
+            <label for="exampleDataList" class="form-label">JobType</label>
+            <input class="form-control" list="datalistOptions" formControlName="jobType" id="exampleDataList" placeholder="Enter Job Type...">
+            <datalist id="datalistOptions">
+                <option value="Permenant">
+                <option value="Internship">
+                <option value="Contract">
+            </datalist>
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.jobType.errors && (postJobs.jobType.touched || postJobs.jobType.dirty)">
+                <div *ngIf="postJobs.jobType.errors.required">
+                    Job Type is required
+                </div>
+            </div>
+        </div>
+        <div class="col-6 form-group mb-2">
+            <label for="exampleFormControlInput1" class="form-label">Job Role</label>
+            <input type="text" class="form-control" formControlName="jobRole" id="exampleFormControlInput1" placeholder="Enter job Role ...">
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.jobRole.errors && (postJobs.jobRole.touched || postJobs.jobRole.dirty)">
+                <div *ngIf="postJobs.jobRole.errors.required">
+                    Job Role is required
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-2">
+            <label for="exampleDataList1" class="form-label">Skills</label>
+            <!-- <input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+            <datalist id="datalistOptions" multiple>
+                <option value="Permenant">
+                <option value="Internship">
+                <option value="Contract">
+            </datalist> -->
+            <ng-multiselect-dropdown
+                [settings]="dropdownSettings"
+                [data]="skillsList" formControlName="skills">
+            </ng-multiselect-dropdown>
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.skills.errors && (postJobs.skills.touched || postJobs.skills.dirty)">
+                <div *ngIf="postJobs.skills.errors.required">
+                    Job Skills are required
+                </div>
+            </div>
+        </div>
+        <div class="col-6 mb-2">
+            <label for="exampleFormControlInput3" class="form-label">Vacancies</label>
+            <input type="number" class="form-control" id="exampleFormControlInput3" formControlName="vacancies" placeholder="Enter Vacancies...">
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.vacancies.errors && (postJobs.vacancies.touched || postJobs.vacancies.dirty)">
+                <div *ngIf="postJobs.vacancies.errors.required">
+                    Job vacancies must be mentioned
+                </div>
+                <div *ngIf="postJobs.vacancies.errors.min">
+                    Job vacancies should not be negative
+                </div>
+            </div>
+        </div>
+        <div class="col-6 mb-2">
+            <label for="exampleFormControlInput4" class="form-label">Salary</label>
+            <input type="number"  class="form-control" id="exampleFormControlInput4" formControlName="salary" placeholder="Enter Salary...">
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.salary.errors && (postJobs.salary.touched || postJobs.salary.dirty)">
+                <div *ngIf="postJobs.salary.errors.required">
+                    Job salary are required
+                </div>
+                <div *ngIf="postJobs.salary.errors.min">
+                    Job salary should not be negative
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-12 mb-2">
+            <label for="exampleFormControlInput5" class="form-label">Office Address</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" placeholder="Enter office Address...">
+        </div>   -->
+        <div class="col-6 mb-3">
+            <label for="exampleFormControlInput6" class="form-label">Required Experience</label>
+            <input type="text" class="form-control" formControlName="experience" id="exampleFormControlInput6" placeholder="Enter Required Experience ...">
+            <div class="alert alert-danger mt-2" *ngIf="postJobs.experience.errors && (postJobs.experience.touched || postJobs.experience.dirty)">
+                <div *ngIf="postJobs.experience.errors.required">
+                    Job Experience is required
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mb-2">
+            <button type="submit"  class="btn btn-primary" [disabled]="postJobFormDir.invalid" >Post</button>
+          </div>
+    </form>
+</div>
