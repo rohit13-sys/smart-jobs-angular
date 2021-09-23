@@ -1,16 +1,42 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule,routingComponents } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './Auth/login/login.component';
+import { EmploginComponent } from './Auth/login/emplogin/emplogin.component';
+import { RecruiterloginComponent } from './Auth/login/recruiterlogin/recruiterlogin.component';
+import { RegisComponent } from './Auth/regis/regis.component';
+import { EmpregisterComponent } from './Auth/regis/empregister/empregister.component';
+import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { SeekerModule } from './seeker/seeker.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    EmploginComponent,
+    RecruiterloginComponent,
+    RegisComponent,
+    EmpregisterComponent,
+    RecruiterregisterComponent,
+    routingComponents,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SeekerModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

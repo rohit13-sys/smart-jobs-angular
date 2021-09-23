@@ -1,0 +1,94 @@
+<app-dashboard></app-dashboard>
+<div class="container-fluid">
+</div>
+<div class="container-fluid">
+    <div class="col-sm-12">
+        <h1>Profile Details</h1>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="form-horizontal" [formGroup]="seekerProfileForm">
+
+
+
+                <div class="col-sm-12 form-group">
+                    <label for="username"><b>UserName:</b></label><br>
+                    <input type="text" name="username" formControlName="username" id="username" class="form-control"
+                        value={{profileinfo.username}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="mail"><b>E-Mail:</b></label><br>
+                    <input type="text" name="mail" formControlName="mail" id="mail" class="form-control"
+                        value={{profileinfo.mail}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="mobile"><b>Mobile:</b></label><br>
+                    <input type="text" name="mobile" id="mobile" formControlName="mobile" class="form-control"
+                        value={{profileinfo.mobile}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="gender"><b>Gender:</b></label><br>
+                    <input type="text" name="gender" id="gender" formControlName="gender" class="form-control"
+                        value={{profileinfo.gender}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="password"><b>Update Password:</b></label><br>
+                    <input type="password" name="password" id="password" formControlName="password"
+                        class="form-control">
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="mstatus"><b>MaritalStatus:</b></label><br>
+                    <input type="text" name="mstatus" id="mstatus" formControlName="maritalStatus" class="form-control"
+                        value={{profileinfo.maritalStatus}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="hometown"><b>HomeTown</b></label><br>
+                    <input type="text" name="hometown" formControlName="hometown" id="hometown" class="form-control"
+                        value={{profileinfo.hometown}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="nationality"><b>Nationality:</b></label><br>
+                    <input type="text" name="nationality" formControlName="nationality" id="nationality"
+                        class="form-control" value={{profileinfo.nationality}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="currentlocation"><b>CurrentLocation:</b></label><br>
+                    <input type="text" name="currentlocation" formControlName="currentLocation" id="currentlocation"
+                        class="form-control" value={{profileinfo.currentLocation}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="experience"><b>Experience:</b></label><br>
+                    <input type="text" name="experience" formControlName="experience" id="experience"
+                        class="form-control" value={{profileinfo.experience}}>
+                </div>
+
+
+                <div class="col-sm-12 form-group">
+                    <label for="lastjobDesig"><b>LastJob Role:</b></label><br>
+                    <input type="text" name="lastjobDesig" formControlName="lastjobDesig" id="lastjobDesig"
+                        class="form-control" value={{profileinfo.lastjobDesig}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="department"><b>Department:</b></label><br>
+                    <input type="text" name="department" formControlName="department" id="department"
+                        class="form-control" value={{profileinfo.department}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="reasonsforleaving"><b>Reason For Leaving Last Job:</b></label><br>
+                    <input type="text" name="reasonsforleaving" formControlName="reasonsforleaving"
+                        id="reasonsforleaving" class="form-control" value={{profileinfo.reasonsforleaving}}>
+                </div>
+                <div class="col-sm-12 form-group">
+                    <label for="interests"><b>Interests:</b></label><br>
+                    <input type="text" name="interests" formControlName="interests" id="interests" class="form-control"
+                        value={{profileinfo.interests}}>
+                </div>
+                <div class="col-sm-12">
+                    <button class="btn btn-success" (click)="updateProfile()">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
