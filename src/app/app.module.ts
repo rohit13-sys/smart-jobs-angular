@@ -14,6 +14,9 @@ import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recru
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecruiterModule } from './recuiter/recruiter.module';
+import { PostedJobsServiceService } from './recuiter/posted-jobs-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -36,9 +39,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     SeekerModule,
-    NgbModule
+    RecruiterModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

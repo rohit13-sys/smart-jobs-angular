@@ -7,7 +7,10 @@ import { RecruiterloginComponent } from './Auth/login/recruiterlogin/recruiterlo
 import { EmpregisterComponent } from './Auth/regis/empregister/empregister.component';
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { RegisComponent } from './Auth/regis/regis.component';
+import { PostjobComponent } from './recuiter/postjob/postjob.component';
 import { ProfileComponent } from './recuiter/profile/profile.component';
+import { RdashboardComponent } from './recuiter/rdashboard/rdashboard.component';
+import { RPostedjobsComponent } from './recuiter/rdashboard/rpostedjobs/rpostedjobs.component';
 import { AppliedjobsComponent } from './seeker/dashboard/appliedjobs/appliedjobs.component';
 import { DashboardComponent } from './seeker/dashboard/dashboard.component';
 
@@ -32,7 +35,18 @@ const routes: Routes = [
   {path:'search',component:JobSearchComponent},
   {path:'applied-jobs',component:AppliedjobsComponent},
   {path:'jobs',component:PostedjobsComponent},
-  {path:'rprofile',component:ProfileComponent}
+  {path:'rprofile',component:ProfileComponent},
+  {
+    path:'recruiterDashboard',component:RdashboardComponent,
+    children:[
+      {
+        path:'postjob',component:PostjobComponent
+      },
+      { 
+        path: 'myJobs', component: RPostedjobsComponent,   
+      }
+    ]
+  }
 ];
 
 @NgModule({

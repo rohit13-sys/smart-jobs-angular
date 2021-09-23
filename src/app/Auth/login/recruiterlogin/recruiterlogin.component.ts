@@ -20,7 +20,7 @@ export class RecruiterloginComponent implements OnInit {
     this.router.navigate(['register/rec_register']);
   }
   login() {
-   
+    this.router.navigate(['recruiterDashboard']);
   }
   get form(){
     return this.loginForm.controls;
