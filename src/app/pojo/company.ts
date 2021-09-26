@@ -1,5 +1,5 @@
 export class Company {
     companyName:string = ''
-    establishmentDate:Date|undefined
+    establishmentDate:Date = new Date()
     companyWebsite:string = ''
 }

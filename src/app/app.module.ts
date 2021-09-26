@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule,routingComponents } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 
@@ -13,9 +13,7 @@ import { EmpregisterComponent } from './Auth/regis/empregister/empregister.compo
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecruiterModule } from './recuiter/recruiter.module';
-import { PostedJobsServiceService } from './recuiter/posted-jobs-service.service';
 import { HttpClientModule } from '@angular/common/http';
 
 

@@ -21,7 +21,7 @@ export class RNavbarComponent implements OnInit {
   }
 
   navigateProfile(){
-    this.router.navigate(['seeker-profile']);
+    this.router.navigate(['rprofile']);
   }
 
   navigateEditProfile(){

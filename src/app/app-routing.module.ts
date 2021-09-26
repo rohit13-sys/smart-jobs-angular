@@ -63,6 +63,7 @@ const routes: Routes = [
   { path: 'applied-jobs', component: AppliedjobsComponent },
   { path: 'jobs', component: PostedjobsComponent },
   { path: 'seeker-profile', component: SeekerProfileComponent },
+  { path: 'rprofile', component: ProfileComponent},
 
   {
     path: 'dashboard', component: DashboardComponent, children: [
@@ -71,8 +72,8 @@ const routes: Routes = [
       { path: 'edit-profile', component: EditProfileComponent },
       { path: 'search', component: JobSearchComponent },
       { path: 'applied-jobs', component: AppliedjobsComponent },
-      { path: 'jobs', component: PostedjobsComponent },
-      { path: 'rprofile', component: ProfileComponent}]
+      { path: 'jobs', component: PostedjobsComponent }]
+     
     }
       
   ]

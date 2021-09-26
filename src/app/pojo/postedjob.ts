@@ -10,4 +10,7 @@ export class Postedjob {
     salary: number = 0
     isActive: string = ''
     experience: string = ''
+    officeAddress:string =''
+    vacancies:number = 0
+    postedDate:Date = new Date()
 }

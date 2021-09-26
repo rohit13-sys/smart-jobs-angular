@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Employer } from '../../employer';
-import { EmployerServiceService } from '../../employer-service.service';
-import { PostedJobsServiceService } from '../../posted-jobs-service.service';
-import { Postedjob } from '../postedjob';
+import { Employer } from 'src/app/pojo/employer';
+import { EmployerServiceService } from 'src/app/service/employer-service.service';
+import { PostedJobsServiceService } from 'src/app/service/posted-jobs-service.service';
+import { Postedjob } from 'src/app/pojo/postedjob';
 
 @Component({
   selector: 'app-rpostedjobs',
