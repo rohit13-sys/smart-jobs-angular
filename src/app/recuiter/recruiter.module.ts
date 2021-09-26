@@ -5,11 +5,10 @@ import { AppliedEmployeesComponent } from './rdashboard/applied-employees/applie
 import { RPostedjobsComponent } from './rdashboard/rpostedjobs/rpostedjobs.component';
 import { RecruiterRoutingModule } from './recruiter-routing.module';
 import { PostjobComponent } from './postjob/postjob.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { RNavbarComponent } from './rdashboard/r-navbar/r-navbar.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-
 
 
 

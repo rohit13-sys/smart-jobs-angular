@@ -22,7 +22,6 @@
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
-    "ng-multiselect": "^1.0.0",
     "ng-multiselect-dropdown": "^0.3.4",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

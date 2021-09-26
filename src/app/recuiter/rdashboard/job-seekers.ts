@@ -19,7 +19,7 @@ export const JobSeekers:JobSeeker[] = [
     },
     {
         seekerName: "Kakarot",
-        seekerMail: "kakarot@gmail.com",
+        seekerMail: "kakrot@gmail.com",
         seekerMobile: "9234423423",
         seekerSkills: "java,javacript,nodeJs",
         appliedFor: 2,

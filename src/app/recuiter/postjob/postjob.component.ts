@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { Employer } from 'src/app/pojo/employer';
-import { Postedjob } from 'src/app/pojo/postedjob';
+import { Employer } from '../employer';
+import { Postedjob } from '../rdashboard/postedjob';
 
 @Component({
   selector: 'app-postjob',

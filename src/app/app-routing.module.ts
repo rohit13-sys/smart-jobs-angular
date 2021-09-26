@@ -9,6 +9,7 @@ import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recru
 import { RegisComponent } from './Auth/regis/regis.component';
 import { PostjobComponent } from './recuiter/postjob/postjob.component';
 import { ProfileComponent } from './recuiter/profile/profile.component';
+import { AppliedEmployeesComponent } from './recuiter/rdashboard/applied-employees/applied-employees.component';
 import { RdashboardComponent } from './recuiter/rdashboard/rdashboard.component';
 import { RPostedjobsComponent } from './recuiter/rdashboard/rpostedjobs/rpostedjobs.component';
 import { AppliedjobsComponent } from './seeker/dashboard/appliedjobs/appliedjobs.component';
@@ -21,54 +22,62 @@ import { SeekerProfileComponent } from './seeker/seeker-profile/seeker-profile.c
 import { SeekerModule } from './seeker/seeker.module';
 
 const routes: Routes = [
-  {path:'',redirectTo:'login/emp_login',pathMatch:'full'},
-  {path:'login',component:LoginComponent,children:[
-    {path:'emp_login',component:EmploginComponent},
-    {path:'rec_login',component:RecruiterloginComponent}
-  ]},
-  {path:'register',component:RegisComponent,children:[
-    {path:'emp_register',component:EmpregisterComponent},
-    {path:'rec_register',component:RecruiterregisterComponent}
-  ]},
-
-
-  
-  {path:'posted-jobs',component:PostedjobsComponent},
-  {path:'edit-profile',component:EditProfileComponent},
-  {path:'search',component:JobSearchComponent},
-  {path:'applied-jobs',component:AppliedjobsComponent},
-  {path:'jobs',component:PostedjobsComponent},
-  {path:'seeker-profile',component:SeekerProfileComponent},
-
-  {path:'dashboard',component:DashboardComponent,children:[
-    
-  {path:'posted-jobs',component:PostedjobsComponent},
-  {path:'edit-profile',component:EditProfileComponent},
-  {path:'search',component:JobSearchComponent},
-  {path:'applied-jobs',component:AppliedjobsComponent},
-  {path:'jobs',component:PostedjobsComponent},
-  {path:'seeker-profile',component:SeekerProfileComponent},
-  ]},
+  { path: '', redirectTo: 'login/emp_login', pathMatch: 'full' },
   {
-    path:'recruiterDashboard',component:RdashboardComponent,
-    children:[
-      {
-        path:'postjob',component:PostjobComponent
-      },
-      { 
-        path: 'myJobs', component: RPostedjobsComponent,   
-      },
-      {path:'rprofile',component:ProfileComponent},
+    path: 'login', component: LoginComponent, children: [
+      { path: 'emp_login', component: EmploginComponent },
+      { path: 'rec_login', component: RecruiterloginComponent }
     ]
-  }
-];
+  },
+  {
+    path: 'register', component: RegisComponent, children: [
+      { path: 'emp_register', component: EmpregisterComponent },
+      { path: 'rec_register', component: RecruiterregisterComponent }
+    ]
+  },
+
+
+
+  { path: 'posted-jobs', component: PostedjobsComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'search', component: JobSearchComponent },
+  { path: 'applied-jobs', component: AppliedjobsComponent },
+  { path: 'jobs', component: PostedjobsComponent },
+  { path: 'seeker-profile', component: SeekerProfileComponent },
+
+  {
+    path: 'dashboard', component: DashboardComponent, children: [
+
+      { path: 'posted-jobs', component: PostedjobsComponent },
+      { path: 'edit-profile', component: EditProfileComponent },
+      { path: 'search', component: JobSearchComponent },
+      { path: 'applied-jobs', component: AppliedjobsComponent },
+      { path: 'jobs', component: PostedjobsComponent },
+      { path: 'rprofile', component: ProfileComponent}]},
+      {
+        path: 'recruiterDashboard', component: RdashboardComponent,
+        children: [
+          {
+            path: 'postjob', component: PostjobComponent
+          },
+          {
+            path: 'myJobs', component: RPostedjobsComponent,
+          },
+          {
+            path: 'appliedSeekers/:jobPostId', component: AppliedEmployeesComponent
+          },
+          {
+            path: '', redirectTo: 'myJobs', pathMatch: 'full'
+          }
+        ],
+      }]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents=[
+export const routingComponents = [
   LoginComponent,
   EmploginComponent,
   RecruiterloginComponent,
