@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   }
   employeeloginpage()
   {
-    this.router.navigate(['emp_login'],{relativeTo:this.activatedroute});
+    console.log("heyyy")
+    this.router.navigate(['login/emp_login']);
+    console.log("byee")
     this.tabset=true;
     
   }

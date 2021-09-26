@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, Validators,FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Login } from 'src/app/pojo/login';
 
 @Component({
   selector: 'app-emplogin',
@@ -10,10 +11,9 @@ import { FormGroup, Validators,FormBuilder } from '@angular/forms';
 export class EmploginComponent implements OnInit {
   loginSuccess: any;
   loginFail: any;
-  loginform!:FormGroup;
-  constructor(private router: Router, private fb:FormBuilder) { }
-  loginForm= this.fb.group({
-    userName: [null,Validators.required],
+  constructor(private router: Router,private fb:FormBuilder) { }
+  loginForm: FormGroup = this.fb.group({
+    email: [null,Validators.required],
     password: [null,Validators.compose([Validators.required,Validators.minLength(5)])]
   });
   ngOnInit() {
@@ -22,12 +22,18 @@ export class EmploginComponent implements OnInit {
     this.router.navigate(['register/emp_register']);
   }
   login() {
-    this.router.navigate(['search'])
+    this.router.navigate(['search']);
   }
   get form(){
     return this.loginForm.controls;
   }
-
-
+  // clearForm(){
+  //   (<HTMLFormElement>document.getElementById("loginform")).reset();
+  //  }
 
 }
+
+
+
+
+

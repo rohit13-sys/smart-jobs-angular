@@ -2,38 +2,36 @@
 -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
 -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
 box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
-<div class="col-sm-3"></div>
-<div class="col-sm-6 text-center">
- <div class="alert alert-success col-sm-10" *ngIf="loginsuccess;else failmessage">
-   <strong>{{loginsuccess}} !!</strong>
- </div>
- <ng-template #failmessage>
-   <div class="alert alert-danger" *ngIf="loginfail">
-     <strong>{{loginfail}} !!</strong>
-   </div>
- </ng-template>
-</div>
-<div class="col-sm-3"></div>
-<div class="col-sm-2"></div>
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 text-center">
+    <div class="alert alert-success col-sm-10" *ngIf="loginsuccess">
+      <strong>Success</strong>
+    </div>
+    <div class="alert alert-danger" *ngIf="loginfail">
+      <strong>Fail!!</strong>
+    </div>
+
+  </div>
+  <div class="col-sm-3"></div>
+  <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" (ngSubmit)="loginUser()" #signinFormDir="ngForm">
       <div class="form-group">
-        <label for="exampleInputEmail1">CompanyName</label>
-        <input formControlName="companyName" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter companyName">
-       </div>
-      <div *ngIf="form.companyName.touched">
-        <p class="alert alert-danger" *ngIf="form.companyName.errors?.required" >CompanyName is required</p>
+        <label for="userId">CompanyName</label>
+        <input type="email" name="userId" formControlName="email" class="form-control" aria-describedby="emailHelp"
+          placeholder="Enter Email">
       </div>
+      <!-- <div *ngIf="login.userId.errors.required">
+        <p class="alert alert-danger" *ngIf="login.userId" >CompanyName is required</p>
+      </div> -->
       <div class="form-group">
-        <label for="passwordInput">Password</label>
-        <input formControlName="password" type="password" class="form-control" id="passwordInput" aria-describedby="passHelp" placeholder="password">
-      </div>
-      <div *ngIf="form.password.touched">
-        <p class="alert alert-danger" *ngIf="form.password.errors?.required" >Password is required</p>
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="pwd" formControlName="password" aria-describedby="passHelp"
+          placeholder="password">
       </div>
       <div class="form-group" style="text-align:center;">
-          <button type="button" class="btn btn-primary me-5 mt-2" (click)="login()">Log in</button>
-          <button type="button" class="btn btn-info mt-2" (click)="moveToRegister()">Register</button>
+        <button [disabled]="signinFormDir.invalid" type="submit" class="btn btn-primary me-5 mt-2">Log in</button>
+        <button type="button" class="btn btn-info mt-2" (click)="moveToRegister()">Register</button>
       </div>
     </form>
   </div>

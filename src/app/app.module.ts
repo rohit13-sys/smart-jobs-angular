@@ -13,7 +13,8 @@ import { EmpregisterComponent } from './Auth/regis/empregister/empregister.compo
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecruiterModule } from './recuiter/recruiter.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -26,7 +27,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisComponent,
     EmpregisterComponent,
     RecruiterregisterComponent,
-    routingComponents,
     NavbarComponent
   ],
   imports: [
@@ -36,9 +36,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     FormsModule,
     SeekerModule,
-    NgbModule
+    RecruiterModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
