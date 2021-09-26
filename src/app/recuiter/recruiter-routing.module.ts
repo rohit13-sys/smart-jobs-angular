@@ -6,12 +6,6 @@ import { RPostedjobsComponent } from './rdashboard/rpostedjobs/rpostedjobs.compo
 
 const routes: Routes = [
     
-    { 
-        path: 'appliedSeekers',component: AppliedEmployeesComponent 
-    },
-    {
-        path:'appliedSeekers/:jobPostId',component:AppliedEmployeesComponent
-    },
     
 ];
 

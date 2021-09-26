@@ -6,19 +6,19 @@
         <hr class="my-2">
     <!-- <p class="jumbotron mb-5" style="text-align: center;color: darkturquoise;">Post Job</p> -->
     </div>
-    <div class="p-4 display-6" style="text-align: left;">
-    <form [formGroup]="postJobForm" #postJobFormDir="ngForm" (ngSubmit)="save(postJobForm.value)" class="row">
-        <div formGroupName="employee" class="col-sm-12 mb-2">
-            <div formGroupName="login">
+    <div class=" display-6" style="text-align: left;">
+        <div  class="col-12 mb-2">
                 <label for="empEmail">Employer Email:</label><br>
-                <input type="email" formControlName="userId" id="empEmail" class="form-control"
-                    value="{{employer.login.userId}}">
+                <input type="email"  id="empEmail" class="form-control"
+                [(ngModel)]="postJob.employee.login.userId"  disabled style="cursor: not-allowed;">
                     <!-- style="cursor: not-allowed;" -->
-            </div>
         </div>
+        <div class="p-3">
+        <form [formGroup]="postJobForm" #postJobFormDir="ngForm" (ngSubmit)="edit()" class="row">
+        
         <div class="col-6">
             <label for="exampleDataList" class="form-label">JobType</label>
-            <input class="form-control" list="datalistOptions" formControlName="jobType" id="exampleDataList" placeholder="Enter Job Type...">
+            <input class="form-control" list="datalistOptions" [(ngModel)]="postJob.jobType" formControlName="jobType" id="exampleDataList" placeholder="Enter Job Type...">
             <datalist id="datalistOptions">
                 <option value="Permenant">
                 <option value="Internship">
@@ -32,7 +32,7 @@
         </div>
         <div class="col-6 form-group">
             <label for="exampleFormControlInput1" class="form-label">Job Role</label>
-            <input type="text" class="form-control" formControlName="jobRole" id="exampleFormControlInput1" placeholder="Enter job Role ...">
+            <input type="text" class="form-control" [(ngModel)]="postJob.jobRole" formControlName="jobRole" id="exampleFormControlInput1" placeholder="Enter job Role ...">
             <div class="alert alert-danger mt-2" *ngIf="postJobs.jobRole.errors && (postJobs.jobRole.touched || postJobs.jobRole.dirty)">
                 <div *ngIf="postJobs.jobRole.errors.required">
                     Job Role is required
@@ -49,7 +49,7 @@
             </datalist> -->
             <ng-multiselect-dropdown
                 [settings]="dropdownSettings"
-                [data]="skillsList" formControlName="skills">
+                [data]="skillsList" formControlName="skills" [(ngModel)]="postJob.skills">
             </ng-multiselect-dropdown>
             <div class="alert alert-danger" *ngIf="postJobs.skills.errors && (postJobs.skills.touched || postJobs.skills.dirty)">
                 <div *ngIf="postJobs.skills.errors.required">
@@ -59,7 +59,7 @@
         </div>
         <div class="col-6">
             <label for="exampleFormControlInput3" class="form-label">Vacancies</label>
-            <input type="number" class="form-control" id="exampleFormControlInput3" formControlName="vacancies" placeholder="Enter Vacancies...">
+            <input [(ngModel)]="postJob.vacancies" type="number" class="form-control" id="exampleFormControlInput3" formControlName="vacancies" placeholder="Enter Vacancies...">
             <div class="alert alert-danger mt-2" *ngIf="postJobs.vacancies.errors && (postJobs.vacancies.touched || postJobs.vacancies.dirty)">
                 <div *ngIf="postJobs.vacancies.errors.required">
                     Job vacancies must be mentioned
@@ -71,7 +71,7 @@
         </div>
         <div class="col-6">
             <label for="exampleFormControlInput4" class="form-label">Salary</label>
-            <input type="number"  class="form-control" id="exampleFormControlInput4" formControlName="salary" placeholder="Enter Salary...">
+            <input [(ngModel)]="postJob.salary" type="number"  class="form-control" id="exampleFormControlInput4" formControlName="salary" placeholder="Enter Salary...">
             <div class="alert alert-danger mt-2" *ngIf="postJobs.salary.errors && (postJobs.salary.touched || postJobs.salary.dirty)">
                 <div *ngIf="postJobs.salary.errors.required">
                     Job salary are required
@@ -87,7 +87,7 @@
         </div>   -->
         <div class="col-6">
             <label for="exampleFormControlInput6" class="form-label">Required Experience</label>
-            <input type="text" class="form-control" formControlName="experience" id="exampleFormControlInput6" placeholder="Enter Required Experience ...">
+            <input [(ngModel)]="postJob.experience" type="text" class="form-control" formControlName="experience" id="exampleFormControlInput6" placeholder="Enter Required Experience ...">
             <div class="alert alert-danger mt-2" *ngIf="postJobs.experience.errors && (postJobs.experience.touched || postJobs.experience.dirty)">
                 <div *ngIf="postJobs.experience.errors.required">
                     Job Experience is required
@@ -96,7 +96,7 @@
         </div>
         <div class="col-6">
             <label for="exampleFormControlInput8" class="form-label">Office Address</label>
-            <input type="text" class="form-control" formControlName="officeAddress" id="exampleFormControlInput8" placeholder="Enter Required Experience ...">
+            <input [(ngModel)]="postJob.officeAddress" type="text" class="form-control" formControlName="officeAddress" id="exampleFormControlInput8" placeholder="Enter Required Experience ...">
             <div class="alert alert-danger mt-2" *ngIf="postJobs.officeAddress.errors && (postJobs.officeAddress.touched || postJobs.officeAddress.dirty)">
                 <div *ngIf="postJobs.officeAddress.errors.required">
                     Office Address is required
@@ -105,12 +105,12 @@
         </div>
         <div class="col-6">
             <label for="postedDate">Posted Date</label><br>
-            <input type="date" formControlName="postedDate" id="postedDate" class="form-control"
+            <input [(ngModel)]="postJob.postedDate" type="date" formControlName="postedDate" id="postedDate" class="form-control"
                 value="2021-09-11">
         </div>
         <div class="col-6 mb-3">
             <label for="isActive">isActive</label><br>
-            <input type="text" formControlName="isActive" id="isActive" class="form-control"
+            <input [(ngModel)]="postJob.isActive" type="text" formControlName="isActive" id="isActive" class="form-control"
                 value="true">
         </div>
         
@@ -119,5 +119,6 @@
         </div>
         <div class="col mb-4 alert alert-danger" [hidden] = '!EMessage'><h3>{{EMessage}}</h3></div>
     </form>
+</div>
 </div>
 </div>

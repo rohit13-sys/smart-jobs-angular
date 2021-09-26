@@ -19,4 +19,18 @@ export class RNavbarComponent implements OnInit {
   goToPostJob(){
     this.router.navigate(['recruiterDashboard/postjob'])
   }
+
+  navigateProfile(){
+    this.router.navigate(['seeker-profile']);
+  }
+
+  navigateEditProfile(){
+    this.router.navigate(['edit-profile']);
+  }
+
+  navigateLogout(){
+    this.router.navigate(['login/emp_login']);
+  }
+
+  
 }

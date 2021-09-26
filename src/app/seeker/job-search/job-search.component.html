@@ -23,10 +23,11 @@
         </div>
       </div>
     </div>
+    <div *ngIf="isSearchEmpty">
+      <app-postedjobs></app-postedjobs>
+    </div>  
   </div>
-  <div *ngIf="isSearchEmpty">
-    <app-postedjobs></app-postedjobs>
-  </div>
+  
 
 </body>
 

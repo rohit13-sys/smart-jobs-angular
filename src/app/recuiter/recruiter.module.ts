@@ -9,6 +9,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { RNavbarComponent } from './rdashboard/r-navbar/r-navbar.component';
+import { EditPostJobComponent } from './edit-post-job/edit-post-job.component';
 
 
 
@@ -19,7 +20,8 @@ import { RNavbarComponent } from './rdashboard/r-navbar/r-navbar.component';
     RPostedjobsComponent,
     PostjobComponent,
     ProfileComponent,
-    RNavbarComponent
+    RNavbarComponent,
+    EditPostJobComponent
   ],
   imports: [
     CommonModule,
