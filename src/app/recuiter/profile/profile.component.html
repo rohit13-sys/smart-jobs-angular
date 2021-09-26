@@ -8,10 +8,10 @@
 </div>
 <div class="container mt-3 bg-light">
     <div class="row">
-        <div class="col-md-4 p-2">
+        <!-- <div class="col-md-4 p-2">
             <hr>
             <div class="col-sm-12 text-center p-2" *ngIf="!picexists;else defaultavatar">
-                <img src="{{profileinfo.profileimage}}" alt={{profileinfo.username}} id="pimage">
+                <img src="{{profile.profileimage}}" alt={{profile.username}} id="pimage">
 
             </div>
             <ng-template #defaultavatar>
@@ -21,7 +21,7 @@
             <button type="button" (click)="upload()" class="mt-3 mb-5">upload</button>
             <br>
 
-        </div>
+        </div> -->
         <div class="col-sm-8 p-2">
             <div class="col-sm-12">
                 <h1>Profile Details</h1>
@@ -38,31 +38,34 @@
 
                     <!-- Tab panes -->
                     <div class="tab-content">
-                        <div id="basic" class="container tab-pane active"><br>
+                        <div id="basic" class="container tab-pane active" ><br>
                             <div class="col-sm-12">
                                 <label for="companyname"><b>Company Name:</b></label><br>
-                                <input type="text" name="companyname" id="companyname" class="form-control"
-                                    value={{profileinfo.companyName}} disabled style="cursor: not-allowed;">
+                                <input type="text"   class="form-control"
+                                  [(ngModel)]="profile.company.companyName" disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="companymail"><b>E-Mail:</b></label><br>
                                 <input type="text" name="companymail" id="companymail" class="form-control"
-                                    value={{profileinfo.companymail}} disabled style="cursor: not-allowed;">
+                                disabled style="cursor: not-allowed;"
+                                [(ngModel)]="profile.login.userId">
                             </div>
-                            <div class="col-sm-12">
+                            <!-- <div class="col-sm-12">
                                 <label for="industrytype"><b>Industry Type:</b></label><br>
                                 <input type="text" name="industrytype" id="industrytype" class="form-control"
-                                    value={{profileinfo.industrytype}} disabled style="cursor: not-allowed;">
-                            </div>
-                            <div class="col-sm-12">
-                                <label for="yearsOfExp"><b>Years of Exp:</b></label><br>
-                                <input type="text" name="yearsOfExp" id="yearsOfExp" class="form-control"
-                                    value={{profileinfo.yearsOfExp}} disabled style="cursor: not-allowed;">
-                            </div>
+                                    value={{profile.industrytype}} disabled style="cursor: not-allowed;">
+                            </div> -->
+
                             <div class="col-sm-12">
                                 <label for="about"><b>about:</b></label><br>
                                 <input type="text" name="about" id="about" class="form-control"
-                                    value={{profileinfo.about}} disabled style="cursor: not-allowed;">
+                                [(ngModel)]="profile.company.companyWebsite" disabled style="cursor: not-allowed;">
+                            </div>
+
+                            <div class="col-sm-12">
+                                <label for="estDate"><b>Establishment Date</b></label><br>
+                                <input type="text" name="estDate" id="yearsOfExp" class="form-control"
+                                [(ngModel)]="profile.company.establishmentDate" disabled style="cursor: not-allowed;">
                             </div>
 
                         </div>

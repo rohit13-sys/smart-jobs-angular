@@ -29,7 +29,6 @@ import { HttpClientModule } from '@angular/common/http';
     RegisComponent,
     EmpregisterComponent,
     RecruiterregisterComponent,
-    routingComponents,
     NavbarComponent
   ],
   imports: [

@@ -33,4 +33,10 @@ export class RNavbarComponent implements OnInit {
   }
 
   
+  logout(){
+    this.router.navigate(['login/rec_login'])
+  }
+  profile(){
+    this.router.navigate(['recruiterDashboard/rprofile'])
+  }
 }

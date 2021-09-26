@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Job } from '../service/job';
-import { Jobs } from '../service/jobs';
+import { Job } from 'src/app/service/job';
+import { Jobs } from 'src/app/service/jobs';
 
 @Component({
   selector: 'app-appliedjobs',

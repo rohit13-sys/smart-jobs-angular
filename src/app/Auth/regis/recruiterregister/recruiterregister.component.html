@@ -2,58 +2,127 @@
     <!-- <div class="col-sm-1"></div> -->
     <div class="col-sm-10">
         <div class="col-sm-3"></div>
-<div class="col-sm-6 text-center">
- <div class="alert alert-success col-sm-10" *ngIf="registrationSuccess;else failMessage">
-   <strong>{{registrationSuccess}} !!</strong>
- </div>
- <ng-template #failMessage>
-   <div class="alert alert-danger" *ngIf="regisFail">
-     <strong>{{regisFail}} !!</strong>
-   </div>
- </ng-template>
-</div>
-<div class="col-sm-3"></div>
+        <div class="col-sm-6 text-center">
+            <div class="alert alert-success col-sm-10" *ngIf="registrationSuccess;else failMessage">
+                <strong>{{registrationSuccess}} !!</strong>
+            </div>
+            <ng-template #failMessage>
+                <div class="alert alert-danger" *ngIf="regisFail">
+                    <strong>{{regisFail}} !!</strong>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-sm-3"></div>
         <div class="container mt-3">
 
-            <form class="form-horizontal" [formGroup]="RecruiterRegisterForm">
-                <div class="form-group">
-                    <label for="companyName" class="col-sm-3 control-label">CompanyName</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="companyName" formControlName="companyName" placeholder="companyname" class="form-control"  autofocus>
+            <form class="form-horizontal" [formGroup]="registerForm" #signupFormDir="ngForm"
+                (ngSubmit)="register_recruiter()">
+                <div [hidden]="signupFormDir.submitted">
+                    <div class="form-group">
+                        <label for="employerName" class="col-sm-3 control-label">Employer Name*</label>
+                        <div class="col-sm-9">
+                            <input type="text" formControlName="empName" placeholder="employerName"
+                                class="form-control">
+                        </div>
+                        <div class="alert alert danger" *ngIf="signUp.empName.errors && signUp.empName.touched">
+                            <div class="alert alert-danger" style="width: 20%;" *ngIf="signUp.empName.errors.required">
+                                Name is required
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password*</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control">
+
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">Email* </label>
+                        <div class="col-sm-9">
+                            <input type="text" name="email" placeholder="Email" class="form-control"
+                                formControlName="email">
+                        </div>
+                        <div class="alert alert danger" *ngIf="signUp.email.errors && signUp.email.touched">
+                            <div class="alert alert-danger" style="width: 20%;" *ngIf="signUp.email.errors.required">
+                                Email is required
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email* </label>
-                    <div class="col-sm-9">
-                        <input type="email" formControlName="companyMail" id="email" placeholder="mail" class="form-control" name= "email">
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-3 control-label">Password*</label>
+                        <div class="col-sm-9">
+                            <input type="password" name="password" placeholder="Password" class="form-control"
+                                formControlName="pwd">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.pwd.errors && signUp.pwd.touched">
+                            <div class="alert alert-danger" style="width: 30%;" *ngIf="signUp.pwd.errors.required">
+                                password is required
+                            </div>
+                        </div>
+                        <!-- <div class="alert alert-danger" *ngIf="signUp.pwd.errors.minlength">
+                            Enter minimum 8 digit password
+                        </div> -->
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="industry" class="col-sm-3 control-label">Industry</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="industry" formControlName="industryType" placeholder="Last Designation" class="form-control"  >
+                    <div class="form-group">
+                        <label for="company" class="col-sm-3 control-label">Company Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" placeholder="Company NAme" class="form-control"
+                                formControlName="comName">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.comName.errors && signUp.comName.touched">
+                            <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.comName.errors.required">
+                                Company name is required
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="exp" class="col-sm-3 control-label">Experience </label>
-                    <div class="col-sm-9">
-                        <input type="number" id="exp" formControlName="yearsofExp" placeholder="Exp. In Years" class="form-control">
+                    <div class="form-group">
+                        <label for="exp" class="col-sm-3 control-label">Establishment Date </label>
+                        <div class="col-sm-9">
+                            <input type="date" placeholder="establishmentDate" class="form-control"
+                                formControlName="estDate">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.estDate.errors && signUp.estDate.touched">
+                            <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.estDate.errors.required">
+                                Est Date is required
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label for="about" class="col-sm-3 control-label">About</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="about" formControlName="About" placeholder="Not Mandatory" class="form-control"  autofocus>
+                    <div class="form-group">
+                        <label for="about" class="col-sm-3 control-label">About</label>
+                        <div class="col-sm-9">
+                            <input type="url" placeholder="URL" class="form-control" formControlName="about">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.about.errors && signUp.about.touched">
+                            <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.about.errors.required">
+                                About is required
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="about" class="col-sm-3 control-label">Contact number</label>
+                        <div class="col-sm-9">
+                            <input type="number" placeholder="Contact number" class="form-control" formControlName="phNo">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.phNo.errors && signUp.phNo.touched">
+                            <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.phNo.errors.required">
+                                phNo is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="about" class="col-sm-3 control-label">Office Id</label>
+                        <div class="col-sm-9">
+                            <input type="number" placeholder="Office Id" class="form-control" formControlName="bid">
+                        </div>
+                        <div class="alert alert danger mt-1" *ngIf="signUp.bid.errors && signUp.bid.touched">
+                            <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.bid.errors.required">
+                                bid is required
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="role" value="employer" formControlName="role">
+
+                    <button [disabled]="signupFormDir.invalid"type="submit" class="btn btn-primary">Register</button>
                 </div>
-               
-                <button type="submit" class="btn btn-primary"  (click)="register_rectuiter()">Register</button>
             </form> <!-- /form -->
         </div>
     </div>
