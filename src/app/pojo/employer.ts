@@ -3,7 +3,7 @@ import { Login } from "./login"
 
 export class Employer {
     login:Login = new Login()
-    empName:string = ''
+    employerName:string = ''
     empPhoneNo:number = 0
     empBranchId:number = 0
     company:Company = new Company()
