@@ -1,4 +1,4 @@
-import { SkillsList } from '../pojo/skills-list';
+import { SkillsList } from './skills-list';
 
 describe('SkillsList', () => {
   it('should create an instance', () => {

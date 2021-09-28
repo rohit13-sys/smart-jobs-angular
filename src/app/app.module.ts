@@ -14,7 +14,7 @@ import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recru
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
 import { HttpClientModule } from '@angular/common/http';
-import { RecruiterModule } from './recuiter/recruiter.module';
+import { RecruiterModule } from './recruiter/recruiter.module';
 import { EditProfileComponent } from './seeker/edit-profile/edit-profile.component';
 
 

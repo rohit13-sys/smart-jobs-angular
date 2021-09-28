@@ -21,7 +21,7 @@ export class RNavbarComponent implements OnInit {
   }
 
   navigateProfile(){
-    this.router.navigate(['rprofile']);
+    this.router.navigate(['seeker-profile']);
   }
 
   navigateEditProfile(){
@@ -33,10 +33,4 @@ export class RNavbarComponent implements OnInit {
   }
 
   
-  logout(){
-    this.router.navigate(['login/rec_login'])
-  }
-  profile(){
-    this.router.navigate(['recruiterDashboard/rprofile'])
-  }
 }

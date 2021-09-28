@@ -6,12 +6,12 @@ import { RecruiterloginComponent } from './Auth/login/recruiterlogin/recruiterlo
 import { EmpregisterComponent } from './Auth/regis/empregister/empregister.component';
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { RegisComponent } from './Auth/regis/regis.component';
-import { REditPostJobComponent } from './recuiter/redit-post-job/redit-post-job.component';
-import { PostjobComponent } from './recuiter/postjob/postjob.component';
-import { ProfileComponent } from './recuiter/profile/profile.component';
-import { AppliedEmployeesComponent } from './recuiter/rdashboard/applied-employees/applied-employees.component';
-import { RdashboardComponent } from './recuiter/rdashboard/rdashboard.component';
-import { RPostedjobsComponent } from './recuiter/rdashboard/rpostedjobs/rpostedjobs.component';
+import { REditPostJobComponent } from './recruiter/redit-post-job/redit-post-job.component';
+import { PostjobComponent } from './recruiter/postjob/postjob.component';
+import { ProfileComponent } from './recruiter/profile/profile.component';
+import { AppliedEmployeesComponent } from './recruiter/rdashboard/applied-employees/applied-employees.component';
+import { RdashboardComponent } from './recruiter/rdashboard/rdashboard.component';
+import { RPostedjobsComponent } from './recruiter/rdashboard/rpostedjobs/rpostedjobs.component';
 
 import { AppliedjobsComponent } from './seeker/dashboard/appliedjobs/appliedjobs.component';
 import { DashboardComponent } from './seeker/dashboard/dashboard.component';
