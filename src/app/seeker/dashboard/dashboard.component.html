@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary bg-gradient">
+  <div class="container-fluid">
+    <a class="navbar-brand fs-3 fw-bold text-light" (click)="navigateJobs()" style="cursor: pointer;">SMART JOBS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto">
+        <div class="dropdown">
+          <div class="container dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Dashboard
+          </div>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click)="navigateJobs()" style="cursor: pointer;">Home</a>
+            <a class="dropdown-item" (click)="navigateAppliedJobs()" style="cursor: pointer;">Applied-Jobs</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <div class="container dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            Profile
+          </div>
+          <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" (click)="navigateProfile()" style="cursor: pointer;">View-Profile</a>
+            <a class="dropdown-item" (click)="navigateEditProfile()" style="cursor: pointer;">Edit-profile</a>
+            <a class="dropdown-item" (click)="navigateLogout()" style="cursor: pointer;">LogOut</a>
+          </div>
+          </div>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>
+<!-- <router-outlet></router-outlet> -->

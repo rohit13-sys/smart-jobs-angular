@@ -1,0 +1,26 @@
+<!-- <app-dashboard></app-dashboard> -->
+<div class="container" *ngIf="isSearchEmpty">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
+        <div class="card">
+          <div class="card-body p-0">
+            <div class="card-header pt-3 bg-primary text-white">
+              <h5 class="card-title">{{j.jobRole}}</h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text text-muted"><b>{{j.companyName}}</b></p>
+              <p class="card-text text-muted">
+                <i class="fa fa-briefcase"></i> {{j.exp}}<br>
+                <i class="fa fa-gears"></i> {{j.skills}}<br>
+                {{j.jobType}}
+              </p>
+              <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
+              <button type="button" class="btn btn-outline-success">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
