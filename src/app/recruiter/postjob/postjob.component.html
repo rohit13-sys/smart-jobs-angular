@@ -15,6 +15,11 @@
                     value="{{employer.login.userId}}">
                     <!-- style="cursor: not-allowed;" -->
             </div>
+            <div class="alert alert-danger mt-2" *ngIf="postJobForm.get('employee.login.userId')!.errors && (postJobForm.get('employee.login.userId')!.touched || postJobForm.get('employee.login.userId')!.dirty)">
+                <div *ngIf="postJobForm.get('employee.login.userId')!.errors!.required">
+                    Job email is required
+                </div>
+            </div>
         </div>
         <div class="col-6">
             <label for="exampleDataList" class="form-label">JobType</label>
