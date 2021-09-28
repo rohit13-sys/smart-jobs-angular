@@ -54,26 +54,23 @@
                         {{j.jobType}}
                     </div>
                     <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                    <button type="button mr-2" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-success butn">Drop</button>
+                    <button type="button mr-2" (click)="open(content)" class="btn btn-outline-success butn">Drop</button>
                     <button type="button mr-2" class="btn btn-outline-success butn" (click)="updateJob(j.jobPostId)">Edit</button>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">Are You sure want to delete this JobPost?</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              Click on Delete Job button to delete the JobPost!!!
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="deleteJob(j.jobPostId)">Delete Job</button>
-                            </div>
-                          </div>
-                        </div>
+                    <ng-template #content let-c="close" let-d="dismiss">
+                      <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
                       </div>
-                    <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
+                      <div class="modal-body">
+                        <p>Do you really want to delete This jobpost?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)">Delete Job</button>
+                      </div>
+                    </ng-template>
+                                        <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
                     <button type="button" class="btn btn-outline-success " (click)="viewSeekers(j.jobPostId)" >Seekers</button>
                 </div>
             </div>
