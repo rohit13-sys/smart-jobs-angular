@@ -30,62 +30,62 @@
 </div> -->
 
 <div class="container mt-2">
-    <div [hidden]="!sMessage" role="alert">
-      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-        </symbol>
-      </svg>
-      <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <strong>Welldone!</strong>Job Successfully deleted!!!
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+  <div [hidden]="!sMessage" role="alert">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </symbol>
+    </svg>
+    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center" role="alert">
+      <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+      <strong>Welldone!</strong>Job Successfully deleted!!!
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+  </div>
 
 
-    <div class="row row-cols-1 row-cols-md-3 g-4" >
-        <div [hidden]= '!errorMessage'>
-            <h2 style="color:red">Something Bad Happened.</h2>
-        </div>
-        <div class="col-sm-4 " [hidden] = 'errorMessage' *ngFor="let j of jobs" >
-          <div class="card h-100" >
-            <div class="card-body p-0">
-                <div class="card-header pt-3 bg-primary text-white"><h5 class="card-title">{{j.jobRole}}</h5></div>
-                <div class="card-body">
-                    <p class="card-text text-muted"><b>{{employee.company.companyName}}</b></p>
-                    <div class="text-muted">
-                        <i class="fa fa-briefcase">&nbsp; {{j.experience}}</i> <br>
-                        
-                        <p class="card-text"><i class="fa fa-gears">&nbsp;&nbsp;</i><span *ngFor="let s of j.skills">{{s.skillName}},</span></p>
-                        <br>
-                        {{j.jobType}}
+  <div class="row row-cols-1 row-cols-md-3 g-4" >
+      <div [hidden]= '!errorMessage'>
+          <h2 style="color:red">Something Bad Happened.</h2>
+      </div>
+      <div class="col-sm-4 " [hidden] = 'errorMessage' *ngFor="let j of jobs" >
+        <div class="card h-100" >
+          <div class="card-body p-0">
+              <div class="card-header pt-3 bg-primary text-white"><h5 class="card-title">{{j.jobRole}}</h5></div>
+              <div class="card-body">
+                  <p class="card-text text-muted"><b>{{j.employee.company.companyName}}</b></p>
+                  <div class="text-muted">
+                      <i class="fa fa-briefcase">&nbsp; {{j.experience}}</i> <br>
+                      
+                      <p class="card-text"><i class="fa fa-gears">&nbsp;&nbsp;</i><span *ngFor="let s of j.skills">{{s.skillName}},</span></p>
+                      <br>
+                      {{j.jobType}}
+                  </div>
+                  <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
+                  <button type="button mr-2" (click)="open(content)" class="btn btn-outline-success butn">Drop</button>
+                  <button type="button mr-2" class="btn btn-outline-success butn" (click)="updateJob(j.jobPostId)">Edit</button>
+                  <ng-template #content let-c="close" let-d="dismiss">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                    <button type="button mr-2" (click)="open(content)" class="btn btn-outline-success butn">Drop</button>
-                    <button type="button mr-2" class="btn btn-outline-success butn" (click)="updateJob(j.jobPostId)">Edit</button>
-                    <ng-template #content let-c="close" let-d="dismiss">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Do you really want to delete This jobpost?</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)">Delete Job</button>
-                      </div>
-                    </ng-template>
-                                        <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
-                    <button type="button" class="btn btn-outline-success " (click)="viewSeekers(j.jobPostId)" >Seekers</button>
-                </div>
-            </div>
+                    <div class="modal-body">
+                      <p>Do you really want to delete This jobpost?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)">Delete Job</button>
+                    </div>
+                  </ng-template>
+                                      <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
+                  <button type="button" class="btn btn-outline-success " (click)="viewSeekers(j.jobPostId)" >Seekers</button>
+              </div>
           </div>
         </div>
-        
-        
       </div>
       
+      
+    </div>
+    
 </div>

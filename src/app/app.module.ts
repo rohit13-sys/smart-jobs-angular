@@ -13,10 +13,9 @@ import { EmpregisterComponent } from './Auth/regis/empregister/empregister.compo
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
-import { HttpClientModule } from '@angular/common/http';
 import { RecruiterModule } from './recruiter/recruiter.module';
-import { EditProfileComponent } from './seeker/edit-profile/edit-profile.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.component';
 
 
 
@@ -30,7 +29,7 @@ import { EditProfileComponent } from './seeker/edit-profile/edit-profile.compone
     EmpregisterComponent,
     RecruiterregisterComponent,
     NavbarComponent,
-    //EditProfileComponent
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,

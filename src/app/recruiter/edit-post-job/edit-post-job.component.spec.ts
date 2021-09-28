@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { REditPostJobComponent } from './redit-post-job.component';
+import { EditPostJobComponent } from './edit-post-job.component';
 
 describe('EditPostJobComponent', () => {
-  let component: REditPostJobComponent;
-  let fixture: ComponentFixture<REditPostJobComponent>;
+  let component: EditPostJobComponent;
+  let fixture: ComponentFixture<EditPostJobComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ REditPostJobComponent ]
+      declarations: [ EditPostJobComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(REditPostJobComponent);
+    fixture = TestBed.createComponent(EditPostJobComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

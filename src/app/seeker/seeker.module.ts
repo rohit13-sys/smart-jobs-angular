@@ -9,6 +9,7 @@ import { AppliedjobsComponent } from './dashboard/appliedjobs/appliedjobs.compon
 import { PostedjobsComponent } from './dashboard/postedjobs/postedjobs.component';
 import { JobSearchComponent } from './job-search/job-search.component';
 
+
 @NgModule({
   declarations: [
     DashboardComponent,
@@ -17,19 +18,19 @@ import { JobSearchComponent } from './job-search/job-search.component';
     AppliedjobsComponent,
     JobSearchComponent,
     PostedjobsComponent
+    
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule
+
   ],
   exports:[
     SeekerProfileComponent,
     EditProfileComponent,
     JobSearchComponent,
-    DashboardComponent,
-   
-
+    DashboardComponent
   ]
 })
 export class SeekerModule { }

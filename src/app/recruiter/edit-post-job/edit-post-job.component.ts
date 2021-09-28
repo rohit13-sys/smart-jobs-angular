@@ -2,17 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { Employer } from '../employer';
-import { PostedJobsServiceService } from '../posted-jobs-service.service';
-import { Postedjob } from '../rdashboard/postedjob';
-import { SkillsList } from '../skills-list';
+import { Employer } from 'src/app/pojo/employer';
+import { PostedJobsServiceService } from 'src/app/service/posted-jobs-service.service';
+import { Postedjob } from 'src/app/pojo/postedjob';
+import { SkillsList } from 'src/app/pojo/skills-list';
 
 @Component({
-  selector: 'app-redit-post-job',
-  templateUrl: './redit-post-job.component.html',
-  styleUrls: ['./redit-post-job.component.css']
+  selector: 'app-edit-post-job',
+  templateUrl: './edit-post-job.component.html',
+  styleUrls: ['./edit-post-job.component.css']
 })
-export class REditPostJobComponent implements OnInit {
+export class EditPostJobComponent implements OnInit {
 
   id:any
   skillsList:any = SkillsList
@@ -79,7 +79,7 @@ export class REditPostJobComponent implements OnInit {
     this.postJobSerivce.updateJob(this.postJob)
     .subscribe((success)=>{
       console.log(success);
-      //alert(success)
+     // alert(success)
     },(error)=>{
       console.log(error);
       this.EMessage = error
