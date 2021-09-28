@@ -30,12 +30,6 @@
 </div> -->
 
 <div class="container mt-2">
-    <div [hidden]="!sMessage" class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Job Deleted Successfully!!!</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
     <div class="row row-cols-1 row-cols-md-3 g-4" >
         <div [hidden]= '!errorMessage'>
             <h2 style="color:red">Something Bad Happened.</h2>
@@ -54,30 +48,13 @@
                         {{j.jobType}}
                     </div>
                     <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                    <button type="button mr-2" (click)="open(content)" class="btn btn-outline-success butn">Drop</button>
+                    <button type="button mr-2" class="btn btn-outline-success butn" (click)="deleteJob(j.jobPostId)">Drop</button>
                     <button type="button mr-2" class="btn btn-outline-success butn" (click)="updateJob(j.jobPostId)">Edit</button>
-                    <ng-template #content let-c="close" let-d="dismiss">
-                      <div class="modal-header">
-                        <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Do you really want to delete This jobpost?</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)">Delete Job</button>
-                      </div>
-                    </ng-template>
-                                        <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
+                    <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->
                     <button type="button" class="btn btn-outline-success " (click)="viewSeekers(j.jobPostId)" >Seekers</button>
                 </div>
             </div>
           </div>
         </div>
-        
-        
       </div>
-      
 </div>
