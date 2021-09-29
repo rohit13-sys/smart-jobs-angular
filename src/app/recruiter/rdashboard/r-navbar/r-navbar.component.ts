@@ -25,7 +25,7 @@ export class RNavbarComponent implements OnInit {
   }
 
   navigateEditProfile(){
-    this.router.navigate(['edit-profile']);
+    this.router.navigate(['redit-profile']);
   }
 
   navigateLogout(){

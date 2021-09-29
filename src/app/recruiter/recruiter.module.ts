@@ -34,7 +34,8 @@ import { EditPostJobComponent } from './edit-post-job/edit-post-job.component';
     AppliedEmployeesComponent,
     RPostedjobsComponent,
     RdashboardComponent,
-    PostjobComponent
+    PostjobComponent,
+    RNavbarComponent
   ]
 })
 export class RecruiterModule { }

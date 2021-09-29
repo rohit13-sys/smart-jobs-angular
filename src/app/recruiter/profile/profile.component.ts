@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
 
     this.service.getRecruiter('rk@gmail.com').subscribe(
-      (data)=>{this.profile=data;},
+      (data)=>{this.profile=data;console.log('<>>>>>>>>>>>>>>>>>>>>>>>>'+this.profile)},
       (error)=>{console.log('some error occurred')}
     )
 

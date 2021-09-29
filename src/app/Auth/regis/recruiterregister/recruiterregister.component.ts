@@ -28,7 +28,7 @@ export class RecruiterregisterComponent implements OnInit {
         userId:['',Validators.required],
         pwd:['',[Validators.required]],//Validators.pattern('/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/')
         //,Validators.minLength(8),Validators.maxLength(10)]],
-        role:['',Validators.required]
+        role:['employer']
       }),
       employerName:['',Validators.required],//[Validators.required,Validators.pattern(' /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/')]],
       company:this.fb.group({
@@ -71,13 +71,14 @@ export class RecruiterregisterComponent implements OnInit {
     console.log(data);
     
     this.service.registerRecruiter(data).subscribe(
-      (success)=>{
-        this.registrationSuccess=success;
+      (HttpResponse)=>{
+        this.registrationSuccess='registration successful';
         alert(`Registered Successfully!!!`)
         this.router.navigate(['login/rec_login']);
       }
-      ,(error)=>{
-        this.regisFail='Error try again!!!'
+      ,(HttpErrorResponse)=>{
+        this.regisFail='Sorry employer already exists!!!please Login'
+        alert(this.regisFail);
         //this.router.navigate(['reg_register'],{relativeTo:this.route})
       }
     )
