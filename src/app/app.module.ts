@@ -16,6 +16,7 @@ import { SeekerModule } from './seeker/seeker.module';
 import { RecruiterModule } from './recruiter/recruiter.module';
 import { HttpClientModule } from '@angular/common/http';
 import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.component';
+import { PasswordIntegrityDirective } from './directives/password-integrity.directive';
 
 
 
@@ -30,6 +31,7 @@ import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.comp
     RecruiterregisterComponent,
     NavbarComponent,
     EditProfileComponent,
+    PasswordIntegrityDirective,
   ],
   imports: [
     BrowserModule,

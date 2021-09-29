@@ -5,6 +5,7 @@ import { Company } from 'src/app/pojo/company';
 import { Employer } from 'src/app/pojo/employer';
 import { Login } from 'src/app/pojo/login';
 import { Recruiter } from 'src/app/pojo/recruiter';
+import { EmployerServiceService } from 'src/app/service/employer-service.service';
 import { RecruiterServiceService } from 'src/app/service/recruiter-service.service';
 
 @Component({
@@ -27,12 +28,12 @@ export class ProfileComponent implements OnInit {
   picexists:boolean=false;
   successmsg:any;
 
-  constructor(private router:Router,private service:RecruiterServiceService,private fb:FormBuilder) { }
+  constructor(private router:Router,private empService:EmployerServiceService,private service:RecruiterServiceService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
 
-    this.service.getRecruiter('rk@gmail.com').subscribe(
-      (data)=>{this.profile=data;console.log('<>>>>>>>>>>>>>>>>>>>>>>>>'+this.profile)},
+    this.empService.getEmpById('john@gmail.com').subscribe(
+      (data)=>{this.profile=data;},
       (error)=>{console.log('some error occurred')}
     )
 

@@ -1,4 +1,4 @@
-import { HttpClient,HttpErrorResponse } from '@angular/common/http';
+import { HttpClient,HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -25,7 +25,10 @@ export class EmployerServiceService {
   emploerUrl = 'http://localhost:9090/Employee'
 
   getEmpById(email:string){
-      return this.http.get<Employer>(this.emploerUrl+'/getEmployee',{params:{empId:email}}).pipe(catchError(this.handleError))
+      const headers = { 'content-type': 'application/x-www-form-urlencoded'}
+      let body = new HttpParams()
+      body = body.set('empId',email)
+      return this.http.post<Employer>(this.emploerUrl+'/getEmployee',body,{'headers':headers}).pipe(catchError(this.handleError))
   }
 
 }

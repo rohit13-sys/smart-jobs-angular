@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class RecruiterloginComponent implements OnInit {
   loginsuccess:boolean=false;
   loginfail:boolean=false;
+  sMessage:string = ''
   login = new Login();
   loginForm: FormGroup = this.fb.group({
     email: [null,Validators.required],
@@ -41,17 +42,16 @@ export class RecruiterloginComponent implements OnInit {
     this.login.userId=this.form.email.value;
     this.login.pwd=this.form.password.value;
     this.service.loginRecruiterFromRemote(this.login).subscribe(
-      (resp:any) => {
-        if (HttpResponse) {
+      (response) => {
           this.loginsuccess=true
+          //this.sMessage = response
           this.router.navigate(['recruiterDashboard/myJobs'])
-        } else if (HttpErrorResponse) {
-          this.loginfail=true
-          console.log(this.loginfail)
+      },(error)=> {
+          if(error.status == 401)
+            this.loginfail=true
           this.router.navigate(['login/rec_login'])
-        }
-      }
-    )
+        })
+
 
    
     

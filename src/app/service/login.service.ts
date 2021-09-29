@@ -16,12 +16,8 @@ export class LoginService {
 
 
   public loginRecruiterFromRemote(login:Login){
-    this.data=(this.http.post<Login>("http://localhost:9090/login/employee",login,
-            {observe:'response'}))
-
-    console.log(this.data);
-    return this.data;
-  
+    return (this.http.post<Login>("http://localhost:9090/login/employee",login,
+    {observe:'response'})).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -35,8 +31,7 @@ export class LoginService {
         `Backend returned code ${error.status}, body was: `, error.error);
     }
     // Return an observable with a user-facing error message.
-    return throwError(
-      'Something bad happened; please try again later.');
+    return throwError(error);
   }
   
 }
