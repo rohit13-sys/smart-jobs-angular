@@ -26,9 +26,10 @@ export class RecruiterServiceService {
         `Backend returned code ${errResp.status} ,`+
         `body was : ${errResp.error}`);
     }
-
-    return throwError(
-      'Something bad happened;please try again later')
+    console.log("inerr: "+errResp.status);
+    
+    return throwError(errResp)
+      //'Something bad happened;please try again later')
   }
 
 
@@ -37,13 +38,13 @@ export class RecruiterServiceService {
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(recruiter);
     return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
-    {'headers':headers}).pipe(catchError(this.handleError));
+    {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
 
   }
 
   public getRecruiter(email:string){
     const url=`http://localhost:9090/Employee/getEmployee/`
-   return this.data=this.http.get<Employer>(url,{params:{empId:email}}).pipe(catchError(this.handleError));
+   return this.data=this.http.post<Employer>(url,{params:{empId:email}}).pipe(catchError(this.handleError));
   }
 
   public updateProfile(employer:Employer){

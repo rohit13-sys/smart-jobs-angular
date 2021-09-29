@@ -3,9 +3,10 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
 import { Recruiter } from 'src/app/pojo/recruiter';
 import { RecruiterServiceService } from 'src/app/service/recruiter-service.service';
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Login } from 'src/app/pojo/login';
 import { Company } from 'src/app/pojo/company';
+import { passwordIntegrityValidator } from 'src/app/directives/password-integrity.directive';
 
 @Component({
   selector: 'app-recruiterregister',
@@ -26,9 +27,9 @@ export class RecruiterregisterComponent implements OnInit {
     this.registerForm=this.fb.group({
       login:this.fb.group({
         userId:['',Validators.required],
-        pwd:['',[Validators.required]],//Validators.pattern('/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/')
-        //,Validators.minLength(8),Validators.maxLength(10)]],
-        role:['',Validators.required]
+        pwd:['',[Validators.required,Validators.minLength(5),Validators.maxLength(15)
+                ,passwordIntegrityValidator(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/g)]],
+        role:['Employer',Validators.required]
       }),
       employerName:['',Validators.required],//[Validators.required,Validators.pattern(' /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/')]],
       company:this.fb.group({
@@ -36,8 +37,8 @@ export class RecruiterregisterComponent implements OnInit {
         establishmentDate:['',Validators.required],
         companyWebsite:['',Validators.required],
       }),
-      empPhoneNo:['',Validators.required],
-      bid:['',Validators.required],
+      empPhoneNo:['',[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]],
+      empBranchId:['',Validators.required],
 
     });
   }
@@ -71,14 +72,20 @@ export class RecruiterregisterComponent implements OnInit {
     console.log(data);
     
     this.service.registerRecruiter(data).subscribe(
-      (success)=>{
-        this.registrationSuccess=success;
+      (response)=>{
+        //this.registrationSuccess=success;
+        console.log(response);
         alert(`Registered Successfully!!!`)
         this.router.navigate(['login/rec_login']);
       }
-      ,(error)=>{
-        this.regisFail='Error try again!!!'
-        //this.router.navigate(['reg_register'],{relativeTo:this.route})
+      ,(response)=>{
+        console.log("res: " + response.status);
+        
+        if(response.status == 409){
+          this.regisFail = "User Already exist please go through login..."
+        }
+        else{this.regisFail='Error try again!!!'
+        }//this.router.navigate(['reg_register'],{relativeTo:this.route})
       }
     )
   }
