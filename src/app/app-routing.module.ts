@@ -48,8 +48,10 @@ const routes: Routes = [
       { path: 'rec_login', component: RecruiterloginComponent }
     ]
   },
+  
   {
     path: 'register', component: RegisComponent, children: [
+      
       { path: 'emp_register', component: EmpregisterComponent },
       { path: 'rec_register', component: RecruiterregisterComponent }
     ]

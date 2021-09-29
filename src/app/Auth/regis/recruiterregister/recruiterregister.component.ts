@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
 import { Recruiter } from 'src/app/pojo/recruiter';
 import { RecruiterServiceService } from 'src/app/service/recruiter-service.service';
@@ -48,7 +48,7 @@ export class RecruiterregisterComponent implements OnInit {
 
     this.login.userId=this.signUp.email.value
     this.login.pwd=this.signUp.pwd.value
-    this.login.role=this.signUp.about.value
+    this.login.role=this.signUp.role.value
 
     this.company.companyName=this.signUp.comName.value
     this.company.establishmentDate=this.signUp.estDate.value
@@ -62,13 +62,13 @@ export class RecruiterregisterComponent implements OnInit {
     this.recruiter.company=this.company;
 
     this.service.registerRecruiter(this.recruiter).subscribe(
-      (success)=>{
+      (data)=>{
         this.registrationSuccess="Registration successful";
         this.router.navigate(['login/rec_login']);
       }
       ,(error)=>{
-        this.regisFail='Error try again!!!'
-        this.router.navigate(['register/reg_register'])
+        this.regisFail='try again some thing happened'
+        this.router.navigate(['register/rec_register'])
       }
     )
   }
