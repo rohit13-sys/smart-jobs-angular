@@ -33,11 +33,12 @@ export class RecruiterServiceService {
 
 
   data:any='';
-  public registerRecruiter(recruiter:Recruiter):Observable<Recruiter>{
-    this.data=this.http.post<Recruiter>("http://localhost:9090/Employee/registerEmployee",recruiter,
-    {observe:'response'});
+  public registerRecruiter(recruiter:Employer){
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(recruiter);
+    return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
+    {'headers':headers}).pipe(catchError(this.handleError));
 
-    return this.data;
   }
 
   public getRecruiter(email:string){

@@ -29,7 +29,7 @@ import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.comp
     EmpregisterComponent,
     RecruiterregisterComponent,
     NavbarComponent,
-    EditProfileComponent
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,7 +40,7 @@ export class PostjobComponent implements OnInit {
       //login:[],
       employee:this.formBuilder.group({
         login:this.formBuilder.group({
-          userId:['']
+          userId:['',Validators.required]
         })
       }),
       jobType:['',Validators.required],
@@ -60,6 +60,9 @@ export class PostjobComponent implements OnInit {
     return this.postJobForm?.controls
   }
 
+  // get employers(){
+  //   return this.postJobs.get('employee').controls
+  // }
   save(data:any){
     console.log(this.postJobForm);
     //this.postJob.employee.login =  this.postJobs.login.value//control.get('empEmail')

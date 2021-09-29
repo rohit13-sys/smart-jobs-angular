@@ -79,7 +79,7 @@ export class EditPostJobComponent implements OnInit {
     this.postJobSerivce.updateJob(this.postJob)
     .subscribe((success)=>{
       console.log(success);
-      alert(success)
+     // alert(success)
     },(error)=>{
       console.log(error);
       this.EMessage = error
