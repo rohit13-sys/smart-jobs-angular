@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+# SmartJobsAngular
+
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
+=======
 # SmartJobs
 
 <<<<<<< HEAD
@@ -5,6 +10,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 =======
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.5.
 >>>>>>> 41086d1884ba717e857ca2014821bf86aa39f568
+>>>>>>> 91aa09c839a0877c5f5aaca28082e6632174be69
 
 ## Development server
 

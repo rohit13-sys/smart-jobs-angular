@@ -1,34 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Document</title>
-</head>
-
-<body>
-  <app-dashboard></app-dashboard>
-  <div class="container ms-5">
-    <div class="container ms-5">
+<app-dashboard></app-dashboard>
+<form #searchForm="ngForm" (ngSubmit)="search(searchForm)">
+  <div class="container ms-auto">
+    <div class="container">
       <div class="wrapper">
         <div class="search-container">
           <i class="fas fa icon"></i>
-          <input type="text" [(ngModel)]="input1" placeholder="&#xF002; Skills, Designation, Companies..."
+          <input type="text" [(ngModel)]="input1" name="input1" placeholder="&#xF002; Skills, Designation, Companies..."
             style="font-family: Arial, Helvetica, sans-serif, FontAwesome">
-          <input type="text" [(ngModel)]="input2" class="location" placeholder="&#xf124; Enter Location"
-            style="font-family: Arial, Helvetica, sans-serif, FontAwesome">
+          <input type="text" [(ngModel)]="input2" name="input2" class="location input-lg" placeholder="&#xf124; Enter Location"
+            style="font-family: Arial, Helvetica, sans-serif, FontAwesome;">
+            <button type="submit" class="butn btn-primary rounded" >Search</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</form>
+  <div *ngIf="isSearchEmpty">
+    <div class="container" style="margin:auto">
+      <div class="row">
+        <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
+          <div class="card" >
+            <div class="card-body p-0">
+              <div class="card-header pt-3 bg-primary text-white">
+                <h5 class="card-title">{{j.jobRole}}</h5>
+              </div>
+              <div class="card-body">
+                <p class="card-text text-muted"><b>{{j.companyName}}</b></p>
+                <p class="card-text text-muted">
+                  <i class="fa fa-briefcase"></i> {{j.experience}}<br>
+                  <i class="fa fa-gear fa-spin"></i><span *ngFor="let skills of j.skills">{{skills.skillName}},</span><br>
+                  {{j.jobType}}
+                </p> 
+                <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
+                <button type="button" class="butn btn btn-outline-success">Apply</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div *ngIf="isSearchEmpty">
-      <app-postedjobs></app-postedjobs>
-    </div>  
   </div>
-  
-
-</body>
-
-</html>

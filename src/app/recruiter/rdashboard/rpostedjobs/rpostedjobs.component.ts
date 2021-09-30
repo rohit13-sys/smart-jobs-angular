@@ -12,7 +12,6 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./rpostedjobs.component.css']
 })
 export class RPostedjobsComponent implements OnInit {
-
   jobs:Postedjob[]|undefined
   errorMessage:string = ''
   id:any
