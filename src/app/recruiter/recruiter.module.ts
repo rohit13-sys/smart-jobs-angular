@@ -28,7 +28,7 @@ import { EditPostJobComponent } from './edit-post-job/edit-post-job.component';
     FormsModule,
     ReactiveFormsModule,
     RecruiterRoutingModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
   ],
   exports:[
     AppliedEmployeesComponent,

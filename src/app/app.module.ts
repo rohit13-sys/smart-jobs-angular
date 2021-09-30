@@ -41,7 +41,8 @@ import { PasswordIntegrityDirective } from './directives/password-integrity.dire
     FormsModule,
     SeekerModule,
     RecruiterModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [
   ],

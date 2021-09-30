@@ -35,12 +35,15 @@
                         <div formGroupName="login">
                         <div class="col-sm-12">
                             <label for="empEmail">Employer Email:</label><br>
-                            <input type="email" formControlName="userId" id="empEmail" class="form-control" style="display: inline-block;width: 90%;">
+                            <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" type="email" formControlName="userId" id="empEmail" class="form-control" style="display: inline-block;width: 90%;">
                             <span *ngIf="registerForm.get('login.userId')!.valid"> &#10004;</span>
                                 <!-- style="cursor: not-allowed;" -->
                         <div class="mt-1" *ngIf="registerForm.get('login.userId')!.errors && (registerForm.get('login.userId')!.touched || registerForm.get('login.userId')!.dirty)">
                             <div class="alert alert-danger" style="width: 30%;" *ngIf="registerForm.get('login.userId')!.errors!.required">
                                 Email is required
+                            </div>
+                            <div *ngIf="registerForm.get('login.userId')!.errors!.pattern">
+                                <p class="alert alert-danger" >Not a valid email</p>
                             </div>
                         </div>
                     </div>

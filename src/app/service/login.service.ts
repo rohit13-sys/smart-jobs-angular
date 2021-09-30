@@ -16,7 +16,7 @@ export class LoginService {
 
 
   public loginRecruiterFromRemote(login:Login){
-    return (this.http.post<Login>("http://localhost:9090/login/employee",login,
+    return (this.http.post<Login>("http://localhost:9090/login",login,
     {observe:'response'})).pipe(catchError(this.handleError));
   }
 
