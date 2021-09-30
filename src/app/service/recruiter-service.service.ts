@@ -26,23 +26,25 @@ export class RecruiterServiceService {
         `Backend returned code ${errResp.status} ,`+
         `body was : ${errResp.error}`);
     }
-
-    return throwError(
-      'Something bad happened;please try again later')
+    console.log("inerr: "+errResp.status);
+    
+    return throwError(errResp)
+      //'Something bad happened;please try again later')
   }
 
 
   data:any='';
-  public registerRecruiter(recruiter:Recruiter):Observable<Recruiter>{
-    this.data=this.http.post<Recruiter>("http://localhost:9090/Employee/registerEmployee",recruiter,
-    {observe:'response'});
+  public registerRecruiter(recruiter:Employer){
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(recruiter);
+    return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
+    {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
 
-    return this.data;
   }
 
   public getRecruiter(email:string){
     const url=`http://localhost:9090/Employee/getEmployee/`
-   return this.data=this.http.get<Employer>(url,{params:{empId:email}}).pipe(catchError(this.handleError));
+   return this.data=this.http.post<Employer>(url,{params:{empId:email}}).pipe(catchError(this.handleError));
   }
 
   public updateProfile(employer:Employer){

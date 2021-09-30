@@ -5,7 +5,10 @@ import { SeekerProfileComponent } from './seeker-profile/seeker-profile.componen
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppliedjobsComponent } from './dashboard/appliedjobs/appliedjobs.component';
+
+import { PostedjobsComponent } from './dashboard/postedjobs/postedjobs.component';
 import { JobSearchComponent } from './job-search/job-search.component';
+
 
 @NgModule({
   declarations: [

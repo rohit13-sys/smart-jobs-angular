@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { Employer } from '../employer';
-import { PostedJobsServiceService } from '../posted-jobs-service.service';
-import { Postedjob } from '../rdashboard/postedjob';
-import { SkillsList } from '../skills-list';
+import { Employer } from 'src/app/pojo/employer';
+import { PostedJobsServiceService } from 'src/app/service/posted-jobs-service.service';
+import { Postedjob } from 'src/app/pojo/postedjob';
+import { SkillsList } from 'src/app/pojo/skills-list';
 
 @Component({
   selector: 'app-postjob',
@@ -40,7 +40,7 @@ export class PostjobComponent implements OnInit {
       //login:[],
       employee:this.formBuilder.group({
         login:this.formBuilder.group({
-          userId:['']
+          userId:['',Validators.required]
         })
       }),
       jobType:['',Validators.required],
@@ -60,6 +60,9 @@ export class PostjobComponent implements OnInit {
     return this.postJobForm?.controls
   }
 
+  // get employers(){
+  //   return this.postJobs.get('employee').controls
+  // }
   save(data:any){
     console.log(this.postJobForm);
     //this.postJob.employee.login =  this.postJobs.login.value//control.get('empEmail')

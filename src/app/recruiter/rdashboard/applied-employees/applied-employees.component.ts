@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JobSeeker } from '../job-seeker';
+import { JobSeeker } from 'src/app/pojo/job-seeker';
 import { JobSeekers } from '../job-seekers';
 
 

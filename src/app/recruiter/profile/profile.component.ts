@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Company } from 'src/app/pojo/company';
+import { Employer } from 'src/app/pojo/employer';
+import { Login } from 'src/app/pojo/login';
+import { Recruiter } from 'src/app/pojo/recruiter';
+import { EmployerServiceService } from 'src/app/service/employer-service.service';
+import { RecruiterServiceService } from 'src/app/service/recruiter-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,14 +15,37 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  profileinfo:any;
+  // profileForm:FormGroup=this.fb.group({
+  //   email:[''],
+  //   comName:[''],
+  //   about:[''],
+  //   estDate:['']
+  // });
+  profile: Employer=new Employer();
+  // login=new Login();
+  // company=new Company();
   profilepic:any;
   picexists:boolean=false;
   successmsg:any;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private empService:EmployerServiceService,private service:RecruiterServiceService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
+
+    this.empService.getEmpById('john@gmail.com').subscribe(
+      (data)=>{this.profile=data;},
+      (error)=>{console.log('some error occurred')}
+    )
+
+    // this.profileForm.setValue({
+    //   email:this.profile?.login.userId,
+    //   comName:this.profile?.company.companyName,
+    //   about:this.profile?.company.companyWebsite,
+    //   estDate:this.profile?.company.establishmentDate
+    // });
+
+    
+    
   }
 
   logout(){
@@ -29,6 +59,11 @@ export class ProfileComponent implements OnInit {
       console.log(this.profilepic);
     }
   }
+
+
+  // get form(){
+  //   return this.profileForm.controls;
+  // }
 
   upload(){
     const formData=new FormData();

@@ -1,4 +1,4 @@
-import { JobSeeker } from "./job-seeker";
+import { JobSeeker } from "src/app/pojo/job-seeker"
 
 export const JobSeekers:JobSeeker[] = [
     {

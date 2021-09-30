@@ -6,17 +6,17 @@ import { RecruiterloginComponent } from './Auth/login/recruiterlogin/recruiterlo
 import { EmpregisterComponent } from './Auth/regis/empregister/empregister.component';
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { RegisComponent } from './Auth/regis/regis.component';
-import { REditPostJobComponent } from './recruiter/redit-post-job/redit-post-job.component';
+import { EditPostJobComponent } from './recruiter/edit-post-job/edit-post-job.component';
 import { PostjobComponent } from './recruiter/postjob/postjob.component';
 import { ProfileComponent } from './recruiter/profile/profile.component';
 import { AppliedEmployeesComponent } from './recruiter/rdashboard/applied-employees/applied-employees.component';
 import { RdashboardComponent } from './recruiter/rdashboard/rdashboard.component';
 import { RPostedjobsComponent } from './recruiter/rdashboard/rpostedjobs/rpostedjobs.component';
-
 import { AppliedjobsComponent } from './seeker/dashboard/appliedjobs/appliedjobs.component';
 import { DashboardComponent } from './seeker/dashboard/dashboard.component';
-import { EditProfileComponent } from './seeker/edit-profile/edit-profile.component';
 
+import { PostedjobsComponent } from './seeker/dashboard/postedjobs/postedjobs.component';
+import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.component';
 import { JobSearchComponent } from './seeker/job-search/job-search.component';
 import { SeekerProfileComponent } from './seeker/seeker-profile/seeker-profile.component';
 import { SeekerModule } from './seeker/seeker.module';
@@ -36,7 +36,7 @@ const routes: Routes = [
         path:'appliedSeekers/:jobPostId',component:AppliedEmployeesComponent
       },
       {
-        path:'updateJob/:jobPostId',component:REditPostJobComponent
+        path:'updateJob/:jobPostId',component:EditPostJobComponent
       },
       {
         path: '',redirectTo:'myJobs',pathMatch:'full'
@@ -48,8 +48,10 @@ const routes: Routes = [
       { path: 'rec_login', component: RecruiterloginComponent }
     ]
   },
+  
   {
     path: 'register', component: RegisComponent, children: [
+      
       { path: 'emp_register', component: EmpregisterComponent },
       { path: 'rec_register', component: RecruiterregisterComponent }
     ]
@@ -57,18 +59,22 @@ const routes: Routes = [
 
 
 
+  { path: 'posted-jobs', component: PostedjobsComponent },
   { path: 'redit-profile', component: EditProfileComponent },
   { path: 'search', component: JobSearchComponent },
   { path: 'applied-jobs', component: AppliedjobsComponent },
+  { path: 'jobs', component: PostedjobsComponent },
   { path: 'seeker-profile', component: SeekerProfileComponent },
   { path: 'rprofile', component: ProfileComponent},
 
   {
     path: 'dashboard', component: DashboardComponent, children: [
+
+      { path: 'posted-jobs', component: PostedjobsComponent },
       { path: 'edit-profile', component: EditProfileComponent },
       { path: 'search', component: JobSearchComponent },
       { path: 'applied-jobs', component: AppliedjobsComponent },
-    ]
+      { path: 'jobs', component: PostedjobsComponent }]
      
     }
       

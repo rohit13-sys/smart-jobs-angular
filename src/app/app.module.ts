@@ -13,11 +13,10 @@ import { EmpregisterComponent } from './Auth/regis/empregister/empregister.compo
 import { RecruiterregisterComponent } from './Auth/regis/recruiterregister/recruiterregister.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SeekerModule } from './seeker/seeker.module';
-import { HttpClientModule } from '@angular/common/http';
 import { RecruiterModule } from './recruiter/recruiter.module';
-import { EditProfileComponent } from './seeker/edit-profile/edit-profile.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { HttpClientModule } from '@angular/common/http';
+import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.component';
+import { PasswordIntegrityDirective } from './directives/password-integrity.directive';
 
 
 
@@ -31,7 +30,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EmpregisterComponent,
     RecruiterregisterComponent,
     NavbarComponent,
-    //EditProfileComponent
+    EditProfileComponent,
+    PasswordIntegrityDirective,
   ],
   imports: [
     BrowserModule,
@@ -41,8 +41,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     SeekerModule,
     RecruiterModule,
-    HttpClientModule,
-    NgbModule
+    HttpClientModule
   ],
   providers: [
   ],

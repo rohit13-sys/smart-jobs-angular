@@ -6,7 +6,7 @@ export const Jobs:Job[] = [
         companyName:'STL',
         jobRole:'Software Developer',
         jobType:'Full-Time',
-        expRequired:2,
+        expRequired:2
     },
     {
         id:102,
