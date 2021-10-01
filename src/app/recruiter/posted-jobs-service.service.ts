@@ -29,12 +29,12 @@ export class PostedJobsServiceService {
     return this.http.get<Postedjob[]>(this.postedJobApiUrl)
     .pipe(catchError(this.handleError))
   }
-
+  
   addJob(postJob:Postedjob){
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(postJob);
     console.log(body)
-    return this.http.post(this.postedJobApiUrl + '/addjob', body,{'headers':headers,responseType:'text' as 'json'}).pipe(catchError(this.handleError))
+    return this.http.post(this.postedJobApiUrl + '/addjob', body,{'headers':headers}).pipe(catchError(this.handleError))
   }
 
   deleteJobById(id:number){

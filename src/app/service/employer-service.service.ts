@@ -24,7 +24,7 @@ export class EmployerServiceService {
 
   emploerUrl = 'http://localhost:9090/Employee'
 
-  getEmpById(email:string){
+  getEmpById(email:any){
       const headers = { 'content-type': 'application/x-www-form-urlencoded'}
       let body = new HttpParams()
       body = body.set('empId',email)

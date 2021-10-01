@@ -50,7 +50,11 @@ export class RecruiterloginComponent implements OnInit {
     this.service.loginRecruiterFromRemote(this.login).subscribe(
       (response) => {
           this.loginsuccess=true
+
+          sessionStorage.setItem('email',this.login.userId)
           //this.sMessage = response
+          //console.log("getEmail:" + this.service.getEmail());
+          
           this.router.navigate(['recruiterDashboard/myJobs'])
       },(error)=> {
         console.log(error);

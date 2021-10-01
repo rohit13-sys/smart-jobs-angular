@@ -5,6 +5,7 @@ import { EmployerServiceService } from 'src/app/service/employer-service.service
 import { PostedJobsServiceService } from 'src/app/service/posted-jobs-service.service';
 import { Postedjob } from 'src/app/pojo/postedjob';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-rpostedjobs',
@@ -13,19 +14,26 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class RPostedjobsComponent implements OnInit {
   jobs:Postedjob[]|undefined
+  empEmail:string|null = ''
   errorMessage:string = ''
   id:any
   sMessage:string = ''
  // employee:Employer = new Employer()
 
-  constructor(config: NgbModalConfig,private modalService: NgbModal,private route:ActivatedRoute,private postService:  PostedJobsServiceService,private router: Router,private empService: EmployerServiceService) { }
+  constructor(config: NgbModalConfig,private modalService: NgbModal,private route:ActivatedRoute,private postService:  PostedJobsServiceService,private router: Router,private empService: EmployerServiceService,private log:LoginService) { }
 
   viewSeekers(id:number){
     this.router.navigate(['../appliedSeekers',id],{relativeTo:this.route})
   }
 
   ngOnInit(): void {
-    this.fetchJobs()
+    //this.empEmail = this.route.snapshot.paramMap.get('emailId')
+    // this.empEmail = this.log.getEmail()
+    // console.log("email = "+this.empEmail);
+    this.empEmail = sessionStorage.getItem('email')
+    console.log("employee"+this.empEmail);
+    
+    this.fetchJobs(this.empEmail)
     // this.empService.getEmpById(this.employee.login.userId)
     // .subscribe((data)=>{
     //   this.employee = data
@@ -37,13 +45,16 @@ export class RPostedjobsComponent implements OnInit {
     
   }
 
-  fetchJobs(){
-    this.postService.getServerPostedJobs()
+  fetchJobs(empEmail:any){
+    this.postService.getPostedJobsByEmail(empEmail)
     .subscribe( (data)=>{
       this.jobs = data
+      if(this.jobs.length==0){
+        this.errorMessage = "You haven't posted anything yet!!!"
+      }
       console.log("data:",this.jobs)
     },(error)=>{
-      this.errorMessage = error
+      this.errorMessage = "Something Bad Happend."
     })
   }
 
@@ -52,7 +63,7 @@ export class RPostedjobsComponent implements OnInit {
     this.postService.deleteJobById(id).subscribe((success)=>{
       console.info(success)
       this.sMessage = success;
-      this.fetchJobs();
+      this.fetchJobs(this.empEmail);
       //alert(this.sMessage)
     },(error)=>{
       console.error(error);

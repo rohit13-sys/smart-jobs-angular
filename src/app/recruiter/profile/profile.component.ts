@@ -27,12 +27,13 @@ export class ProfileComponent implements OnInit {
   profilepic:any;
   picexists:boolean=false;
   successmsg:any;
+  emailId:string|null = ''
 
   constructor(private router:Router,private empService:EmployerServiceService,private service:RecruiterServiceService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
-
-    this.empService.getEmpById('john@gmail.com').subscribe(
+    this.emailId = sessionStorage.getItem('email')
+    this.empService.getEmpById(this.emailId).subscribe(
       (data)=>{this.profile=data;},
       (error)=>{console.log('some error occurred')}
     )

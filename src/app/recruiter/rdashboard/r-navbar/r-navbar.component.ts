@@ -29,6 +29,7 @@ export class RNavbarComponent implements OnInit {
   }
 
   navigateLogout(){
+    sessionStorage.clear()
     this.router.navigate(['login/emp_login']);
   }
 

@@ -19,7 +19,7 @@ export class PostedJobsServiceService {
       console.error(`Backend returned code ${errResp.status},+
       body was: ${errResp.error}`);
     }
-    return throwError('Someting bad happened; Please try again later.')
+    return throwError(errResp)
   }
 
 
@@ -30,11 +30,19 @@ export class PostedJobsServiceService {
     .pipe(catchError(this.handleError))
   }
 
+  getPostedJobsByEmail(emailId:string){
+    const headers = { 'content-type': 'application/x-www-form-urlencoded'}
+    let body = new HttpParams()
+    body = body.set('email',emailId)
+    return this.http.post<Postedjob[]>(this.postedJobApiUrl+'/findByEmail',body,{'headers':headers})
+    .pipe(catchError(this.handleError))
+  }
+
   addJob(postJob:Postedjob){
     const headers = { 'content-type': 'application/json'}  
     const body=JSON.stringify(postJob);
     console.log(body)
-    return this.http.post(this.postedJobApiUrl + '/addjob', body,{'headers':headers,responseType:'text' as 'json'}).pipe(catchError(this.handleError))
+    return this.http.post(this.postedJobApiUrl + '/addjob', body,{'headers':headers}).pipe(catchError(this.handleError))
   }
 
   deleteJobById(id:number){
