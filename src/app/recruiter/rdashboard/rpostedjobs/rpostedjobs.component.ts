@@ -31,9 +31,12 @@ export class RPostedjobsComponent implements OnInit {
     // this.empEmail = this.log.getEmail()
     // console.log("email = "+this.empEmail);
     this.empEmail = sessionStorage.getItem('email')
-    console.log("employee"+this.empEmail);
-    
-    this.fetchJobs(this.empEmail)
+    console.log("employee : "+this.empEmail);
+    if(this.empEmail!=null){
+      this.fetchJobs(this.empEmail)
+    }else{
+      this.errorMessage = "You are logged Out, Kindly Login!!!"
+    }
     // this.empService.getEmpById(this.employee.login.userId)
     // .subscribe((data)=>{
     //   this.employee = data

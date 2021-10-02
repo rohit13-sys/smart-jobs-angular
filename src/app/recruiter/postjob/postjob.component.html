@@ -1,6 +1,9 @@
-
-<div class="container mt-3 border border-2 rounded pj p-0" >
-    
+<div class="container mt-3" *ngIf="EMessage">
+    <div class="alert alert-danger">
+        <strong><a routerLink='../../login' class="link-danger">{{EMessage}}</a></strong>
+    </div>
+</div>
+<div class="container mt-3 border border-2 rounded pj p-0" *ngIf = "!EMessage">
     <div class="p-0 mb-2" style="background-color: rgb(243, 240, 240);">
         <h1 class="display-4">Post Job</h1>
         <hr class="my-2">
@@ -11,7 +14,7 @@
         <div formGroupName="employee" class="col-sm-12 mb-2">
             <div formGroupName="login">
                 <label for="empEmail">Employer Email:</label><br>
-                <input type="email" formControlName="userId" id="empEmail" class="form-control" style="cursor: not-allowed;">
+                <input type="email" value="{{this.employeeEmail}}" disabled id="empEmail" class="form-control" style="cursor: not-allowed;">
                     <!-- style="cursor: not-allowed;" -->
             </div>
         </div>
@@ -116,7 +119,7 @@
         <div class="col-12">
             <button type="submit"  class="btn btn-primary" [disabled]="postJobFormDir.invalid" >Post</button>
         </div>
-        <div class="col mb-4 alert alert-danger" [hidden] = '!EMessage'><h3>{{EMessage}}</h3></div>
+        
     </form>
 </div>
 </div>

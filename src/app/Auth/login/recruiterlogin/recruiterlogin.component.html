@@ -13,8 +13,8 @@ box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
   <div class="col-sm-8">
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()" #signinFormDir="ngForm">
       <div class="form-group">
-        <label for="userId">CompanyName</label>
-        <input type="email" name="userId" formControlName="email" class="form-control" aria-describedby="emailHelp"
+        <label for="userId">Company Email</label>
+        <input type="email" name="userId" formControlName="email" class="form-control text-lowercase" aria-describedby="emailHelp"
           placeholder="Enter Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       </div>
       <div class="mt-1" *ngIf="form.email.errors && (form.email.touched || form.email.dirty)">

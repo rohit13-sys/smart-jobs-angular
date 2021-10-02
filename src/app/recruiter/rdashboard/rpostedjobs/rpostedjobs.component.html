@@ -43,8 +43,10 @@
     </div>
   </div>
 
-  <div [hidden]= '!errorMessage' style="width: 100%;">
-    <h2 style="color:red">{{errorMessage}}</h2>
+  <div class="container mt-3" *ngIf="errorMessage">
+    <div class="alert alert-danger">
+        <strong><a routerLink='../../login' class="link-danger">{{errorMessage}}</a></strong>
+    </div>
   </div>
   <div class="row row-cols-1 row-cols-md-3 g-4" >
       
