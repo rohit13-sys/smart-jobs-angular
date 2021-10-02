@@ -24,6 +24,14 @@ export class EmployerServiceService {
 
   emploerUrl = 'http://localhost:9090/Employee'
 
+  public registerSeeker(recruiter:Employer){
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(recruiter);
+    return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
+    {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
+
+  }
+
   getEmpById(email:any){
       const headers = { 'content-type': 'application/x-www-form-urlencoded'}
       let body = new HttpParams()

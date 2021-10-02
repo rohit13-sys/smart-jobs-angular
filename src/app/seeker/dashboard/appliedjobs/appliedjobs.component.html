@@ -13,10 +13,10 @@
         </thead>
         <tbody>
             <tr class="table-active" *ngFor = "let s of jobApplied">
-                <th>{{s.companyName}}</th>
+                <th>{{s.employee.company.companyName}}</th>
                 <td>{{s.jobRole}}</td>
                 <td>{{s.jobType}}</td>
-                <td>{{s.expRequired}}</td>
+                <td>{{s.experience}}</td>
                 <td><button type="button" class="btn btn-success" disabled>Applied</button></td>
             </tr>
         </tbody>

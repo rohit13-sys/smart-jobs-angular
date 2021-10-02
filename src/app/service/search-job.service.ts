@@ -4,11 +4,13 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Postedjob } from '../pojo/postedjob';
 import { Job } from '../seeker/job-search/job';
+import { AppliedJob } from '../seeker/job-search/appliedJob';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchJobService {
+  appliedJobs:AppliedJob[]=[];
 
   constructor(private http: HttpClient) { }
 
@@ -37,4 +39,18 @@ export class SearchJobService {
     .pipe(catchError(this.handlerError))
   }
 
+  addAppliedJob(appliedjob:AppliedJob){
+      const headers = { 'content-type': 'application/json'}  
+      const body=JSON.stringify(appliedjob);
+      console.log(body)
+      return this.http.post('http://localhost:9090/api/v1/applyJob', body,{'headers':headers,responseType:'text' as 'json'}).pipe(catchError(this.handlerError))
+     }
+
+   getAppliedJobs(){
+     return this.http.get<Job[]>('http://localhost:9090/api/v1/getAppliedJobs').pipe(catchError(this.handlerError))
+   }  
+
+   getAllAppliedJobs(){
+    return this.http.get<AppliedJob[]>('http://localhost:9090/api/v1/getAllAppliedJobs').pipe(catchError(this.handlerError))
+  }  
 }

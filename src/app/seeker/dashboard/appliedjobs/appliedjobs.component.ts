@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Job } from 'src/app/service/job';
-import { Jobs } from 'src/app/service/jobs';
+import { SearchJobService } from 'src/app/service/search-job.service';
+import { Job } from '../../job-search/job';
 
 @Component({
   selector: 'app-appliedjobs',
@@ -12,11 +12,18 @@ export class AppliedjobsComponent implements OnInit {
 
   // id:number|string|null=0;
   // job:Job|undefined= new Job();
-  jobApplied:Job[] = Jobs;
+  jobApplied:Job[]=[];
 
-  constructor(private route:ActivatedRoute, private router:Router) { }
+  constructor(private route:ActivatedRoute, private router:Router,private joblist:SearchJobService) { }
 
   ngOnInit(): void {
+
+    this.joblist.getAppliedJobs().subscribe((data)=>{
+      this.jobApplied=data
+      console.log(this.jobApplied);
+    },(error)=>{
+      console.log(error)
+    });
 
     // this.id = this.route.snapshot.paramMap.get('id');
     // console.log(this.id);
