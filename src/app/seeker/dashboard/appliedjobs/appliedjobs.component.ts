@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 import { SearchJobService } from 'src/app/service/search-job.service';
 import { Job } from '../../job-search/job';
 
@@ -14,11 +15,11 @@ export class AppliedjobsComponent implements OnInit {
   // job:Job|undefined= new Job();
   jobApplied:Job[]=[];
 
-  constructor(private route:ActivatedRoute, private router:Router,private joblist:SearchJobService) { }
+  constructor(private route:ActivatedRoute, private router:Router,private joblist:SearchJobService,private logins:LoginService) { }
 
   ngOnInit(): void {
 
-    this.joblist.getAppliedJobs().subscribe((data)=>{
+    this.joblist.getAppliedJobsByid(this.logins.username).subscribe((data)=>{
       this.jobApplied=data
       console.log(this.jobApplied);
     },(error)=>{
