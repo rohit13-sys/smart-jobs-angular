@@ -22,6 +22,8 @@ export class LoginService {
   }
 
   public loginJobSeekerFromRemote(login:Login){
+    console.log("in ser:" + login.userId);
+    
     return (this.http.post<Login>("http://localhost:9090/login",login,
     {observe:'response'})).pipe(catchError(this.handleError));
   }

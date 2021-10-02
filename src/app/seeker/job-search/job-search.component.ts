@@ -14,6 +14,7 @@ import { LoginService } from 'src/app/service/login.service';
 })
 export class JobSearchComponent implements OnInit {
   value1:any='';
+  email:string = ''
   k:any = 0
   ApplySuccess:any=false
   ApplyFail:any=false
@@ -37,96 +38,31 @@ export class JobSearchComponent implements OnInit {
     // },(error)=>{
     //   console.log(error)
     // });
-
-    this.joblist.getServerPostedJobs().subscribe((data)=>{
-      this.jobs=data
-      // for(let j of this.jobs){
-      //   console.log(this.appliedJobStatus1)
-      //   for(let i of this.appliedJobStatus1){
-      //     this.k=1;
-      //     console.log("in")
-      //     console.log(i.jobStatus)
-      //     if(j.jobPostId===i.jobPost.jobPostId){
-      //     if(i.jobStatus==="Applied"){
-      //          j.button='Applied';
-      //          j.isDisable=true;}}
-      //     }
-      //     if(this.k===0){ console.log(this.k); j.button="Apply"}
-      //   }        
-    },(error)=>{
-      this.errorMessage=error;
-      console.log(error)
-    });
-    // this.jobs = [ {
-    //   id:101,
-    //   companyName: "STL",
-    //   jobRole: "Front-end Developer",
-    //   skills: [{skillId:101,skillName:"Html"},{skillId:102,skillName:"css"},{skillId:103,skillName:"javacript"}],
-    //   jobType: "Permanent",
-    //   salary: 15000.00,
-    //   isActive: "Active",
-    //   experience: "0-1 Years"
-    // },
-    // {
-    //   id:102,
-    //   companyName: "Docomo",
-    //   jobRole: "Back-end Developer",
-    //    skills: [{skillId:101,skillName:"Java"},{skillId:102,skillName:"Spring"},{skillId:103,skillName:"hibernate"}],
-    //   jobType: "Internship",
-    //   salary: 5000.00,
-    //   isActive: "NotActive",
-    //   experience: "1-2 Years"
-    // },
-    // {
-    //   id:103,
-    //   companyName: "Sparks",
-    //   jobRole: "Full Stack Developer",
-    //   skills: [{skillId:101,skillName:"Html"},{skillId:102,skillName:"css"},{skillId:103,skillName:"javacript"}],
-    //   jobType: "Permanent",
-    //   salary: 25000.00,
-    //   isActive: "NotActive",
-    //   experience: "3-4 Years"
-    // },
-    // {  id:104,
-    //   companyName: "Sparks",
-    //   jobRole: "Angular Developer",
-    //   skills: [{skillId:101,skillName:"TypeScript"}],
-    //   jobType: "Permanent",
-    //   salary: 25000.00,
-    //   isActive: "NotActive",
-    //   experience: "0-1 Years"
-    // },
-    // {
-    //     id:105,
-    //   companyName: "SpceX",
-    //   jobRole: "Management",
-    //   skills: "Communication skills,English,French",
-    //   jobType: "Permanent",
-    //   salary: 35000.00,
-    //   isActive: "Active",
-    //   exp: "2-5 Months"
-    // },
-    // {
-    //     id:106,
-    //   companyName: "Tesla",
-    //   jobRole: "Front-end Developer",
-    //   skills: "Html,css,javacript,React-js",
-    //   jobType: "Contract",
-    //   salary: 25000.00,
-    //   isActive: "NotActive",
-    //   exp: "1-4 Years"
-    // },
-    // {
-    //     id:107,
-    //   companyName: "master",
-    //   jobRole: "HR Management",
-    //   skills: "Communication skills,English,Leadrship skills,Creativity",
-    //   jobType: "Permanent",
-    //   salary: 55000.00,
-    //   isActive: "Active",
-    //   exp: "2-5 Years"
-    // }
-  //];
+    this.email = sessionStorage.getItem('email')!
+    console.log(this.email);
+    if(this.email!=null){
+      this.joblist.getServerPostedJobs().subscribe((data)=>{
+        this.jobs=data
+        // for(let j of this.jobs){
+        //   console.log(this.appliedJobStatus1)
+        //   for(let i of this.appliedJobStatus1){
+        //     this.k=1;
+        //     console.log("in")
+        //     console.log(i.jobStatus)
+        //     if(j.jobPostId===i.jobPost.jobPostId){
+        //     if(i.jobStatus==="Applied"){
+        //          j.button='Applied';
+        //          j.isDisable=true;}}
+        //     }
+        //     if(this.k===0){ console.log(this.k); j.button="Apply"}
+        //   }        
+      },(error)=>{
+        this.errorMessage=error;
+        console.log(error)
+      });
+    }else{
+      this.errorMessage = "You are logged out kindly login!!!"
+    }
   }
 
   search(searchForm: NgForm){
@@ -154,30 +90,42 @@ export class JobSearchComponent implements OnInit {
   }
 
   apply(data:any){
-    console.log(data);
-      this.appliedJobStatus.jspersonal.login.userId=this.logins.username
+    //console.log(data);
+      this.appliedJobStatus.jspersonal.login.userId = this.email
       this.appliedJobStatus.jobPost.jobPostId=data
-      this.appliedJobStatus.appliedDate=new Date()
+      this.appliedJobStatus.applyDate=new Date()
       this.appliedJobStatus.jobStatus="Applied"
-
-      this.joblist.addAppliedJob(this.appliedJobStatus)
-          .subscribe((success) => {
-            console.log(success);
-            this.ApplySuccess=true;
-            document.body.scrollTop = document.documentElement.scrollTop = 0;
-            // for(let j of this.jobs){
-            //  if(j.jobPostId===data){
-            //     j.button="Applied"
-            //     j.isDisable=true;
-            //   }
-            // }
-            },
-            (error)=>{
-              console.error(error)
-              // this.ApplyFail=true;
-              // document.body.scrollTop = document.documentElement.scrollTop = 0;
-            })
-  }
+      
+      console.log(this.appliedJobStatus);
+      if(confirm("Do you really want to apply for this Job")){
+        this.joblist.addAppliedJob(this.appliedJobStatus)
+            .subscribe((success) => {
+              console.log(success);
+              alert("You applied successfully")
+              this.ApplySuccess=true;
+              this.errorMessage = ''
+              document.body.scrollTop = document.documentElement.scrollTop = 0;
+              // for(let j of this.jobs){
+              //  if(j.jobPostId===data){
+              //     j.button="Applied"
+              //     j.isDisable=true;
+              //   }
+              // }
+              },
+              (error)=>{
+                if(error.status == 409){
+                  console.log("hell");
+                  
+                  this.errorMessage = "You have Already Applied for this job"
+                }
+                else{
+                  this.errorMessage = "Something bad happened."
+                }
+                // this.ApplyFail=true;
+                // document.body.scrollTop = document.documentElement.scrollTop = 0;
+              })
+            }
+    }
 } 
 
 

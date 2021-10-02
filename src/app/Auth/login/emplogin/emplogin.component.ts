@@ -49,7 +49,7 @@ export class EmploginComponent implements OnInit {
   loginUser() {
     this.login.userId=this.form.email.value;
     this.login.pwd=this.form.password.value;
-    this.login.role = 'Jobseeker'
+    this.login.role = 'JobSeeker'
     this.logins.loginJobSeekerFromRemote(this.login).subscribe(
       (response) => {
           this.loginSuccess=true

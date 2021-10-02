@@ -14,22 +14,18 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6 text-center " style="margin: auto;" *ngIf="ApplySuccess||ApplyFail">
-    <div class="alert alert-success col-sm-10" *ngIf="ApplySuccess;else applyfailm">
-      <strong>Successfully applied</strong>
-    </div>
-    <ng-template #applyfailm>
-      <div class="alert alert-danger" *ngIf="ApplyFail">
-        <strong>You have already applied for this job !!</strong>
+  <div class="col-sm-6 text-center " style="margin: auto;">
+    
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        <strong>{{errorMessage}}</strong>
       </div>
-    </ng-template>
    </div>
 </form>
   <div *ngIf="isSearchEmpty">
     <div class="container" style="margin:auto">
       <div class="row">
         <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
-          <div class="card">
+          <div class="card h-100">
             <div class="card-body p-0">
               <div class="card-header pt-3 bg-primary text-white">
                 <h5 class="card-title">{{j.jobRole}}</h5>

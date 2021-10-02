@@ -27,8 +27,7 @@ export class SearchJobService {
         `body was: ${errResp.error}`);
     }
     //Return an observable with a user-facing error message.
-    return throwError(
-      `Something bad happened; please try again later.`);
+    return throwError(errResp);
   }
 
 
@@ -40,10 +39,12 @@ export class SearchJobService {
   }
 
   addAppliedJob(appliedjob:AppliedJob){
-      const headers = { 'content-type': 'application/json'}  
+    const headers = { 'content-type': 'application/json'} 
+      console.log("ss:" + appliedjob.jspersonal.login.userId);
+       
       const body=JSON.stringify(appliedjob);
       console.log(body)
-      return this.http.post('http://localhost:9090/api/v1/applyJob', body,{'headers':headers,responseType:'text' as 'json'}).pipe(catchError(this.handlerError))
+      return this.http.post('http://localhost:9090/api/v1/applyJob', body,{'headers':headers,observe:'response'}).pipe(catchError(this.handlerError))
      }
 
    getAppliedJobs(){
