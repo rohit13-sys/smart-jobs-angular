@@ -14,6 +14,7 @@ import { SkillsList } from 'src/app/pojo/skills-list';
 })
 export class EditPostJobComponent implements OnInit {
 
+  email:string|null = ''
   id:any
   skillsList:any = SkillsList
   dropdownSettings : IDropdownSettings={}
@@ -29,25 +30,30 @@ export class EditPostJobComponent implements OnInit {
   constructor(private formBuilder: FormBuilder ,private route:ActivatedRoute,private postJobSerivce:PostedJobsServiceService,private router : Router) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('jobPostId')
-    console.log(this.id);
-    
-    this.postJobSerivce.getJobById(this.id)
-    .subscribe((data)=>{
-  console.log(this.postJob);
-      this.postJob = <Postedjob>data
-      console.log(this.postJob);
+    this.email = sessionStorage.getItem('email')
+    if(this.email){
+      this.id = this.route.snapshot.paramMap.get('jobPostId')
+      console.log(this.id);
       
-    },(error)=>{
-      console.error(error);
-    })
-    this.dropdownSettings = {
-      idField:'id',
-      textField: 'skillName',
-      allowSearchFilter: true
-    };
-    this.createPostJobForm()
-
+      this.postJobSerivce.getJobById(this.id)
+      .subscribe((data)=>{
+    console.log(this.postJob);
+        this.postJob = <Postedjob>data
+        console.log(this.postJob);
+        
+      },(error)=>{
+        console.error(error);
+      })
+      this.dropdownSettings = {
+        idField:'id',
+        textField: 'skillName',
+        allowSearchFilter: true
+      };
+      this.createPostJobForm()
+    }
+    else{
+      this.EMessage = "You Are Logged Out Kindly Login!!!"
+    }
   }
   get postJobs(){
     return this.postJobForm?.controls

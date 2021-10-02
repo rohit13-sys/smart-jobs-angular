@@ -45,7 +45,8 @@ const routes: Routes = [
   },
     {path: 'login', component: LoginComponent, children: [
       { path: 'emp_login', component: EmploginComponent },
-      { path: 'rec_login', component: RecruiterloginComponent }
+      { path: 'rec_login', component: RecruiterloginComponent },
+      {path: '',redirectTo: 'emp_login',pathMatch:'full'}
     ]
   },
   

@@ -1,8 +1,11 @@
+import { Login } from "./login"
+import { Skills } from "./skills"
+
 export class JobSeeker {
     seekerName: string = ''
-    seekerMail: string = ''
+    login:Login = new Login()
     seekerMobile: string = ''
-    seekerSkills: string = ''
-    appliedFor: number = 0
+    skills : Skills[] = []
     resume: string = "."
+    photo: string = "."
 }

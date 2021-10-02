@@ -17,6 +17,8 @@ export class PostjobComponent implements OnInit {
   skillsList:any = SkillsList
   dropdownSettings : IDropdownSettings={}
 
+  employeeEmail: string | null = ''
+
   postJobForm : FormGroup = new FormGroup({})
   
   employer:Employer = new Employer()
@@ -27,12 +29,18 @@ export class PostjobComponent implements OnInit {
   constructor( private formBuilder: FormBuilder ,private pJobService:PostedJobsServiceService,private router:Router) { }
 
   ngOnInit(): void {
-    this.dropdownSettings = {
-      idField:'id',
-      textField: 'skillName',
-      allowSearchFilter: true
-    };
-    this.createPostJobForm()
+    this.employeeEmail = sessionStorage.getItem('email')
+    if(this.employeeEmail!=null){
+      this.dropdownSettings = {
+        idField:'id',
+        textField: 'skillName',
+        allowSearchFilter: true
+      };
+      this.createPostJobForm()
+    }
+    else{
+      this.EMessage = "You Are Logged Out Kindly Login!!!"
+    }
   }
 
   createPostJobForm(){
@@ -40,7 +48,7 @@ export class PostjobComponent implements OnInit {
       //login:[],
       employee:this.formBuilder.group({
         login:this.formBuilder.group({
-          userId:['',Validators.required]
+          userId:[this.employeeEmail,{value:this.employeeEmail,disabled:true}]
         })
       }),
       jobType:['',Validators.required],
@@ -82,7 +90,7 @@ export class PostjobComponent implements OnInit {
             this.router.navigate(['recruiterDashboard/myJobs'])
             },
             (error)=>{
-              this.EMessage = error
+              this.EMessage = "something bad happend."
             })  
   }
 

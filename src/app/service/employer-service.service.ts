@@ -32,7 +32,7 @@ export class EmployerServiceService {
 
   }
 
-  getEmpById(email:string){
+  getEmpById(email:any){
       const headers = { 'content-type': 'application/x-www-form-urlencoded'}
       let body = new HttpParams()
       body = body.set('empId',email)

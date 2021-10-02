@@ -37,8 +37,8 @@ export class RecruiterregisterComponent implements OnInit {
         establishmentDate:['',Validators.required],
         companyWebsite:['',Validators.required],
       }),
-      empPhoneNo:['',[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]],
-      empBranchId:['',Validators.required],
+      phoneNo:['',[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]],
+      branchOfficeId:['',Validators.required],
 
     });
   }

@@ -1,15 +1,14 @@
 <app-r-navbar></app-r-navbar>
-<br>
-<div class="container-fluid">
-</div>
 
-<div class="container" *ngIf="successmsg">
-    <div class="alert alert-success">
-        <strong>{{successmsg}}</strong>
+
+<div class="container mt-3" *ngIf="msg">
+    <div class="alert alert-danger">
+        <strong><a routerLink='../login' class="link-danger">{{msg}}</a></strong>
     </div>
 </div>
-<div class="container mt-3 bg-light">
+<div class="container mt-3 bg-light" *ngIf="!msg">
     <div class="row">
+        
         <!-- <div class="col-md-4 p-2">
             <hr>
             <div class="col-sm-12 text-center p-2" *ngIf="!picexists;else defaultavatar">

@@ -7,20 +7,22 @@
             <th>Seeker Mail</th>
             <th>Seeker Mobile</th>
             <th>Seeker Skills</th>
-            <th>Applied For</th>
+            <th>Job Id</th>
             <th>Resume</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor = "let s of jobSeekersNew">
-            <th>{{s.seekerName}}</th>
-            <td>{{s.seekerMail}}</td>
-            <td>{{s.seekerMobile}}</td>
-            <td>{{s.seekerSkills}}</td>
-            <td>{{s.appliedFor}}</td>
-            <td>{{s.resume}}</td>
-            <td><button type="button" class="btn btn-success" disabled>Applied</button></td>
+        <tr *ngFor = "let j of jobSeekers">
+            <th>{{j.seekerName}}</th>
+            <td>{{j.login.userId}}</td>
+            <td>{{j.seekerMobile}}</td>
+            <td><span *ngFor = "let s of j.skills">{{s.skillName}},</span></td>
+            <!-- <td>{{s.appliedFor}}</td> -->
+            <td>{{id}}</td>
+            <td>{{j.resume}}</td>
+            <td><button type="button" class="btn btn-success mr-3">Accept</button>
+                <button type="button" class="btn btn-success">Reject</button></td>
         </tr>
         </tbody>
     </table>

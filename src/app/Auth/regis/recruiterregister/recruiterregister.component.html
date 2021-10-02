@@ -20,7 +20,7 @@
                         <label for="employerName" class="col-sm-3 control-label">Employer Name*</label>
                         <div class="col-sm-12">
                             <input type="text" formControlName="employerName" placeholder="employerName"
-                                class="form-control" style="display: inline-block;width: 90%;">
+                                class="form-control text-lowercase" style="display: inline-block;width: 90%;">
                                 <span *ngIf="signUp.employerName!.valid"> &#10004;</span>
                             <div class="mt-1" *ngIf="signUp.employerName.errors && (signUp.employerName.touched || signUp.employerName.dirty)">
                                 <div class="alert alert-danger" style="width: 30%;" *ngIf="signUp.employerName.errors.required">
@@ -35,12 +35,15 @@
                         <div formGroupName="login">
                         <div class="col-sm-12">
                             <label for="empEmail">Employer Email:</label><br>
-                            <input type="email" formControlName="userId" id="empEmail" class="form-control" style="display: inline-block;width: 90%;">
+                            <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" type="email" formControlName="userId" id="empEmail" class="form-control" style="display: inline-block;width: 90%;">
                             <span *ngIf="registerForm.get('login.userId')!.valid"> &#10004;</span>
                                 <!-- style="cursor: not-allowed;" -->
                         <div class="mt-1" *ngIf="registerForm.get('login.userId')!.errors && (registerForm.get('login.userId')!.touched || registerForm.get('login.userId')!.dirty)">
                             <div class="alert alert-danger" style="width: 30%;" *ngIf="registerForm.get('login.userId')!.errors!.required">
                                 Email is required
+                            </div>
+                            <div *ngIf="registerForm.get('login.userId')!.errors!.pattern">
+                                <p class="alert alert-danger" >Not a valid email</p>
                             </div>
                         </div>
                     </div>
@@ -124,13 +127,13 @@
                     <div class="form-group">
                         <label for="about" class="col-sm-3 control-label">Contact number</label>
                         <div class="col-sm-12">
-                            <input type="number" placeholder="Contact number" class="form-control" formControlName="empPhoneNo" style="display: inline-block;width: 90%;">
-                            <span *ngIf="signUp.empPhoneNo!.valid"> &#10004;</span>
-                            <div class="mt-1" *ngIf="signUp.empPhoneNo.errors && (signUp.empPhoneNo.touched || signUp.empPhoneNo.dirty)">
-                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.empPhoneNo.errors.required">
+                            <input type="number" placeholder="Contact number" class="form-control" formControlName="phoneNo" style="display: inline-block;width: 90%;">
+                            <span *ngIf="signUp.phoneNo!.valid"> &#10004;</span>
+                            <div class="mt-1" *ngIf="signUp.phoneNo.errors && (signUp.phoneNo.touched || signUp.phoneNo.dirty)">
+                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.phoneNo.errors.required">
                                     phoneNo is required
                                 </div>
-                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.empPhoneNo.errors.min || signUp.empPhoneNo.errors.max">
+                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.phoneNo.errors.min || signUp.phoneNo.errors.max">
                                     phoneNo should be 10 letters.
                                 </div>
                             </div>
@@ -142,10 +145,10 @@
                     <div class="form-group">
                         <label for="about" class="col-sm-3 control-label">Office Id</label>
                         <div class="col-sm-12">
-                            <input type="number" placeholder="Office Id" class="form-control" formControlName="empBranchId"  style="display: inline-block;width: 90%;">
-                            <span *ngIf="signUp.empBranchId!.valid"> &#10004;</span>
-                            <div class="mt-1" *ngIf="signUp.empBranchId.errors && (signUp.empBranchId.touched || signUp.empBranchId.dirty)">
-                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.empBranchId.errors.required">
+                            <input type="number" placeholder="Office Id" class="form-control" formControlName="branchOfficeId"  style="display: inline-block;width: 90%;">
+                            <span *ngIf="signUp.branchOfficeId!.valid"> &#10004;</span>
+                            <div class="mt-1" *ngIf="signUp.branchOfficeId.errors && (signUp.branchOfficeId.touched || signUp.branchOfficeId.dirty)">
+                                <div class="alert alert-danger" style="width: 40%;" *ngIf="signUp.branchOfficeId.errors.required">
                                     bid is required
                                 </div>
                             </div>
