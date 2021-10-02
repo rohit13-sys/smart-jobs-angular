@@ -3,7 +3,11 @@
 <div class="container">
     <h2>Login</h2>
     <p>Select the respective tabs!!!</p>
-    <ul class="nav nav-tabs">
+    <!-- <nav class="nav nav-pills flex-column flex-sm-row">
+      <a class="flex-sm-fill text-sm-center nav-link active me-2" aria-current="page"  [ngClass]="tabset ? 'active':'inactive'" (click)="employeeloginpage()">Employee</a>
+      <a class="flex-sm-fill text-sm-center nav-link ms-2" aria-current="page" [ngClass]="tabset?'active':'inactive'" (click)="recruiterloginpage()">Recruiter</a>
+    </nav> -->
+    <ul class="nav nav-tabs ">
       <li class="nav-item me-3">
         <a class="nav-link" type="button"  style="cursor:pointer;" [ngClass]="tabset ? 'active':'inactive'" (click)="employeeloginpage()">Employee</a>
       </li>

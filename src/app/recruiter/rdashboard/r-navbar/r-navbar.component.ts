@@ -25,10 +25,11 @@ export class RNavbarComponent implements OnInit {
   }
 
   navigateEditProfile(){
-    this.router.navigate(['redit-profile']);
+    this.router.navigate(['edit-profile']);
   }
 
   navigateLogout(){
+    sessionStorage.clear()
     this.router.navigate(['login/emp_login']);
   }
 

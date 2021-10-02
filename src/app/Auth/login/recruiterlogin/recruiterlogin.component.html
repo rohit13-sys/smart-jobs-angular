@@ -2,27 +2,33 @@
 -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
 -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);
 box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.2);">
-  <div class="col-sm-6 text-center">
+  <div class="col-sm-9 text-center">
     <div class="alert alert-success col-sm-10" *ngIf="loginsuccess">
       <strong>Success</strong>
     </div>
-    <div class="alert alert-danger" [hidden]="!loginfail">
-      <strong>Incorrect Username or Password!!!</strong>
+    <div class="alert alert-danger" [hidden]="!eMessage">
+      <strong>{{eMessage}}</strong>
     </div>
-
   </div>
-  <div class="col-sm-3"></div>
-  <div class="col-sm-2"></div>
-  <div class="col-sm-8">
+  <div class="col-sm-8 container">
     <form [formGroup]="loginForm" (ngSubmit)="loginUser()" #signinFormDir="ngForm">
       <div class="form-group">
         <label for="userId">CompanyName</label>
         <input type="email" name="userId" formControlName="email" class="form-control" aria-describedby="emailHelp"
-          placeholder="Enter Email">
+          placeholder="Enter Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
       </div>
-      <!-- <div *ngIf="login.userId.errors.required">
-        <p class="alert alert-danger" *ngIf="login.userId" >CompanyName is required</p>
-      </div> -->
+      <div class="mt-1" *ngIf="form.email.errors && (form.email.touched || form.email.dirty)">
+        <div *ngIf="form.email.errors.required">
+            <p class="alert alert-danger" >CompanyName is required</p>
+        </div>
+        <div *ngIf="form.email.errors.pattern">
+          <p class="alert alert-danger" >Not a valid email</p>
+      </div>
+      </div>
+
+
+      
+
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" name="pwd" formControlName="password" aria-describedby="passHelp"

@@ -11,14 +11,8 @@
         <div formGroupName="employee" class="col-sm-12 mb-2">
             <div formGroupName="login">
                 <label for="empEmail">Employer Email:</label><br>
-                <input type="email" formControlName="userId" id="empEmail" class="form-control"
-                    value="{{employer.login.userId}}">
+                <input type="email" formControlName="userId" id="empEmail" class="form-control" style="cursor: not-allowed;">
                     <!-- style="cursor: not-allowed;" -->
-            </div>
-            <div class="alert alert-danger mt-2" *ngIf="postJobForm.get('employee.login.userId')!.errors && (postJobForm.get('employee.login.userId')!.touched || postJobForm.get('employee.login.userId')!.dirty)">
-                <div *ngIf="postJobForm.get('employee.login.userId')!.errors!.required">
-                    Job email is required
-                </div>
             </div>
         </div>
         <div class="col-6">

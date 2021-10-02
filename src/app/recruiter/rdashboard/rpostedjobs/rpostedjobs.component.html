@@ -43,11 +43,11 @@
     </div>
   </div>
 
-
+  <div [hidden]= '!errorMessage' style="width: 100%;">
+    <h2 style="color:red">{{errorMessage}}</h2>
+  </div>
   <div class="row row-cols-1 row-cols-md-3 g-4" >
-      <div [hidden]= '!errorMessage'>
-          <h2 style="color:red">Something Bad Happened.</h2>
-      </div>
+      
       <div class="col-sm-4 " [hidden] = 'errorMessage' *ngFor="let j of jobs" >
         <div class="card h-100" >
           <div class="card-body p-0">
@@ -75,7 +75,7 @@
                       <p>Do you really want to delete This jobpost?</p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)">Delete Job</button>
+                      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')" (click)="deleteJob(j.jobPostId)" >Delete Job</button>
                     </div>
                   </ng-template>
                                       <!-- [{outlets: {'outside': ['./appliedSeekers',j.jobPostId ] } }]     --  [routerLink] = "['../appliedSeekers',j.jobPostId ]"-->

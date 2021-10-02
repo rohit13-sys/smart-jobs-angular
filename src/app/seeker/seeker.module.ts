@@ -17,20 +17,19 @@ import { JobSearchComponent } from './job-search/job-search.component';
     EditProfileComponent,
     AppliedjobsComponent,
     JobSearchComponent,
-    PostedjobsComponent
-    
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     FormsModule
-
   ],
   exports:[
     SeekerProfileComponent,
     EditProfileComponent,
     JobSearchComponent,
-    DashboardComponent
+    DashboardComponent,
+   
+
   ]
 })
 export class SeekerModule { }

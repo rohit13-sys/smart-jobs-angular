@@ -3,3 +3,12 @@ a:active{
     font-weight: bold;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+a:visited{
+    background: red;
+}
+
+a:active{
+    background-color: aqua;
+}
+
