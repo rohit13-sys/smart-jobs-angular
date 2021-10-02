@@ -155,6 +155,7 @@ export class JobSearchComponent implements OnInit {
 
   apply(data:any){
     console.log(data);
+    console.log(this.logins.username);
       this.appliedJobStatus.jspersonal.login.userId=this.logins.username
       this.appliedJobStatus.jobPost.jobPostId=data
       this.appliedJobStatus.appliedDate=new Date()

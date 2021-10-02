@@ -46,8 +46,8 @@ export class SearchJobService {
       return this.http.post('http://localhost:9090/api/v1/applyJob', body,{'headers':headers,responseType:'text' as 'json'}).pipe(catchError(this.handlerError))
      }
 
-   getAppliedJobs(){
-     return this.http.get<Job[]>('http://localhost:9090/api/v1/getAppliedJobs').pipe(catchError(this.handlerError))
+   getAppliedJobsByid(id:any){
+     return this.http.get<Job[]>('http://localhost:9090/api/v1/getAppliedJobs/${id}').pipe(catchError(this.handlerError))
    }  
 
    getAllAppliedJobs(){
