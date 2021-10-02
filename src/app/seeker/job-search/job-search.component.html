@@ -14,25 +14,35 @@
       </div>
     </div>
   </div>
+  <div class="col-sm-6 text-center " style="margin: auto;" *ngIf="ApplySuccess||ApplyFail">
+    <div class="alert alert-success col-sm-10" *ngIf="ApplySuccess;else applyfailm">
+      <strong>Successfully applied</strong>
+    </div>
+    <ng-template #applyfailm>
+      <div class="alert alert-danger" *ngIf="ApplyFail">
+        <strong>You have already applied for this job !!</strong>
+      </div>
+    </ng-template>
+   </div>
 </form>
   <div *ngIf="isSearchEmpty">
     <div class="container" style="margin:auto">
       <div class="row">
         <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
-          <div class="card" >
+          <div class="card">
             <div class="card-body p-0">
               <div class="card-header pt-3 bg-primary text-white">
                 <h5 class="card-title">{{j.jobRole}}</h5>
               </div>
               <div class="card-body">
-                <p class="card-text text-muted"><b>{{j.companyName}}</b></p>
+                <p class="card-text text-muted"><b>{{j.employee.company.companyName}}</b></p>
                 <p class="card-text text-muted">
                   <i class="fa fa-briefcase"></i> {{j.experience}}<br>
-                  <i class="fa fa-gear fa-spin"></i><span *ngFor="let skills of j.skills">{{skills.skillName}},</span><br>
+                  <i class="fa fa-gear "></i><span *ngFor="let skills of j.skills"> {{skills.skillName}},</span><br>
                   {{j.jobType}}
                 </p> 
                 <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                <button type="button" class="butn btn btn-outline-success">Apply</button>
+                <button type="button" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" [disabled]="j.isDisable">Apply</button>
               </div>
             </div>
           </div>

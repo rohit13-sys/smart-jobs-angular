@@ -47,4 +47,4 @@ import { PasswordIntegrityDirective } from './directives/password-integrity.dire
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Login } from 'src/app/pojo/login';
 import { SearchJobService } from 'src/app/service/search-job.service';
+import { AppliedJob } from './appliedJob';
 import { Job } from './job';
+import { EmploginComponent } from 'src/app/Auth/login/emplogin/emplogin.component';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-job-search',
@@ -10,22 +14,45 @@ import { Job } from './job';
 })
 export class JobSearchComponent implements OnInit {
   value1:any='';
+  k:any = 0
+  ApplySuccess:any=false
+  ApplyFail:any=false
   errorMessage: string=''
-  jobs : Job[]=[]; 
+  jobs : Job[]=[];
+  appliedJobStatus:AppliedJob=new AppliedJob();
+  appliedJobStatus1:AppliedJob[]=[]
   isSearchEmpty: boolean = true;
   input1: string = "";
   input2: string = "";
-  constructor(private joblist:SearchJobService) {}
-
+  constructor(private joblist:SearchJobService,private logins:LoginService,private jobst:SearchJobService) {}
+ 
   ngOnInit(): void {
+    // console.log(this.jobst.appliedJobs)
+    // this.jobst.getAllAppliedJobs().subscribe((d)=>{
+    //   console.log(d)
+    //   // this.appliedJobStatus1=d
+    //   this.jobst.appliedJobs=d
+    //   this.appliedJobStatus1=this.jobst.appliedJobs
+    //   console.log(this.jobst.appliedJobs);
+    // },(error)=>{
+    //   console.log(error)
+    // });
 
     this.joblist.getServerPostedJobs().subscribe((data)=>{
       this.jobs=data
-      console.log(this.jobs);
-      for(let j of this.jobs){
-          console.log(j.skills.skillName);
-      }
-      // console.log(this.jobs[1].skills.skill_name)
+      // for(let j of this.jobs){
+      //   console.log(this.appliedJobStatus1)
+      //   for(let i of this.appliedJobStatus1){
+      //     this.k=1;
+      //     console.log("in")
+      //     console.log(i.jobStatus)
+      //     if(j.jobPostId===i.jobPost.jobPostId){
+      //     if(i.jobStatus==="Applied"){
+      //          j.button='Applied';
+      //          j.isDisable=true;}}
+      //     }
+      //     if(this.k===0){ console.log(this.k); j.button="Apply"}
+      //   }        
     },(error)=>{
       this.errorMessage=error;
       console.log(error)
@@ -106,8 +133,8 @@ export class JobSearchComponent implements OnInit {
     this.value1=searchForm.value.input1;  
     if(this.value1 != ""){
      this.jobs = this.jobs.filter(res=>{
-        if(this.value1===res.companyName){
-          return res.companyName.toLowerCase().match(this.value1.toLowerCase());}
+        if(this.value1.toLowerCase().match(res.employee.company.companyName.toLowerCase())){
+          return res.employee.company.companyName.toLowerCase().match(this.value1.toLowerCase());}
          else if(res.jobRole.toLowerCase().match(this.value1.toLowerCase())){
            return res.jobRole.toLowerCase().match(this.value1.toLowerCase());
          } 
@@ -125,7 +152,33 @@ export class JobSearchComponent implements OnInit {
       this.ngOnInit();
     }
   }
-}
+
+  apply(data:any){
+    console.log(data);
+      this.appliedJobStatus.jspersonal.login.userId=this.logins.username
+      this.appliedJobStatus.jobPost.jobPostId=data
+      this.appliedJobStatus.appliedDate=new Date()
+      this.appliedJobStatus.jobStatus="Applied"
+
+      this.joblist.addAppliedJob(this.appliedJobStatus)
+          .subscribe((success) => {
+            console.log(success);
+            this.ApplySuccess=true;
+            document.body.scrollTop = document.documentElement.scrollTop = 0;
+            // for(let j of this.jobs){
+            //  if(j.jobPostId===data){
+            //     j.button="Applied"
+            //     j.isDisable=true;
+            //   }
+            // }
+            },
+            (error)=>{
+              console.error(error)
+              // this.ApplyFail=true;
+              // document.body.scrollTop = document.documentElement.scrollTop = 0;
+            })
+  }
+} 
 
 
 
