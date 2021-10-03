@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JobactivityService } from 'src/app/service/jobactivity.service';
 import { LoginService } from 'src/app/service/login.service';
 import { SearchJobService } from 'src/app/service/search-job.service';
 import { AppliedJob } from '../../job-search/appliedJob';
@@ -17,17 +18,12 @@ export class AppliedjobsComponent implements OnInit {
   jobApplied:AppliedJob[]=[];
   email:string =''
   eMessage:string = ''
-  constructor(private route:ActivatedRoute, private router:Router,private joblist:SearchJobService,private logins:LoginService) { }
+  constructor(private jsActivity:JobactivityService,private route:ActivatedRoute, private router:Router,private joblist:SearchJobService,private logins:LoginService) { }
 
   ngOnInit(): void {
     this.email = sessionStorage.getItem('email')!
     if(this.email!=null){
-      this.joblist.getAppliedJobsByid(this.email).subscribe((data)=>{
-        this.jobApplied=data
-        console.log(this.jobApplied);
-      },(error)=>{
-        console.log(error)
-      });
+      this.fetchAppliedJobs()
     }
     else{
       this.eMessage = "you are logged out Kindly login!!!"
@@ -39,6 +35,27 @@ export class AppliedjobsComponent implements OnInit {
     // console.log(this.jobApplied);
     
     
+  }
+
+  fetchAppliedJobs(){
+    this.joblist.getAppliedJobsByid(this.email).subscribe((data)=>{
+      this.jobApplied=data
+      console.log(this.jobApplied);
+    },(error)=>{
+      console.log(error)
+    });
+  }
+
+  cancle(id:number){
+    if(confirm("Are You sure want to cancle registration for this jobPost"))
+      this.jsActivity.deleteJobActivity(id).subscribe((response)=>{
+        alert("Successfully Cancled you registration!!!")
+        this.fetchAppliedJobs()
+        console.log(response);
+      },(error)=>{
+        console.log(error);
+        
+      })
   }
 
 }
