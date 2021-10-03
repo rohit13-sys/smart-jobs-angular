@@ -18,6 +18,7 @@ import { SeekerRoutingModule } from './seeker-routing.module';
     EditProfileComponent,
     AppliedjobsComponent,
     JobSearchComponent,
+    PostedjobsComponent
   ],
   imports: [
     CommonModule,
@@ -30,8 +31,7 @@ import { SeekerRoutingModule } from './seeker-routing.module';
     EditProfileComponent,
     JobSearchComponent,
     DashboardComponent,
-   
-
+    PostedjobsComponent
   ]
 })
 export class SeekerModule { }

@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   employeeloginpage()
   {
     console.log("heyyy")
-    this.router.navigate(['login/emp_login']);
+    this.router.navigate(['login/emp_login'],{relativeTo:this.activatedroute});
     console.log("byee")
     // this.canAct = this.canAct
     // this.canInAct = !this.canInAct

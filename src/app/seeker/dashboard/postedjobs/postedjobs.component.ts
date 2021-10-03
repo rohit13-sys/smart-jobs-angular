@@ -1,4 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { LoginService } from 'src/app/service/login.service';
+import { SearchJobService } from 'src/app/service/search-job.service';
+import { AppliedJob } from '../../job-search/appliedJob';
+import { Job } from '../../job-search/job';
+
 
 @Component({
   selector: 'app-postedjobs',
@@ -7,86 +12,86 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class PostedjobsComponent implements OnInit {
 
-  jobs = [
-    {
-      companyName: "STL",
-      jobRole: "Front-end Developer",
-      skills: "Html,css,javacript,React-js",
-      jobType: "Permanent",
-      salary: 15000.00,
-      isActive: "Active",
-      exp: "0-1 Years"
-    },
-    {
-      companyName: "Docomo",
-      jobRole: "Back-end Developer",
-      skills: "Java,Spring,hibernate",
-      jobType: "Internship",
-      salary: 5000.00,
-      isActive: "NotActive",
-      exp: "1-2 Years"
-    },
-    {
-      companyName: "Sparks",
-      jobRole: "Full Stack Developer",
-      skills: "Html,css,javacript,React-js,Java,Database",
-      jobType: "Permanent",
-      salary: 25000.00,
-      isActive: "NotActive",
-      exp: "3-4 Years"
-    },
-    {
-      companyName: "Sparks",
-      jobRole: "Angular Developer",
-      skills: "Html,css,javacript,Typescript",
-      jobType: "Permanent",
-      salary: 25000.00,
-      isActive: "NotActive",
-      exp: "0-1 Years"
-    },
-    {
-      companyName: "SpceX",
-      jobRole: "Management",
-      skills: "Communication skills,English,French",
-      jobType: "Permanent",
-      salary: 35000.00,
-      isActive: "Active",
-      exp: "2-5 Months"
-    },
-    {
-      companyName: "Tesla",
-      jobRole: "Front-end Developer",
-      skills: "Html,css,javacript,React-js",
-      jobType: "Contract",
-      salary: 25000.00,
-      isActive: "NotActive",
-      exp: "1-4 Years"
-    },
-    {
-      companyName: "master",
-      jobRole: "HR Management",
-      skills: "Communication skills,English,Leadrship skills,Creativity",
-      jobType: "Permanent",
-      salary: 55000.00,
-      isActive: "Active",
-      exp: "2-5 Years"
-    }
-  ]
-
-  message:string="heyy";
-  isSearchEmpty:boolean=true;
-
-  change():any{
-    this.isSearchEmpty=false;
-    console.log(this.message);
-  }
-  
-
-
-  constructor() { }
-
+  arrayvalue:any
+  value1:any='';
+  email:string = ''
+  k:any = 0
+  ApplySuccess:any=false
+  ApplyFail:any=false
+  errorMessage: string=''
+  eMessage:string= ''
+  jobs : Job[]=[];
+  jobApplied:AppliedJob[]=[]
+  appliedJobStatus:AppliedJob=new AppliedJob();
+  appliedJobStatus1:AppliedJob[]=[]
+  isSearchEmpty: boolean = true;
+  input1: string = "";
+  input2: string = "";
+  isApplied:boolean = false 
+  constructor(private joblist:SearchJobService,private logins:LoginService,private jobst:SearchJobService) {}
+ 
   ngOnInit(): void {
+    this.email = sessionStorage.getItem('email')!
+    console.log(this.email);
+    this.fetchJobs()
   }
 
-  
-}
+  fetchJobs(){
+    this.joblist.getServerPostedJobs().subscribe((data)=>{
+      this.jobs=data
+      this.joblist.getAppliedJobsByid(this.email).subscribe((data1)=>{
+        this.jobApplied=data1
+        console.log(this.jobApplied);
+        var arr = new Array<number>();          
+        for(let j of this.jobApplied){
+          arr.push(this.jobs.findIndex((job)=>job.jobPostId==j.jobPost.jobPostId))
+        }
+        console.log("arr",arr);
+        
+        for(let k of arr){
+          this.jobs[k].isApplied = true
+        }
+        console.log("jobs: ",this.jobs);
+        
+      },(error)=>{
+        console.log(error)
+      });      
+    },(error)=>{
+      this.errorMessage="Something bad happened;please try again leter!!!";
+      console.log(error)
+    });
+  }
+
+  apply(data:any){
+    //console.log(data);
+      this.appliedJobStatus.jspersonal.login.userId = this.email
+      this.appliedJobStatus.jobPost.jobPostId=data
+      this.appliedJobStatus.applyDate=new Date()
+      this.appliedJobStatus.jobStatus="Applied"
+      
+      console.log(this.appliedJobStatus);
+      if(confirm("Do you really want to apply for this Job")){
+        this.joblist.addAppliedJob(this.appliedJobStatus)
+            .subscribe((success) => {
+              console.log(success);
+              alert("You applied successfully")
+              this.ApplySuccess=true;
+              this.errorMessage = ''
+              this.fetchJobs()
+              document.body.scrollTop = document.documentElement.scrollTop = 0;
+              },
+              (error)=>{
+                if(error.status == 409){
+                  console.log("hell");
+                  
+                  this.errorMessage = "You have Already Applied for this job"
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
+                }
+                else{
+                  this.errorMessage = "Something bad happened."
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
+                }
+              })
+            }
+    }
+  }

@@ -62,7 +62,7 @@ export class EmploginComponent implements OnInit {
           //this.sMessage = response
           //console.log("getEmail:" + this.service.getEmail());
           
-          this.router.navigate(['search']);
+          this.router.navigate(['posted-jobs']);
       },(error)=> {
         console.log(error);
         
