@@ -103,7 +103,6 @@ export class JobSearchComponent implements OnInit {
               console.log(success);
               alert("You applied successfully")
               this.ApplySuccess=true;
-              this.errorMessage = ''
               document.body.scrollTop = document.documentElement.scrollTop = 0;
               // for(let j of this.jobs){
               //  if(j.jobPostId===data){
@@ -117,12 +116,13 @@ export class JobSearchComponent implements OnInit {
                   console.log("hell");
                   
                   this.errorMessage = "You have Already Applied for this job"
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
                 }
                 else{
                   this.errorMessage = "Something bad happened."
+                  document.body.scrollTop = document.documentElement.scrollTop = 0;
                 }
                 // this.ApplyFail=true;
-                // document.body.scrollTop = document.documentElement.scrollTop = 0;
               })
             }
     }
