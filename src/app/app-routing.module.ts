@@ -22,7 +22,7 @@ import { SeekerProfileComponent } from './seeker/seeker-profile/seeker-profile.c
 import { SeekerModule } from './seeker/seeker.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: '', redirectTo: 'posted-jobs', pathMatch: 'full' },
   {
     path:'recruiterDashboard',component:RdashboardComponent,
     children:[
@@ -92,5 +92,6 @@ export const routingComponents = [
   RegisComponent,
   EmpregisterComponent,
   RecruiterregisterComponent,
-  DashboardComponent
+  DashboardComponent,
+  PostedjobsComponent
 ]

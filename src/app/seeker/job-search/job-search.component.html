@@ -27,31 +27,3 @@
       </form>
     </div>
   </div>
-
-  <div *ngIf="isSearchEmpty" class="mt-4" >
-    <div class="container" style="margin:auto">
-      <div class="row">
-        <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
-          <div class="card h-100">
-            <div class="card-body p-0 d-flex flex-column">
-              <div class="card-header pt-3 bg-primary text-white">
-                <h5 class="card-title">{{j.jobRole}}</h5>
-              </div>
-              <div class="card-body d-flex flex-column">
-                <p class="card-text text-muted"><b>{{j.employee.company.companyName}}</b></p>
-                <p class="card-text text-muted">
-                  <i class="fa fa-briefcase"></i> {{j.experience}} year<br>
-                  <i class="fa fa-gear "></i><span *ngFor="let skills of j.skills"> {{skills.skillName}},</span><br>
-                  {{j.jobType}}
-                </p> 
-                <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                <button type="button" *ngIf="email && !j.isApplied" class="mt-auto align-self-end butn btn btn-outline-success" (click)="apply(j.jobPostId)" >Apply</button>
-                <button type="button" *ngIf="email && j.isApplied" class="mt-auto align-self-end butn btn btn-success" disabled>Applied</button>
-                <button type="button"  *ngIf="!email" class="mt-auto align-self-end butn btn btn-outline-success" routerLink='../login' >Login to Apply</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
