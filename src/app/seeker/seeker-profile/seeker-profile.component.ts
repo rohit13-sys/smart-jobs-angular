@@ -21,9 +21,11 @@ export class SeekerProfileComponent implements OnInit {
   constructor(private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.emailId = 'xyz@gmail.com'
+    this.emailId = sessionStorage.getItem('email')
+    console.log("myemail",this.emailId);
+    
     this.service.getEmpPersonalById(this.emailId).subscribe(
-      (data) => { this.profilePersonal = data;console.log("?????????????????"+this.profilePersonal); },
+      (data) => { this.profilePersonal = data;console.log("?????????????????",this.profilePersonal); },
       (error) => { console.log('some error occurred') }
     )
 
