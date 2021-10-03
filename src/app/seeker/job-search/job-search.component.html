@@ -45,8 +45,8 @@
                   {{j.jobType}}
                 </p> 
                 <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                <button type="button" *ngIf="email && !isApplied" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" >Apply</button>
-                <button type="button" *ngIf="email && isApplied" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" >Apply</button>
+                <button type="button" *ngIf="email && !j.isApplied" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" >Apply</button>
+                <button type="button" *ngIf="email && j.isApplied" class="butn btn btn-success" disabled>Applied</button>
                 <button type="button"  *ngIf="!email" class="butn btn btn-outline-success" routerLink='../login' >Login to Apply</button>
               </div>
             </div>

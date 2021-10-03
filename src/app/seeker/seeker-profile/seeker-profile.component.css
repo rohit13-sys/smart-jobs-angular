@@ -40,3 +40,6 @@
     font-size: 18px;
     margin-bottom: 16px;
 }
+.nav-link:active{
+    border-left: 4px solid yellow;
+}

@@ -10,7 +10,6 @@ export class Job {
     salary:number=0
     isActive:string=''
     experience:string=''
-    isDisable:any=false;
     button:string=''
     isApplied:boolean = false
 }
