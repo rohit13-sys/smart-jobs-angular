@@ -11,9 +11,6 @@ import { Recruiter } from '../pojo/recruiter';
 })
 export class RecruiterServiceService {
 
-
-  recruiter=new Recruiter();
-
   constructor(private http:HttpClient) { }
 
   //handle error

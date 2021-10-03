@@ -66,12 +66,6 @@ export class RecruiterloginComponent implements OnInit {
           else
             this.eMessage = "Something Bad Happened Please Try Again later!!!"
         })
-
-
-   
-    
-
-
-
-  }
+      
+      }
 }

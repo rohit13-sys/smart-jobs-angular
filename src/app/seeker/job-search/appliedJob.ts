@@ -1,5 +1,4 @@
 import { Job } from "./job"
-import { Jobs } from "./jobs"
 import { Jpersonal } from "./jpersonal"
 
 export class AppliedJob {
