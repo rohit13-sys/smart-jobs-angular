@@ -31,6 +31,7 @@ export class DashboardComponent implements OnInit {
   }
 
   navigateLogout(){
+    sessionStorage.clear()
     this.router.navigate(['login/emp_login']);
   }
 
@@ -39,4 +40,7 @@ export class DashboardComponent implements OnInit {
     console.log("clicked")
     this.router.navigate(['jobs'],{relativeTo:this.activeroute});
   }
+
+  
+
 }

@@ -157,8 +157,11 @@
                     </div>
 
                     <!-- <input type="hidden" name="role" value="employer" formControlName="role"> -->
-
-                    <button [disabled]="signupFormDir.invalid" type="submit" class="mb-5 btn btn-primary">Register</button>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <button [disabled]="signupFormDir.invalid" type="submit" class="mb-5 btn btn-primary">Register</button>
+                        </div>
+                    </div>
                 </div>
             </form> 
         </div>

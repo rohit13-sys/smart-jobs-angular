@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Employer } from 'src/app/pojo/employer';
 import { EmployerServiceService } from 'src/app/service/employer-service.service';
@@ -17,6 +17,7 @@ export class RPostedjobsComponent implements OnInit {
   empEmail:string|null = ''
   errorMessage:string = ''
   id:any
+  toasts: any[] = [];
   sMessage:string = ''
  // employee:Employer = new Employer()
 
@@ -82,4 +83,10 @@ export class RPostedjobsComponent implements OnInit {
   open(content:any) {
     this.modalService.open(content);
   } 
+
+  
+  
+  // remove(toast) {
+  //   this.toasts = this.toasts.filter(t => t !== toast);
+  // }
 }

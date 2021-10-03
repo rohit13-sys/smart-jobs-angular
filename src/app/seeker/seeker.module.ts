@@ -8,6 +8,7 @@ import { AppliedjobsComponent } from './dashboard/appliedjobs/appliedjobs.compon
 
 import { PostedjobsComponent } from './dashboard/postedjobs/postedjobs.component';
 import { JobSearchComponent } from './job-search/job-search.component';
+import { SeekerRoutingModule } from './seeker-routing.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { JobSearchComponent } from './job-search/job-search.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    SeekerRoutingModule
   ],
   exports:[
     SeekerProfileComponent,

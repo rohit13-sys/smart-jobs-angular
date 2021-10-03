@@ -1,10 +1,10 @@
 <app-dashboard></app-dashboard>
 <div class="container mt-3" *ngIf="eMessage">
     <div class="alert alert-danger">
-        <strong><a routerLink='../../login' class="link-danger">{{eMessage}}</a></strong>
+        <strong><a routerLink='../login' class="link-danger">{{eMessage}}</a></strong>
     </div>
   </div>
-<div class="container">
+<div class="container" *ngIf="!eMessage">
     <h2>List of Applied Jobs</h2>
     <table class="table">
         <thead>

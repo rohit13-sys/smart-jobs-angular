@@ -19,12 +19,14 @@ export class JobSearchComponent implements OnInit {
   ApplySuccess:any=false
   ApplyFail:any=false
   errorMessage: string=''
+  eMessage:string= ''
   jobs : Job[]=[];
   appliedJobStatus:AppliedJob=new AppliedJob();
   appliedJobStatus1:AppliedJob[]=[]
   isSearchEmpty: boolean = true;
   input1: string = "";
   input2: string = "";
+  isApplied:boolean = false 
   constructor(private joblist:SearchJobService,private logins:LoginService,private jobst:SearchJobService) {}
  
   ngOnInit(): void {
@@ -40,7 +42,6 @@ export class JobSearchComponent implements OnInit {
     // });
     this.email = sessionStorage.getItem('email')!
     console.log(this.email);
-    if(this.email!=null){
       this.joblist.getServerPostedJobs().subscribe((data)=>{
         this.jobs=data
         // for(let j of this.jobs){
@@ -57,12 +58,9 @@ export class JobSearchComponent implements OnInit {
         //     if(this.k===0){ console.log(this.k); j.button="Apply"}
         //   }        
       },(error)=>{
-        this.errorMessage=error;
+        this.errorMessage="Something bad happened;please try again leter!!!";
         console.log(error)
       });
-    }else{
-      this.errorMessage = "You are logged out kindly login!!!"
-    }
   }
 
   search(searchForm: NgForm){

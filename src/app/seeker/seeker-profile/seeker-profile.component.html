@@ -17,7 +17,7 @@
             <div class="col-sm-12 text-center p-2" *ngIf="!picexists;else defaultavatar">
                 <img src="{{profileinfo.profileimage}}" alt={{profileinfo.username}} id="pimage">
                 
-            </div>
+            </div>  
             <ng-template #defaultavatar>
                 <img src="../../../assets/avatar.jpg" alt="avatar" id="pimage">
             </ng-template>

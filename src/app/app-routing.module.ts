@@ -22,7 +22,7 @@ import { SeekerProfileComponent } from './seeker/seeker-profile/seeker-profile.c
 import { SeekerModule } from './seeker/seeker.module';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login/emp_login', pathMatch: 'full' },
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
   {
     path:'recruiterDashboard',component:RdashboardComponent,
     children:[

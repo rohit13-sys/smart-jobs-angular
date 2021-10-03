@@ -12,4 +12,5 @@ export class Job {
     experience:string=''
     isDisable:any=false;
     button:string=''
+    isApplied:boolean = false
 }
