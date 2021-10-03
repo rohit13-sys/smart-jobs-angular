@@ -35,4 +35,9 @@ export class JobactivityService {
     return this.http.post<JobSeeker[]>(this.jobActivityUrl + "/findJobSeeker",body,{'headers':headers}).pipe(catchError(this.handleError))
   }
 
+  deleteJobActivity(id:number){
+    const headers = { 'content-type': 'application/json'}
+    const deleteJobUrl = `${this.jobActivityUrl}/deleteJob/${id}`
+    return this.http.delete(deleteJobUrl,{'headers':headers}).pipe(catchError(this.handleError))
+  }
 }
