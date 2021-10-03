@@ -20,28 +20,65 @@
                 <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">UserName</label>
                     <div class="col-sm-9">
-                        <input type="text" id="userName" formControlName="userName" placeholder="UserName" class="form-control"  autofocus>
+                        <input type="text" id="userName" formControlName="userName" placeholder="UserName" class="form-control"  autofocus
+                        class="form-control text-lowercase" style="display: inline-block;width: 90%;">
+                        <span *ngIf="signUp.userName!.valid"> &#10004;</span>
+                    <div class="mt-1" *ngIf="signUp.userName.errors && (signUp.userName.touched || signUp.userName.dirty)">
+                        <div class="alert alert-danger" style="width: 50%;" *ngIf="signUp.userName.errors.required">
+                            Name is required
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <label for="password" class="col-sm-3 control-label">Password</label>
                     <div class="col-sm-9">
                         <input type="password" id="password" formControlName="password" placeholder="Password" class="form-control">
+                        <span *ngIf="EmpRegisterForm.get('password')!.valid"> &#10004;</span>
+                        <div class="mt-1" *ngIf="EmpRegisterForm.get('password')!.errors && (EmpRegisterForm.get('password')!.touched || EmpRegisterForm.get('password')!.dirty)">
+                            <div class="alert alert-danger" style="width: 60%;" *ngIf="EmpRegisterForm.get('password')!.errors!.required">
+                                password is required
+                            </div>
+                            <div class="alert alert-danger" style="width: 90%;" *ngIf="EmpRegisterForm.get('password')!.errors!.minlength">
+                                password should be minimum 5 characters
+                            </div>
+                            <div class="alert alert-danger" style="width: 90%;" *ngIf="EmpRegisterForm.get('password')!.errors!.maxlength">
+                                password cannot be greater than 15 characters
+                            </div>
+                            <div class="alert alert-danger" style="width: 90%;" *ngIf="EmpRegisterForm.get('password')!.errors!.passwordIntegrity">
+                                There should be at least 1 single digit,small and capital letter and 1 extra character
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" formControlName="mail" id="email" placeholder="mail" class="form-control" name= "email">
+                        <input pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" type="email" formControlName="mail" id="email" name= "email"  placeholder="mail" class="form-control" style="display: inline-block;width: 90%;">
+                        <span *ngIf="EmpRegisterForm.get('mail')!.valid"> &#10004;</span>
+                            <!-- style="cursor: not-allowed;" -->
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('mail')!.errors && (EmpRegisterForm.get('mail')!.touched || EmpRegisterForm.get('mail')!.dirty)">
+                        <div class="alert alert-danger" style="width: 60%;" *ngIf="EmpRegisterForm.get('mail')!.errors!.required">
+                            Email is required
+                        </div>
+                        <div *ngIf="EmpRegisterForm.get('mail')!.errors!.pattern">
+                            <p class="alert alert-danger" >Not a valid email</p>
+                        </div>
+                    </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3">Gender</label>
+                    <label class="control-label col-sm-3">Gender</label><br>
                     <div class="col-sm-6">
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-5">
                                 <label class="radio-inline">
                                     <input type="radio" id="femaleRadio" name="gender" value="Female" formControlName="gender">  Female
+                                    <div class="mt-1" *ngIf="signUp.gender.errors && (signUp.gender.touched || signUp.gender.dirty)">
+                                        <div class="alert alert-danger" style="width: 90%;" *ngIf="signUp.gender.errors.required">
+                                            Gender must be selected
+                                        </div>
+                                    </div>
                                 </label>
                             </div>
                             <div class="col-sm-4">
@@ -56,7 +93,15 @@
                     <label for="phoneNumber" class="col-sm-3 control-label">Phone number </label>
                     <div class="col-sm-9">
                         <input type="phoneNumber" id="phoneNumber" formControlName="mobile" placeholder="Phone number" class="form-control">
-                        <span class="help-block">Your phone number won't be disclosed anywhere </span>
+                        <span *ngIf="signUp.mobile!.valid"> &#10004;</span>
+                            <div class="mt-1" *ngIf="signUp.mobile.errors && (signUp.mobile.touched || signUp.mobile.dirty)">
+                                <div class="alert alert-danger" style="width: 80%;" *ngIf="signUp.mobile.errors.required">
+                                    phoneNo is required
+                                </div>
+                                <div class="alert alert-danger" style="width: 80%;" *ngIf="signUp.mobile.errors.min || signUp.mobile.errors.max">
+                                    phoneNo should be 10 letters.
+                                </div>
+                            </div>
                     </div>
                 </div>
                 <!-- <div class="form-group">
@@ -65,7 +110,7 @@
                         <input type="text" id="HomeTown" formControlName="homeTown" placeholder="Last Name" class="form-control" autofocus>
                     </div>
                 </div> -->
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="col-sm-3 control-label">Interests(max-3):</label>
                     <select name="interests" id="interests" size="3"  seleclass="mt-3" multiple formControlName="interests">
                         <option value="IOT">IOT</option>
@@ -73,55 +118,46 @@
                         <option value="ML">ML</option>
                         <option value="WEB DEVELOPEMNT">WEB DEVELOPEMNT</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="exp" class="col-sm-3 control-label">Experience </label>
                     <div class="col-sm-9">
                         <input type="number" id="exp" formControlName="experience" placeholder="Exp. In Years" class="form-control">
                     </div>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="nationality" class="col-sm-3 control-label">Nationality</label>
                     <div class="col-sm-9">
                         <input type="text" id="nationality" formControlName="nationality"  class="form-control"   >
                     </div>
-                </div>
+                </div> -->
+                <div class="col-12">
+                    <label for="exampleDataList1" class="form-label">Skills</label>
+                    <ng-multiselect-dropdown
+                        [settings]="dropdownSettings"
+                        [data]="skillsList" formControlName="skills">
+                    </ng-multiselect-dropdown>
+                </div><br>
                 <div class="form-group">
                     <label for="languages" class="col-sm-3 control-label">Languages</label>
                     <div class="col-sm-9">
                         <input type="text" id="languages" formControlName="languages"  class="form-control" value="English" >
+                        <div class="mt-1" *ngIf="signUp.languages.errors && (signUp.languages.touched || signUp.languages.dirty)">
+                            <div class="alert alert-danger" style="width: 90%;" *ngIf="signUp.languages.errors.required">
+                                Language is required 
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="clocation" class="col-sm-3 control-label">Current Location</label>
+                    <label for="clocation" class="col-sm-6 control-label">Current Location</label>
                     <div class="col-sm-9">
                         <input type="text" id="clocation" formControlName="currentLocation" placeholder="Current Location" class="form-control" >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastexp" class="col-sm-3 control-label">Last Job Experience </label>
-                    <div class="col-sm-9">
-                        <input type="number" id="lastexp" formControlName="lastjobexp" placeholder="Last Job Exp. In Years" class="form-control">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="desig" class="col-sm-3 control-label">Last Designation</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="desig" formControlName="lastjobDesig" placeholder="Last Designation" class="form-control"  >
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-3 control-label">Select Department</label>
-                    <select name="department" id="dep" formControlName="department">
-                        <option value="IT" selected>IT</option>
-                        <option value="Service">Service</option>
-                        <option value="Others">Others</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="reasons" class="col-sm-3 control-label">Reason For Leaving Last Job</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="reasons" formControlName="reasonsforleaving" placeholder="Not Mandatory" class="form-control"  autofocus>
+                        <div class="mt-1" *ngIf="signUp.currentLocation.errors && (signUp.currentLocation.touched || signUp.currentLocation.dirty)">
+                            <div class="alert alert-danger" style="width: 90%;" *ngIf="signUp.currentLocation.errors.required">
+                                Address must be added
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- <div class="form-group">

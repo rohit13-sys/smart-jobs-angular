@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Employer } from '../pojo/employer';
+import { Jobseeker } from '../pojo/jobseeker';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +25,10 @@ export class EmployerServiceService {
 
   emploerUrl = 'http://localhost:9090/Employee'
 
-  public registerSeeker(recruiter:Employer){
+  public registerSeeker(seeker:Jobseeker){
     const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(recruiter);
-    return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
+    const body=JSON.stringify(seeker);
+    return this.http.post("http://localhost:9090/api/v1/personal/savePersonalDetails",body,
     {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
 
   }

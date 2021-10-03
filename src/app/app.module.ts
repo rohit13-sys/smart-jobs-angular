@@ -17,7 +17,7 @@ import { RecruiterModule } from './recruiter/recruiter.module';
 import { HttpClientModule } from '@angular/common/http';
 import { EditProfileComponent } from './recruiter/edit-profile/edit-profile.component';
 import { PasswordIntegrityDirective } from './directives/password-integrity.directive';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
 @NgModule({
@@ -42,6 +42,7 @@ import { PasswordIntegrityDirective } from './directives/password-integrity.dire
     SeekerModule,
     RecruiterModule,
     HttpClientModule,
+    NgMultiSelectDropDownModule
     
   ],
   providers: [
