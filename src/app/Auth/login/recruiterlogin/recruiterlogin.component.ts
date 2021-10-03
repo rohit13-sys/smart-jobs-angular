@@ -51,7 +51,7 @@ export class RecruiterloginComponent implements OnInit {
       (response) => {
           this.loginsuccess=true
 
-          sessionStorage.setItem('email',this.login.userId)
+          sessionStorage.setItem('email',this.login.userId.toLowerCase())
           //this.sMessage = response
           //console.log("getEmail:" + this.service.getEmail());
           

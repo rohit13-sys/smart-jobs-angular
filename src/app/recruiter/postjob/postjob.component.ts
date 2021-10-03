@@ -30,12 +30,17 @@ export class PostjobComponent implements OnInit {
 
   ngOnInit(): void {
     this.employeeEmail = sessionStorage.getItem('email')
-    this.dropdownSettings = {
-      idField:'id',
-      textField: 'skillName',
-      allowSearchFilter: true
-    };
-    this.createPostJobForm()
+    if(this.employeeEmail!=null){
+      this.dropdownSettings = {
+        idField:'id',
+        textField: 'skillName',
+        allowSearchFilter: true
+      };
+      this.createPostJobForm()
+    }
+    else{
+      this.EMessage = "You Are Logged Out Kindly Login!!!"
+    }
   }
 
   createPostJobForm(){

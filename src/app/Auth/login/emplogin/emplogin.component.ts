@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Login } from 'src/app/pojo/login';
-import { HttpClient } from '@angular/common/http';
 import { LoginService } from 'src/app/service/login.service';
 
 @Component({
@@ -11,16 +10,27 @@ import { LoginService } from 'src/app/service/login.service';
   styleUrls: ['./emplogin.component.css']
 })
 export class EmploginComponent implements OnInit {
-  loginsuccess:boolean=false;
-  loginfail:boolean=false;
+  loginSuccess: any;
+  loginFail: any;
+  username:string='';
+  password:any;
   eMessage:string = ''
   login = new Login();
-  loginForm!: FormGroup;
+  constructor(private router: Router,private fb:FormBuilder,private logins:LoginService) { }
 
-  constructor(private router: Router, private fb: FormBuilder, private service: LoginService, private http: HttpClient) { }
-  
+  loginForm: FormGroup = this.fb.group({
+    email: [null,Validators.required],
+    password: [null,Validators.compose([Validators.required,Validators.minLength(5)])]
+  });
+
   ngOnInit() {
     this.createFormGroup();
+  }
+
+
+  
+  moveToRegister() {
+    this.router.navigate(['register/emp_register']);
   }
 
   createFormGroup(){
@@ -29,18 +39,24 @@ export class EmploginComponent implements OnInit {
       password: [null,Validators.compose([Validators.required,Validators.minLength(5)])]
     });
   }
-
-  
-  moveToRegister() {
-    this.router.navigate(['register/emp_register']);
+  // login() {
+  //   this.logins.username=this.username
+  //   this.router.navigate(['search']);
+  // }
+  get form(){
+    return this.loginForm.controls;
   }
-  loginEmp() {
+  // clearForm(){
+  //   (<HTMLFormElement>document.getElementById("loginform")).reset();
+  //  }
+
+  loginUser() {
     this.login.userId=this.form.email.value;
     this.login.pwd=this.form.password.value;
-    this.login.role = 'Employee'
-    this.service.loginEmployeeFromRemote(this.login).subscribe(
+    this.login.role = 'JobSeeker'
+    this.logins.loginJobSeekerFromRemote(this.login).subscribe(
       (response) => {
-          this.loginsuccess=true
+          this.loginSuccess=true
 
           sessionStorage.setItem('email',this.login.userId)
           //this.sMessage = response
@@ -57,15 +73,8 @@ export class EmploginComponent implements OnInit {
           else
             this.eMessage = "Something Bad Happened Please Try Again later!!!"
         })
-        this.router.navigate(['search']);
-   
-  }
-  get form(){
-    return this.loginForm.controls;
-  }
-  // clearForm(){
-  //   (<HTMLFormElement>document.getElementById("loginform")).reset();
-  //  }
+
+}
 
 }
 

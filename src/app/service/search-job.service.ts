@@ -4,11 +4,13 @@ import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators'
 import { Postedjob } from '../pojo/postedjob';
 import { Job } from '../seeker/job-search/job';
+import { AppliedJob } from '../seeker/job-search/appliedJob';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchJobService {
+  appliedJobs:AppliedJob[]=[];
 
   constructor(private http: HttpClient) { }
 
@@ -25,8 +27,7 @@ export class SearchJobService {
         `body was: ${errResp.error}`);
     }
     //Return an observable with a user-facing error message.
-    return throwError(
-      `Something bad happened; please try again later.`);
+    return throwError(errResp);
   }
 
 
@@ -37,4 +38,22 @@ export class SearchJobService {
     .pipe(catchError(this.handlerError))
   }
 
+  addAppliedJob(appliedjob:AppliedJob){
+    const headers = { 'content-type': 'application/json'} 
+      console.log("ss:" + appliedjob.jspersonal.login.userId);
+       
+      const body=JSON.stringify(appliedjob);
+      console.log(body)
+      return this.http.post('http://localhost:9090/api/v1/applyJob', body,{'headers':headers,observe:'response'}).pipe(catchError(this.handlerError))
+     }
+
+   getAppliedJobsByid(id:any){
+     console.log(id);
+     
+     return this.http.get<AppliedJob[]>(`http://localhost:9090/api/v1/getAppliedJobs/${id}`).pipe(catchError(this.handlerError))
+   }  
+
+   getAllAppliedJobs(){
+    return this.http.get<AppliedJob[]>('http://localhost:9090/api/v1/getAllAppliedJobs').pipe(catchError(this.handlerError))
+  }  
 }

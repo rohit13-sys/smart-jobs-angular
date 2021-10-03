@@ -1,12 +1,15 @@
+import { Employer } from "src/app/pojo/employer"
 import { Skills } from "src/app/pojo/skills"
 
 export class Job {
-    id:number=0
-    companyName:string=''
+    jobPostId:any=0
+    employee:Employer=new Employer()
     jobRole: string=''
-    skills:any=''
+    skills:Skills[] = []
     jobType:string=''
     salary:number=0
     isActive:string=''
     experience:string=''
+    isDisable:any=false;
+    button:string=''
 }

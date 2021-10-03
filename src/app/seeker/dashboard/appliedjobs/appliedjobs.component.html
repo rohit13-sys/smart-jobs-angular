@@ -1,4 +1,9 @@
 <app-dashboard></app-dashboard>
+<div class="container mt-3" *ngIf="eMessage">
+    <div class="alert alert-danger">
+        <strong><a routerLink='../../login' class="link-danger">{{eMessage}}</a></strong>
+    </div>
+  </div>
 <div class="container">
     <h2>List of Applied Jobs</h2>
     <table class="table">
@@ -13,10 +18,10 @@
         </thead>
         <tbody>
             <tr class="table-active" *ngFor = "let s of jobApplied">
-                <th>{{s.companyName}}</th>
-                <td>{{s.jobRole}}</td>
-                <td>{{s.jobType}}</td>
-                <td>{{s.expRequired}}</td>
+                <th>{{s.jobPost.employee.company.companyName}}</th>
+                <td>{{s.jobPost.jobRole}}</td>
+                <td>{{s.jobPost.jobType}}</td>
+                <td>{{s.jobPost.experience}}</td>
                 <td><button type="button" class="btn btn-success" disabled>Applied</button></td>
             </tr>
         </tbody>

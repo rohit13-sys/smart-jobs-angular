@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { EmployerServiceService } from 'src/app/service/employer-service.service';
 
 @Component({
   selector: 'app-empregister',
@@ -9,11 +11,14 @@ import {FormBuilder,FormControl,FormGroup,Validators} from '@angular/forms';
 })
 export class EmpregisterComponent implements OnInit {
 
-  constructor(private router:Router,private fb:FormBuilder) { }
+  constructor(private router:Router,private fb:FormBuilder,private service:EmployerServiceService,http:HttpClient) { }
   EmpRegisterForm!:FormGroup;
   registrationSuccess:any;
   regisFail:any;
   regisServer:any;
+
+  
+
   ngOnInit() {
     this.EmpRegisterForm=this.fb.group({
       userName: ['',Validators.required],
@@ -33,9 +38,26 @@ export class EmpregisterComponent implements OnInit {
       reasonsforleaving: ['']
       });
   }
-  registeremployee()
+  registeremployee(data:any)
   {
   
+    this.service.registerSeeker(data).subscribe(
+      (response)=>{
+        //this.registrationSuccess=success;
+        console.log(response);
+        alert(`Registered Successfully!!!`)
+        this.router.navigate(['login/rec_login']);
+      }
+      ,(response)=>{
+        console.log("res: " + response.status);
+        
+        if(response.status == 409){
+          this.regisFail = "User Already exist please go through login..."
+        }
+        else{this.regisFail='Error try again!!!'
+        }//this.router.navigate(['reg_register'],{relativeTo:this.route})
+      }
+    )
   }
 
 }

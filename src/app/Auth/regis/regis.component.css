@@ -1,4 +1,3 @@
-
-a:active{
-    color: red;
+.act{
+    border-left:4px solid rgb(241, 175, 52);
 }

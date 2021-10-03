@@ -26,17 +26,21 @@ export class ProfileComponent implements OnInit {
   // company=new Company();
   profilepic:any;
   picexists:boolean=false;
-  successmsg:any;
+  msg:any;
   emailId:string|null = ''
 
   constructor(private router:Router,private empService:EmployerServiceService,private service:RecruiterServiceService,private fb:FormBuilder) { }
 
   ngOnInit(): void {
     this.emailId = sessionStorage.getItem('email')
-    this.empService.getEmpById(this.emailId).subscribe(
-      (data)=>{this.profile=data;},
-      (error)=>{console.log('some error occurred')}
-    )
+    if(this.emailId!=null){
+      this.empService.getEmpById(this.emailId).subscribe(
+        (data)=>{this.profile=data;},
+        (error)=>{this.msg = "some error occurred"}
+      )
+    }else{
+      this.msg = "You Are Logged Out Kindly Login!!!"
+    }
 
     // this.profileForm.setValue({
     //   email:this.profile?.login.userId,
