@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   employeeloginpage()
   {
     console.log("heyyy")
-    this.router.navigate(['login/emp_login'],{relativeTo:this.activatedroute});
+    this.router.navigate(['emp_login'],{relativeTo:this.activatedroute});
     console.log("byee")
     // this.canAct = this.canAct
     // this.canInAct = !this.canInAct
@@ -40,6 +40,8 @@ export class LoginComponent implements OnInit {
   }
   recruiterloginpage()
   {
+    console.log("no");
+    
     this.router.navigate(['rec_login'],{relativeTo:this.activatedroute});
     //this.tabset=true;
     // this.canAct = !this.canAct

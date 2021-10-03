@@ -30,6 +30,8 @@ export class EmployeeServiceService {
     const headers = { 'content-type': 'application/x-www-form-urlencoded' }
     let body = new HttpParams()
     body = body.set('empId', email)
+    console.log("semial",email);
+    
     return this.http.post<EmployeePersonal>(  employeePersonalUrl, body, { 'headers': headers }).pipe(catchError(this.handleError))
   }
 
