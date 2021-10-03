@@ -1,27 +1,34 @@
 <app-dashboard></app-dashboard>
-<form #searchForm="ngForm" (ngSubmit)="search(searchForm)">
-  <div class="container ms-auto">
+<!-- <div class="container mt-3" *ngIf="eMessage">
+  <div class="alert alert-danger">
+      <strong><a routerLink='../login' class="link-danger">{{eMessage}}</a></strong>
+  </div>
+</div> -->
+  <div class="jumbotron mt-0" style="height: 230px;padding: 30px 32px 0 32px;background-color: rgb(247, 247, 247);border-radius: 0;">
+    <header class="display-6">welcome to the JobPortal of India</header>
+    <hr class="my-3">
+    <p class="lead">Find A Job at SmartJobs</p>
     <div class="container">
-      <div class="wrapper">
-        <div class="search-container">
-          <i class="fas fa icon"></i>
-          <input type="text" [(ngModel)]="input1" name="input1" placeholder="&#xF002; Skills, Designation, Companies..."
-            style="font-family: Arial, Helvetica, sans-serif, FontAwesome">
-          <input type="text" [(ngModel)]="input2" name="input2" class="location input-lg" placeholder="&#xf124; Enter Location"
-            style="font-family: Arial, Helvetica, sans-serif, FontAwesome;">
-            <button type="submit" class="butn btn-primary rounded" >Search</button>
-          </div>
-      </div>
+      <form #searchForm="ngForm" class="form-inline ml-3 my-2 my-lg-0" (ngSubmit)="search(searchForm)">
+        <div class="container ml-3 row">
+                <i class="fas fa icon"></i>
+                <input type="search" autocomplete="off" class="form-control col-5 mr-2" [(ngModel)]="input1" name="input1" placeholder="&#xF002; Skills, Designation, Companies..."
+                  style="font-family: Arial, Helvetica, sans-serif, FontAwesome">
+                <input type="search" autocomplete="off" [(ngModel)]="input2" name="input2" class="form-control col-4 mr-2 location" placeholder="&#xf124; Enter Location"
+                  style="font-family: Arial, Helvetica, sans-serif, FontAwesome;">
+                  <button type="submit" class="butn btn btn-primary rounded col-2 my-2 my-sm-0" >Search</button>
+
+        </div>
+        <div class="col-sm-6 text-center " style="margin: auto;"> 
+            <div class="alert alert-danger" *ngIf="errorMessage">
+              <strong>{{errorMessage}}</strong>
+            </div>
+        </div>
+      </form>
     </div>
   </div>
-  <div class="col-sm-6 text-center " style="margin: auto;">
-    
-      <div class="alert alert-danger" *ngIf="errorMessage">
-        <strong>{{errorMessage}}</strong>
-      </div>
-   </div>
-</form>
-  <div *ngIf="isSearchEmpty">
+
+  <div *ngIf="isSearchEmpty" class="mt-4" >
     <div class="container" style="margin:auto">
       <div class="row">
         <div class="col-sm-4 mb-4 h" *ngFor="let j of jobs">
@@ -38,7 +45,9 @@
                   {{j.jobType}}
                 </p> 
                 <p class="card-text text-muted"><b>&#8377;</b> {{j.salary}}</p>
-                <button type="button" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" [disabled]="j.isDisable">Apply</button>
+                <button type="button" *ngIf="email && !j.isApplied" class="butn btn btn-outline-success" (click)="apply(j.jobPostId)" >Apply</button>
+                <button type="button" *ngIf="email && j.isApplied" class="butn btn btn-success" disabled>Applied</button>
+                <button type="button"  *ngIf="!email" class="butn btn btn-outline-success" routerLink='../login' >Login to Apply</button>
               </div>
             </div>
           </div>

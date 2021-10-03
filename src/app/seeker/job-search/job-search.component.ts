@@ -19,50 +19,47 @@ export class JobSearchComponent implements OnInit {
   ApplySuccess:any=false
   ApplyFail:any=false
   errorMessage: string=''
+  eMessage:string= ''
   jobs : Job[]=[];
+  jobApplied:AppliedJob[]=[]
   appliedJobStatus:AppliedJob=new AppliedJob();
   appliedJobStatus1:AppliedJob[]=[]
   isSearchEmpty: boolean = true;
   input1: string = "";
   input2: string = "";
+  isApplied:boolean = false 
   constructor(private joblist:SearchJobService,private logins:LoginService,private jobst:SearchJobService) {}
  
   ngOnInit(): void {
-    // console.log(this.jobst.appliedJobs)
-    // this.jobst.getAllAppliedJobs().subscribe((d)=>{
-    //   console.log(d)
-    //   // this.appliedJobStatus1=d
-    //   this.jobst.appliedJobs=d
-    //   this.appliedJobStatus1=this.jobst.appliedJobs
-    //   console.log(this.jobst.appliedJobs);
-    // },(error)=>{
-    //   console.log(error)
-    // });
     this.email = sessionStorage.getItem('email')!
     console.log(this.email);
-    if(this.email!=null){
-      this.joblist.getServerPostedJobs().subscribe((data)=>{
-        this.jobs=data
-        // for(let j of this.jobs){
-        //   console.log(this.appliedJobStatus1)
-        //   for(let i of this.appliedJobStatus1){
-        //     this.k=1;
-        //     console.log("in")
-        //     console.log(i.jobStatus)
-        //     if(j.jobPostId===i.jobPost.jobPostId){
-        //     if(i.jobStatus==="Applied"){
-        //          j.button='Applied';
-        //          j.isDisable=true;}}
-        //     }
-        //     if(this.k===0){ console.log(this.k); j.button="Apply"}
-        //   }        
+    this.fetchJobs()
+  }
+
+  fetchJobs(){
+    this.joblist.getServerPostedJobs().subscribe((data)=>{
+      this.jobs=data
+      this.joblist.getAppliedJobsByid(this.email).subscribe((data1)=>{
+        this.jobApplied=data1
+        console.log(this.jobApplied);
+        var arr = new Array<number>();          
+        for(let j of this.jobApplied){
+          arr.push(this.jobs.findIndex((job)=>job.jobPostId==j.jobPost.jobPostId))
+        }
+        console.log("arr",arr);
+        
+        for(let k of arr){
+          this.jobs[k].isApplied = true
+        }
+        console.log("jobs: ",this.jobs);
+        
       },(error)=>{
-        this.errorMessage=error;
         console.log(error)
-      });
-    }else{
-      this.errorMessage = "You are logged out kindly login!!!"
-    }
+      });      
+    },(error)=>{
+      this.errorMessage="Something bad happened;please try again leter!!!";
+      console.log(error)
+    });
   }
 
   search(searchForm: NgForm){
@@ -103,13 +100,9 @@ export class JobSearchComponent implements OnInit {
               console.log(success);
               alert("You applied successfully")
               this.ApplySuccess=true;
+              this.errorMessage = ''
+              this.fetchJobs()
               document.body.scrollTop = document.documentElement.scrollTop = 0;
-              // for(let j of this.jobs){
-              //  if(j.jobPostId===data){
-              //     j.button="Applied"
-              //     j.isDisable=true;
-              //   }
-              // }
               },
               (error)=>{
                 if(error.status == 409){
@@ -122,7 +115,6 @@ export class JobSearchComponent implements OnInit {
                   this.errorMessage = "Something bad happened."
                   document.body.scrollTop = document.documentElement.scrollTop = 0;
                 }
-                // this.ApplyFail=true;
               })
             }
     }

@@ -24,7 +24,11 @@ export class EmploginComponent implements OnInit {
   });
 
   ngOnInit() {
+    this.createFormGroup();
   }
+
+
+  
   moveToRegister() {
     this.router.navigate(['register/emp_register']);
   }

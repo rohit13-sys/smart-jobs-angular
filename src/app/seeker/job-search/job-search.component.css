@@ -10,16 +10,11 @@
     -moz-box-shadow: 1px 3px 12px 4px rgba(0,0,0,0.75);
     box-shadow: 1px 3px 12px 4px rgba(0,0,0,0.75);
 }
-.butn{
-    display: inline-block;
-    margin-right:40px;
-    
-}
+
 button{
     -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.75);
-
 }
 button:hover{
     -webkit-box-shadow: inset 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -34,16 +29,7 @@ body {
     margin-right: auto;
 }
   
-.container {
-  /* width: 100%; */
-  background: white;
-  margin: 10px 0px 10px 0px;
-  padding: 5px;
-}
 
-.wrapper {
-  margin: auto;
-}
 
 /* .search-container {
   display: flex;
@@ -55,18 +41,17 @@ body {
 } */
 
 input {
-  /* min-width: 40px; */
   padding: 8px;
   margin: 0 4px 0 0;
   border: 1px solid #666;
   border-radius: 5px;
-  height: 30px;
-  width: 40%;
+  height: 40px;
+  width: 100%;
 }
 
-.button {
+/* .button {
   padding: 8px 16px;
-  min-height: 48px;
+  min-height: 58px;
   min-width: 10px;
   word-wrap: nowrap;
   background: #4a90e2;
@@ -74,20 +59,20 @@ input {
   border: 1px solid #fff;
   border-radius: 5px;
   width: 10%;
-}
+} */
 
 /* input {
     order: 0;
     align-self: auto;  
 } */
 
-.search {
+/* .search {
   flex: 1 1 auto;
 }
 
 .location {
   flex: 1 1 auto;
-}
+} */
 
 /* .date-to {
   flex: 1 1 auto;

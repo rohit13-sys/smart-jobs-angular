@@ -9,3 +9,7 @@ a:visited{
 .act{
     border-left:4px solid rgb(241, 175, 52);
 }
+.act:hover{
+    border-left:4px solid rgb(241, 175, 52);
+
+}
