@@ -11,7 +11,7 @@
             <div class="card-body d-flex flex-column">
               <p class="card-text text-muted"><b>{{j.employee.company.companyName}}</b></p>
               <p class="card-text text-muted">
-                <i class="fa fa-briefcase mr-1"></i> {{j.experience}} year<br>
+                <i class="fa fa-briefcase mr-1"></i> {{j.experience}}<br>
                 <i class="fa fa-gear mr-2 "></i><span *ngFor="let skills of j.skills"> {{skills.skillName}},</span><br>
                 {{j.jobType}}
               </p> 

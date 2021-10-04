@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeEducation, EmployeeExp, EmployeePersonal } from 'src/app/pojo/employee';
+import {  EmployeePersonal, jsEduId, jsExpId } from 'src/app/pojo/employee';
 import { EmployeeServiceService } from 'src/app/service/employee-service.service';
 
 @Component({
@@ -17,8 +17,8 @@ export class SeekerProfileComponent implements OnInit {
   emailId: string | null = '';
   eMessage:string=''
   profilePersonal: EmployeePersonal = new EmployeePersonal();
-  profileEducation:EmployeeEducation=new EmployeeEducation();
-  profileExp:EmployeeExp=new EmployeeExp();
+  profileEducation:jsEduId=new jsEduId();
+  profileExp:jsExpId=new jsExpId();
   constructor(private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {

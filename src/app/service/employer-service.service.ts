@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Employer } from '../pojo/employer';
+import { JobSeeker } from '../pojo/job-seeker';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,15 @@ export class EmployerServiceService {
     return this.http.post("http://localhost:9090/Employee/registerEmployee",body,
     {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
 
+  }
+
+  public registerEmp(jobseeker:JobSeeker){
+    console.log("js",jobseeker);
+    
+    const headers = { 'content-type': 'application/json'}  
+    const body=JSON.stringify(jobseeker);
+    return this.http.post("http://localhost:9090/api/v1/personal/savePersonalDetails",body,
+    {'headers':headers,observe:'response'}).pipe(catchError(this.handleError));
   }
 
   getEmpById(email:any){
