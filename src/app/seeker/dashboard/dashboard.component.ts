@@ -8,10 +8,12 @@ import {Router,ActivatedRoute} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
+  email:string = ''
   
   constructor(private router:Router,private activeroute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.email = sessionStorage.getItem('semail')!
   }
 
   navigateProfile(){
@@ -27,11 +29,15 @@ export class DashboardComponent implements OnInit {
   }
 
   navigateJobs(){
-    this.router.navigate(['search']);
+    this.router.navigate(['posted-jobs']);
   }
 
   navigateLogout(){
     sessionStorage.clear()
+    this.router.navigate(['login/emp_login']);
+  }
+
+  navigateLogIn(){
     this.router.navigate(['login/emp_login']);
   }
 

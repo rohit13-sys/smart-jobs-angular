@@ -58,7 +58,7 @@ export class EmploginComponent implements OnInit {
       (response) => {
           this.loginSuccess=true
 
-          sessionStorage.setItem('email',this.login.userId)
+          sessionStorage.setItem('semail',this.login.userId)
           //this.sMessage = response
           //console.log("getEmail:" + this.service.getEmail());
           

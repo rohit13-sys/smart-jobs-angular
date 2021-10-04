@@ -20,7 +20,7 @@ export class RPostedjobsComponent implements OnInit {
   toasts: any[] = [];
   sMessage:string = ''
  // employee:Employer = new Employer()
-
+  emailId:string = ''
   constructor(config: NgbModalConfig,private modalService: NgbModal,private route:ActivatedRoute,private postService:  PostedJobsServiceService,private router: Router,private empService: EmployerServiceService,private log:LoginService) { }
 
   viewSeekers(id:number){
@@ -32,7 +32,9 @@ export class RPostedjobsComponent implements OnInit {
     // this.empEmail = this.log.getEmail()
     // console.log("email = "+this.empEmail);
     this.empEmail = sessionStorage.getItem('email')
-    console.log("employee : "+this.empEmail);
+    this.emailId = sessionStorage.getItem('semail')!
+    console.log("employee : ",this.empEmail);
+    console.log("seeker : ",this.emailId);
     if(this.empEmail!=null){
       this.fetchJobs(this.empEmail)
     }else{

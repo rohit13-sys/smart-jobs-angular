@@ -3,7 +3,7 @@
         <strong><a routerLink='../../login' class="link-danger">{{EMessage}}</a></strong>
     </div>
 </div>
-<div class="container mt-3 border border-2 rounded pj p-0" *ngIf = "!EMessage">
+<div class="container mt-3 border border-2 rounded pj p-0" *ngIf = "!EMessage" style="margin-bottom: 65px;">
     <div class="p-0 mb-2" style="background-color: rgb(243, 240, 240);">
         <h1 class="display-4">Post Job</h1>
         <hr class="my-2">
@@ -107,13 +107,11 @@
         </div>
         <div class="col-6">
             <label for="postedDate">Posted Date</label><br>
-            <input type="date" formControlName="postedDate" id="postedDate" class="form-control"
-                value="2021-09-11">
+            <input type="date" value="{{cDate}}" disabled id="postedDate" class="form-control">
         </div>
         <div class="col-6 mb-3">
             <label for="isActive">isActive</label><br>
-            <input type="text" formControlName="isActive" id="isActive" class="form-control"
-                value="true">
+            <input type="text" value="true" disabled id="isActive" class="form-control">
         </div>
         
         <div class="col-12">

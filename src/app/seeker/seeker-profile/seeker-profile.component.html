@@ -2,12 +2,17 @@
 <div class="container-fluid">
 </div>
 
-<div class="container" *ngIf="successmsg">
+<div class="container mt-3" *ngIf="successmsg">
     <div class="alert alert-success">
         <strong>{{successmsg}}</strong>
     </div>
 </div>
-<div class="container mt-3 bg-light">
+<div class="container mt-3" *ngIf="eMessage">
+    <div class="alert alert-danger">
+        <strong><a routerLink='../login'class="link-danger">{{eMessage}}</a></strong>
+    </div>
+</div>
+<div class="container mt-3 bg-light mb-5" *ngIf="!eMessage">
     <div class="row">
         <div class="col-md-4 p-2">
             <div class="col-sm-12 text-center">

@@ -16,7 +16,7 @@ export class PostjobComponent implements OnInit {
 
   skillsList:any = SkillsList
   dropdownSettings : IDropdownSettings={}
-
+  cDate:string = ''
   employeeEmail: string | null = ''
 
   postJobForm : FormGroup = new FormGroup({})
@@ -37,6 +37,9 @@ export class PostjobComponent implements OnInit {
         allowSearchFilter: true
       };
       this.createPostJobForm()
+      this.cDate = new Date().toISOString().substring(0,10)
+      console.log("date:",new Date().toISOString().substring(0,10));
+      
     }
     else{
       this.EMessage = "You Are Logged Out Kindly Login!!!"
@@ -60,8 +63,8 @@ export class PostjobComponent implements OnInit {
                     ,Validators.min(0)]],
       experience:['',Validators.required],
       officeAddress:['',Validators.required],
-      postedDate:[''],
-      isActive:['']
+      postedDate:[this.cDate,{value:this.cDate}],
+      isActive:[true]
     })
   }
   get postJobs(){

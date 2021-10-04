@@ -21,7 +21,7 @@ export class AppliedjobsComponent implements OnInit {
   constructor(private jsActivity:JobactivityService,private route:ActivatedRoute, private router:Router,private joblist:SearchJobService,private logins:LoginService) { }
 
   ngOnInit(): void {
-    this.email = sessionStorage.getItem('email')!
+    this.email = sessionStorage.getItem('semail')!
     if(this.email!=null){
       this.fetchAppliedJobs()
     }

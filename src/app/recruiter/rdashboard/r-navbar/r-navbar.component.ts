@@ -8,9 +8,11 @@ import { Router } from '@angular/router';
 })
 export class RNavbarComponent implements OnInit {
 
+  email:string = ''
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.email = sessionStorage.getItem('email')!
   }
 
   goToMyJobs(){
@@ -33,6 +35,9 @@ export class RNavbarComponent implements OnInit {
     this.router.navigate(['login/emp_login']);
   }
 
+  navigateLogIn(){
+    this.router.navigate(['login/emp_login']);
+  }
   
   logout(){
     this.router.navigate(['login/rec_login'])

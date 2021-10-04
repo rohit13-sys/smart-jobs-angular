@@ -15,30 +15,34 @@ export class SeekerProfileComponent implements OnInit {
   picexists: boolean = false;
   successmsg: any;
   emailId: string | null = '';
+  eMessage:string=''
   profilePersonal: EmployeePersonal = new EmployeePersonal();
   profileEducation:EmployeeEducation=new EmployeeEducation();
   profileExp:EmployeeExp=new EmployeeExp();
   constructor(private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.emailId = sessionStorage.getItem('email')
+    this.emailId = sessionStorage.getItem('semail')
     console.log("myemail",this.emailId);
+    if(this.emailId){
+        this.service.getEmpPersonalById(this.emailId).subscribe(
+          (data) => { this.profilePersonal = data;console.log("?????????????????",this.profilePersonal); },
+          (error) => { console.log('some error occurred') }
+        )
+
+        this.service.getEmpEducationById(this.emailId).subscribe(
+          (data)=>{this.profileEducation=data;console.log('?????????????????'+this.profileEducation)},
+          (error)=>{console.log('some error occurred')}
+        )
     
-    this.service.getEmpPersonalById(this.emailId).subscribe(
-      (data) => { this.profilePersonal = data;console.log("?????????????????",this.profilePersonal); },
-      (error) => { console.log('some error occurred') }
-    )
-
-    this.service.getEmpEducationById(this.emailId).subscribe(
-      (data)=>{this.profileEducation=data;console.log('?????????????????'+this.profileEducation)},
-      (error)=>{console.log('some error occurred')}
-    )
-
-    this.service.getEmpExpById(this.emailId).subscribe(
-      (data)=>{this.profileExp=data;console.log('?????????????????'+this.profileExp)},
-      (error)=>{console.log('some error occurred')}
-    )
-
+        this.service.getEmpExpById(this.emailId).subscribe(
+          (data)=>{this.profileExp=data;console.log('?????????????????'+this.profileExp)},
+          (error)=>{console.log('some error occurred')}
+        )
+    }
+    else{
+      this.eMessage = "You are logged Out Kindly Login!!!"
+    }
   }
 
   getProfile() {

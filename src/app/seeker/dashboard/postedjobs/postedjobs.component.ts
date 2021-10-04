@@ -21,19 +21,25 @@ export class PostedjobsComponent implements OnInit {
   errorMessage: string=''
   eMessage:string= ''
   jobs : Job[]=[];
+  jobs1 : Job[]=[];
   jobApplied:AppliedJob[]=[]
   appliedJobStatus:AppliedJob=new AppliedJob();
-  appliedJobStatus1:AppliedJob[]=[]
+  // appliedJobStatus1:AppliedJob[]=[]
   isSearchEmpty: boolean = true;
   input1: string = "";
   input2: string = "";
   isApplied:boolean = false 
+  emailID = sessionStorage.getItem('email')!
   constructor(private joblist:SearchJobService,private logins:LoginService,private jobst:SearchJobService) {}
  
   ngOnInit(): void {
-    this.email = sessionStorage.getItem('email')!
+    this.email = sessionStorage.getItem('semail')!
     console.log(this.email);
     this.fetchJobs()
+    
+    
+    console.log(this.emailID);
+    
   }
 
   fetchJobs(){
@@ -52,7 +58,8 @@ export class PostedjobsComponent implements OnInit {
           this.jobs[k].isApplied = true
         }
         console.log("jobs: ",this.jobs);
-        
+        this.jobs1 = this.jobs
+        console.log("jos1",this.jobs1);
       },(error)=>{
         console.log(error)
       });      

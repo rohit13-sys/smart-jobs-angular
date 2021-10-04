@@ -23,9 +23,10 @@
               Profile
             </div>
             <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" (click)="navigateProfile()" style="cursor: pointer;">View-Profile</a>
-              <a class="dropdown-item" (click)="navigateEditProfile()" style="cursor: pointer;">Edit-profile</a>
-              <a class="dropdown-item" (click)="navigateLogout()" style="cursor: pointer;">LogOut</a>
+              <a class="dropdown-item" (click)="navigateProfile()" *ngIf="email" style="cursor: pointer;">View-Profile</a>
+              <!-- <a class="dropdown-item" (click)="navigateEditProfile()" *ngIf="email" style="cursor: pointer;">Edit-profile</a> -->
+              <a class="dropdown-item" (click)="navigateLogout()"  *ngIf="email" style="cursor: pointer;">LogOut</a>
+              <a class="dropdown-item" (click)="navigateLogIn()" *ngIf="!email" style="cursor: pointer;">LogIn</a>
             </div>
             </div>
         </ul>
@@ -33,3 +34,13 @@
     </div>
     
   </nav>
+<!-- Footer --> 
+<footer class="fixed-bottom bg-primary text-center text-white">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2021 Copyright:
+    <a class="text-white" href="https://mdbootstrap.com/">SmartJobs.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
