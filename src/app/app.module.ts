@@ -20,7 +20,6 @@ import { PasswordIntegrityDirective } from './directives/password-integrity.dire
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -100,7 +100,7 @@ export class EmpregisterComponent implements OnInit {
             //this.registrationSuccess=success;
             console.log(success);
             alert("SuccessFully Registered!!!")
-            this.router.navigate(['login'],{relativeTo:this.route})
+            this.router.navigate(['../../login'],{relativeTo:this.route})
           }
           ,(error)=>{
             console.log("res: " + error.status);
