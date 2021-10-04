@@ -4,7 +4,7 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse mr-3" id="navbarNav">
 
         <ul class="navbar-nav ms-auto">
           <div class="dropdown">
@@ -22,7 +22,7 @@
               aria-haspopup="true" aria-expanded="false">
               Profile
             </div>
-            <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+            <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" style="min-width: 30px;">
               <a class="dropdown-item" (click)="navigateProfile()" *ngIf="email" style="cursor: pointer;">View-Profile</a>
               <!-- <a class="dropdown-item" (click)="navigateEditProfile()" *ngIf="email" style="cursor: pointer;">Edit-profile</a> -->
               <a class="dropdown-item" (click)="navigateLogout()"  *ngIf="email" style="cursor: pointer;">LogOut</a>

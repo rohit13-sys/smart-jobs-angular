@@ -7,7 +7,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
 
-      <ul class="navbar-nav ms-auto">
+      <ul class="navbar-nav ms-auto mr-3">
         <div class="dropdown">
           <div class="container dropdown-toggle text-light" type="button" id="dropdownMenuButton" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -23,7 +23,7 @@
             aria-haspopup="true" aria-expanded="false">
             Profile
           </div>
-          <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu"  aria-labelledby="dropdownMenuButton" style="min-width: 30px;">
             <a class="dropdown-item" (click)="navigateProfile()" *ngIf="email" style="cursor: pointer;">View-Profile</a>
             <!-- <a class="dropdown-item" (click)="navigateEditProfile()" *ngIf="email" style="cursor: pointer;">Edit-profile</a> -->
             <a class="dropdown-item" (click)="navigateLogout()" *ngIf="email" style="cursor: pointer;">LogOut</a>
