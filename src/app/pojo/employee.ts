@@ -7,11 +7,11 @@ export class EmployeePersonal {
     seekerMobile!:string;
     gender!:string;
     skills:Skills=new Skills();
-    empEducation:jsEduId = new jsEduId()
-    empExperience:jsExpId = new jsExpId()
+    jsEduId:JsEduId = new JsEduId()
+    jsExpId:JsExpId = new JsExpId()
 }
 
-export class jsEduId{
+export class JsEduId{
     login:Login=new Login();
     sscResult!:string;
     hscResult!:string;
@@ -22,7 +22,7 @@ export class jsEduId{
     cgpa!:number;
 }
 
-export class jsExpId{
+export class JsExpId{
     login:Login=new Login();
     companyName!:string;
     isCurrentActive!:false;

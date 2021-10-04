@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { jsEduId, jsExpId, EmployeePersonal } from '../pojo/employee';
+import { JsEduId, JsExpId, EmployeePersonal } from '../pojo/employee';
 import { Employer } from '../pojo/employer';
 
 @Injectable({
@@ -39,14 +39,14 @@ export class EmployeeServiceService {
   getEmpEducationById(email: any) {
     const employeeEducationUrl = `http://localhost:9090/api/v1/educational/getEducationalDetails/${email}`
     const headers = { 'content-type': 'application/x-www-form-urlencoded' }
-    return this.http.post<jsEduId>(employeeEducationUrl ,{'headers':headers}).pipe(catchError(this.handleError))
+    return this.http.post<JsEduId>(employeeEducationUrl ,{'headers':headers}).pipe(catchError(this.handleError))
   }
 
   
   getEmpExpById(email: any) {
     const  employeeExpUrl = `http://localhost:9090/api/v1/experience/getExperienceDetails/${email}`
     const headers = { 'content-type': 'application/x-www-form-urlencoded' }
-    return this.http.post<jsExpId>(employeeExpUrl , { 'headers': headers }).pipe(catchError(this.handleError))
+    return this.http.post<JsExpId>(employeeExpUrl , { 'headers': headers }).pipe(catchError(this.handleError))
   }
 
 

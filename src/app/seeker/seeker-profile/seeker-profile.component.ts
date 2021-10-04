@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import {  EmployeePersonal, jsEduId, jsExpId } from 'src/app/pojo/employee';
+import {  EmployeePersonal, JsEduId, JsExpId } from 'src/app/pojo/employee';
 import { EmployeeServiceService } from 'src/app/service/employee-service.service';
 
 @Component({
@@ -16,9 +16,10 @@ export class SeekerProfileComponent implements OnInit {
   successmsg: any;
   emailId: string | null = '';
   eMessage:string=''
+  // profilePersonal: EmployeePersonal = new EmployeePersonal();
   profilePersonal: EmployeePersonal = new EmployeePersonal();
-  profileEducation:jsEduId=new jsEduId();
-  profileExp:jsExpId=new jsExpId();
+  profileEducation:JsEduId=new JsEduId();
+  profileExp:JsExpId=new JsExpId();
   constructor(private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -30,15 +31,15 @@ export class SeekerProfileComponent implements OnInit {
           (error) => { console.log('some error occurred') }
         )
 
-        this.service.getEmpEducationById(this.emailId).subscribe(
-          (data)=>{this.profileEducation=data;console.log('?????????????????'+this.profileEducation)},
-          (error)=>{console.log('some error occurred')}
-        )
+        // this.service.getEmpEducationById(this.emailId).subscribe(
+        //   (data)=>{this.profileEducation=data;console.log('?????????????????'+this.profileEducation)},
+        //   (error)=>{console.log('some error occurred')}
+        // )
     
-        this.service.getEmpExpById(this.emailId).subscribe(
-          (data)=>{this.profileExp=data;console.log('?????????????????'+this.profileExp)},
-          (error)=>{console.log('some error occurred')}
-        )
+        // this.service.getEmpExpById(this.emailId).subscribe(
+        //   (data)=>{this.profileExp=data;console.log('?????????????????'+this.profileExp)},
+        //   (error)=>{console.log('some error occurred')}
+        // )
     }
     else{
       this.eMessage = "You are logged Out Kindly Login!!!"

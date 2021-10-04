@@ -84,70 +84,70 @@
                                 <input type="text" name="mobile" id="mobile" class="form-control"
                                     value={{profilePersonal.seekerMobile}} disabled style="cursor: not-allowed;">
                             </div>
-                            <!-- <div class="col-sm-12">
+                            <div class="col-sm-12">
                                 <label for="gender"><b>Gender:</b></label><br>
                                 <input type="text" name="gender" id="gender" class="form-control"
                                     value={{profilePersonal.gender}} disabled style="cursor: not-allowed;">
-                            </div> -->
+                            </div>
                             
                         </div>
-                        <div id="personal" class="container tab-pane fade"><br>
+                        <div id="personal" class="container tab-pane fade" *ngIf="profileEducation"><br>
                             <div class="col-sm-12">
                                 <label for="mstatus"><b>UniversityName:</b></label><br>
                                 <input type="text" name="mstatus" id="mstatus" class="form-control"
-                                    value={{profileEducation.universityName}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.universityName}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="hometown"><b>StartDate:</b></label><br>
                                 <input type="text" name="hometown" id="hometown" class="form-control"
-                                    value={{profileEducation.startDate}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.startDate}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="nationality"><b>EndDate:</b></label><br>
                                 <input type="text"  class="form-control"
-                                    value={{profileEducation.endDate}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.endDate}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="currentlocation"><b>Percentage:</b></label><br>
                                 <input type="text"  class="form-control"
-                                    value={{profileEducation.percentage}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.percentage}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="experience"><b>CGPA:</b></label><br>
                                 <input type="text"  class="form-control"
-                                    value={{profileEducation.cgpa}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.cgpa}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="experience"><b>HSC-Result:</b></label><br>
                                 <input type="text"  class="form-control"
-                                    value={{profileEducation.hscResult}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.hscResult}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="experience"><b>SSC-Result:</b></label><br>
                                 <input type="text" class="form-control"
-                                    value={{profileEducation.sscResult}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsEduId.sscResult}} disabled style="cursor: not-allowed;">
                             </div>
                         </div>
-                        <div id="prof" class="container tab-pane fade"><br>
+                        <div id="prof" class="container tab-pane fade" *ngIf="profileExp"><br>
                             <div class="col-sm-12">
                                 <label for="lastjobDesig"><b>Company Name:</b></label><br>
                                 <input type="text" name="lastjobDesig" id="lastjobDesig" class="form-control"
-                                    value={{profileExp.companyName}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsExpId.companyName}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="department"><b>Job Title:</b></label><br>
                                 <input type="text" name="department" id="department" class="form-control"
-                                    value={{profileExp.jobTitle}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsExpId.jobTitle}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="reasonsforleaving"><b>Years Of Experience:</b></label><br>
                                 <input type="text" name="reasonsforleaving" id="reasonsforleaving" class="form-control"
-                                    value={{profileExp.yearOfExp}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsExpId.yearOfExp}} disabled style="cursor: not-allowed;">
                             </div>
                             <div class="col-sm-12">
                                 <label for="reasonsforleaving"><b>Description:</b></label><br>
                                 <input type="text" name="reasonsforleaving" id="reasonsforleaving" class="form-control"
-                                    value={{profileExp.description}} disabled style="cursor: not-allowed;">
+                                    value={{profilePersonal.jsExpId.description}} disabled style="cursor: not-allowed;">
                             </div>
                         </div>
                     </div>

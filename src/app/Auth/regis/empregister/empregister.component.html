@@ -138,6 +138,11 @@
                         [settings]="dropdownSettings"
                         [data]="skillsList" formControlName="skills">
                     </ng-multiselect-dropdown>
+                    <div class="mt-1" *ngIf="signUp.skills.errors && (signUp.skills.touched || signUp.skills.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="signUp.skills.errors.required">
+                            Skills are required
+                        </div>
+                    </div>
                 </div><br>
                 <!-- <div class="form-group">
                     <label for="languages" class="col-sm-3 control-label">Languages</label>
@@ -161,77 +166,149 @@
                         </div>
                     </div>
                 </div> -->
-                <div formGroupName="jsEduId">
-                <div class="form-group">
+        
+        <div formGroupName="jsEduId">
+            <div class="form-group">
                 <div class="col-sm-9">
+                    <div class="mb-3"><strong>Enter Your Education Details:</strong></div>
                     <label for="universityName">UniversityName:</label><br>
                     <input type="text" name="universityName" id="universityName" formControlName="universityName" class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.universityName')!.errors && (EmpRegisterForm.get('jsEduId.universityName')!.touched || EmpRegisterForm.get('jsEduId.universityName')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.universityName')!.errors!.required">
+                            universityName is required
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-9">
                     <label for="StartDate">StartDate:</label><br>
                     <input type="date" name="StartDate" id="StartDate" formControlName="startDate" class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.startDate')!.errors && (EmpRegisterForm.get('jsEduId.startDate')!.touched || EmpRegisterForm.get('jsEduId.startDate')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.startDate')!.errors!.required">
+                            startDate is required
+                        </div>
+                    </div>
                 </div>
+                
             </div>    
             <div class="form-group">
                 <div class="col-sm-9">
                     <label for="EndDate">EndDate:</label><br>
                     <input type="date" name="EndDate" id="EndDate" formControlName="endDate"  class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.endDate')!.errors && (EmpRegisterForm.get('jsEduId.endDate')!.touched || EmpRegisterForm.get('jsEduId.endDate')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.endDate')!.errors!.required">
+                            endDate is required
+                        </div>
+                    </div>
                 </div>
+                
             </div>   
             <div class="form-group">
                 <div class="col-sm-9">
                     <label for="Percentage">Percentage:</label><br>
                     <input type="text" name="Percentage" id="Percentage" formControlName="percentage"  class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.percentage')!.errors && (EmpRegisterForm.get('jsEduId.percentage')!.touched || EmpRegisterForm.get('jsEduId.percentage')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.percentage')!.errors!.required">
+                            percentage is required
+                        </div>
+                    </div>
                 </div>
+                
             </div> 
             <div class="form-group">   
                 <div class="col-sm-9">
                     <label for="cgpa">CGPA:</label><br> 
                     <input type="text" name="cgpa" id="cgpa" formControlName="cgpa" class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.cgpa')!.errors && (EmpRegisterForm.get('jsEduId.cgpa')!.touched || EmpRegisterForm.get('jsEduId.cgpa')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.cgpa')!.errors!.required">
+                            cgpa is required
+                        </div>
+                    </div>
                 </div>
+                
             </div>    
             <div class="form-group">  
                 <div class="col-sm-9">
                     <label for="HSC-Percentage">HSC-Percentage:</label><br>
                     <input type="text"  name="HSC-Percentage" id="HSC-Percentage" formControlName="hscResult"  class="form-control" >
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.hscResult')!.errors && (EmpRegisterForm.get('jsEduId.hscResult')!.touched || EmpRegisterForm.get('jsEduId.hscResult')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.hscResult')!.errors!.required">
+                            hscResult is required
+                        </div>
+                    </div>
                 </div>
+                
             </div>  
             <div class="form-group">    
                 <div class="col-sm-9">
                     <label for="SSC-Percentage">SSC-Percentage:</label><br>
                     <input type="text" name="SSC-Percentage" id="SSC-Percentage" formControlName="sscResult" class="form-control">
+                    <div class="mt-1" *ngIf="EmpRegisterForm.get('jsEduId.sscResult')!.errors && (EmpRegisterForm.get('jsEduId.sscResult')!.touched || EmpRegisterForm.get('jsEduId.sscResult')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsEduId.sscResult')!.errors!.required">
+                            sscResult is required
+                        </div>
+                    </div>
                 </div>
+               
             </div> 
             </div>
             <div formGroupName="jsExpId">
             <div class="form-group">
                 <div class="col-sm-9">
+                    <div class="mb-3"><strong>Enter Your Previous Job Details:</strong></div>
                     <label for="companyName">Company Name:</label><br>
                     <input type="text" name="companyName" id="companyName" formControlName="companyName" class="form-control">
+                    <!-- <div class="mt-1" *ngIf="EmpRegisterForm.get('jsExpId.companyName')!.errors && (EmpRegisterForm.get('jsExpId.companyName')!.touched || EmpRegisterForm.get('jsExpId.companyName')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsExpId.companyName')!.errors!.required">
+                            companyName is required
+                        </div>
+                    </div> -->
                 </div>
+                
             </div>  
             <div class="form-group">   
                 <div class="col-sm-9">
                     <label for="jobTitle">Job Title:</label><br> 
                     <input type="text" name="jobTitle" id="jobTitle" formControlName="jobTitle" class="form-control">
+                    <!-- <div class="mt-1" *ngIf="EmpRegisterForm.get('jsExpId.jobTitle')!.errors && (EmpRegisterForm.get('jsExpId.jobTitle')!.touched || EmpRegisterForm.get('jsExpId.jobTitle')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsExpId.jobTitle')!.errors!.required">
+                            jobTitle is required
+                        </div>
+                    </div> -->
                 </div>
+                
             </div>  
             <div class="form-group">  
                 <div class="col-sm-9">
                     <label for="yearOfExp">Years Of Experience:</label><br>
                     <input type="text" name="yearOfExp" id="yearOfExp" class="form-control" formControlName="yearOfExp">
+                    <!-- <div class="mt-1" *ngIf="EmpRegisterForm.get('jsExpId.yearOfExp')!.errors && (EmpRegisterForm.get('jsExpId.yearOfExp')!.touched || EmpRegisterForm.get('jsExpId.yearOfExp')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsExpId.yearOfExp')!.errors!.required">
+                            yearOfExp is required
+                        </div>
+                    </div> -->
                 </div>
+                
             </div>    
             <div class="form-group">     
                 <div class="col-sm-9">
                     <label for="description">Description:</label><br>
                     <input type="text" name="description" id="description" class="form-control" formControlName="description">
+                    <!-- <div class="mt-1" *ngIf="EmpRegisterForm.get('jsExpId.description')!.errors && (EmpRegisterForm.get('jsExpId.description')!.touched || EmpRegisterForm.get('jsExpId.description')!.dirty)">
+                        <div class="alert alert-danger" style="width: 80%;" *ngIf="EmpRegisterForm.get('jsExpId.description')!.errors!.required">
+                            description is required
+                        </div>
+                    </div> -->
+                </div>
+                
+            </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary" [disabled]="!EmpRegisterForm.valid" (click)="registeremployee(EmpRegisterForm.value)">Register</button>
                 </div>
             </div>
-            </div>
-                <button type="submit" class="btn btn-primary"  (click)="registeremployee(EmpRegisterForm.value)">Register</button>
             </form> <!-- /form -->
         </div>
     </div>
