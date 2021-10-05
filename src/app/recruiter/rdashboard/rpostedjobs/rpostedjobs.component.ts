@@ -16,6 +16,7 @@ export class RPostedjobsComponent implements OnInit {
   jobs:Postedjob[]|undefined
   empEmail:string|null = ''
   errorMessage:string = ''
+  eMessage:string= ''
   id:any
   toasts: any[] = [];
   sMessage:string = ''
@@ -56,7 +57,7 @@ export class RPostedjobsComponent implements OnInit {
     .subscribe( (data)=>{
       this.jobs = data
       if(this.jobs.length==0){
-        this.errorMessage = "You haven't posted anything yet!!!"
+        this.eMessage = "You haven't posted anything yet!!!"
       }
       console.log("data:",this.jobs)
     },(error)=>{

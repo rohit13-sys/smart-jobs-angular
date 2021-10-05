@@ -51,6 +51,7 @@ export class RecruiterServiceService {
     return this.http.put<Employer>(url,employer,{'headers':headers,observe:'response'}).pipe(catchError(this.handleError))
   }
  
+  
 }
 
 

@@ -26,9 +26,15 @@
             <ng-template #defaultavatar>
                 <img src="../../../assets/avatar.jpg" alt="avatar" id="pimage">
             </ng-template>
-            <input type="file" name="image" (change)="selectImage($event)" />
-            <button type="button" (click)="upload()" class="mt-3 mb-5">upload</button>
+            <label for="image"><strong>Upload Your Image Here:</strong></label>
+            <input type="file" name="image"  (change)="selectImage($event)" />
+            <button type="button" class="btn btn-primary mt-3 mb-1" (click)="upload(profilePersonal.login.userId)">upload</button>
             <br>
+
+            <div>
+                <!-- {{profilePersonal.photo['pic'] | json}} -->
+                <img [src]="covertedImage" class="img-thumbnail" alt="" style="width: 250px;height: 200px;">
+            </div>
             <!-- <div class="col-sm-12 p-1">
                 <small><b>Interests:</b></small>
                 <div class="col-sm-6" *ngFor="let interest of profileinfo.interests;let i=index">
@@ -67,7 +73,7 @@
                     </ul>
 
                     <!-- Tab panes -->
-                    <div class="tab-content">
+                    <div class="tab-content" *ngIf="profilePersonal">
                         <div id="basic" class="container tab-pane active"><br>
                             <div class="col-sm-12">
                                 <label for="username"><b>UserName:</b></label><br>

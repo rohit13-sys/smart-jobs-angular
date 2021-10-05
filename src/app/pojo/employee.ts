@@ -1,3 +1,4 @@
+import { Byte } from "@angular/compiler/src/util";
 import { Login } from "./login";
 import { Skills } from "./skills";
 
@@ -6,7 +7,8 @@ export class EmployeePersonal {
     seekerName!:string;
     seekerMobile!:string;
     gender!:string;
-    skills:Skills=new Skills();
+    skills:Skills=new Skills(); 
+    photo:any
     jsEduId:JsEduId = new JsEduId()
     jsExpId:JsExpId = new JsExpId()
 }

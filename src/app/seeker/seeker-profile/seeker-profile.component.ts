@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import {  EmployeePersonal, JsEduId, JsExpId } from 'src/app/pojo/employee';
 import { EmployeeServiceService } from 'src/app/service/employee-service.service';
@@ -16,21 +17,19 @@ export class SeekerProfileComponent implements OnInit {
   successmsg: any;
   emailId: string | null = '';
   eMessage:string=''
+  covertedImage:any
   // profilePersonal: EmployeePersonal = new EmployeePersonal();
   profilePersonal: EmployeePersonal = new EmployeePersonal();
   profileEducation:JsEduId=new JsEduId();
   profileExp:JsExpId=new JsExpId();
-  constructor(private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
+  thumbnail:any
+  constructor(private sanitizer: DomSanitizer,private router: Router, private service: EmployeeServiceService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.emailId = sessionStorage.getItem('semail')
     console.log("myemail",this.emailId);
     if(this.emailId){
-        this.service.getEmpPersonalById(this.emailId).subscribe(
-          (data) => { this.profilePersonal = data;console.log("?????????????????",this.profilePersonal); },
-          (error) => { console.log('some error occurred') }
-        )
-
+        this.getProfile()
         // this.service.getEmpEducationById(this.emailId).subscribe(
         //   (data)=>{this.profileEducation=data;console.log('?????????????????'+this.profileEducation)},
         //   (error)=>{console.log('some error occurred')}
@@ -47,7 +46,14 @@ export class SeekerProfileComponent implements OnInit {
   }
 
   getProfile() {
-
+    this.service.getEmpPersonalById(this.emailId).subscribe(
+      (data) => { 
+        this.profilePersonal = data;
+        console.log("?????????????????",this.profilePersonal); 
+        this.covertedImage = 'data:image/jpeg;base64,' + this.profilePersonal.photo;            
+        this.thumbnail = this.sanitizer.bypassSecurityTrustHtml(this.covertedImage);
+      }  
+      ,(error) => { console.log('some error occurred')})
   }
 
   logout() {
@@ -56,16 +62,24 @@ export class SeekerProfileComponent implements OnInit {
 
   selectImage(event: any) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.profilepic = file;
+      //const file = event.target.files[0];
+      this.profilepic = event.target.files[0];
       console.log(this.profilepic);
     }
   }
 
-  upload() {
-    const formData = new FormData();
-    formData.append('profileImage', this.profilepic);
-
+  upload(id:string) {
+    
+    this.service.uploadImage(this.profilepic,id)
+    .subscribe((data)=>{
+      console.log(data)
+      alert("Successfully Image Uploaded!!!")
+      this.getProfile()
+    }
+    ,(error)=>{
+      console.log(error)
+      alert("Sorry Can't Upload Image!!!")
+    })
   }
 
 }

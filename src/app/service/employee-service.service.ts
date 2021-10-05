@@ -49,5 +49,12 @@ export class EmployeeServiceService {
     return this.http.post<JsExpId>(employeeExpUrl , { 'headers': headers }).pipe(catchError(this.handleError))
   }
 
+  public uploadImage(profilePic:any,id:string){
+    let formData:FormData = new FormData()
+    formData.append('myFile',profilePic)
+    formData.append('jsId',id)
+    const url=`http://localhost:9090/api/v1/personal/upload`
+    return this.http.post(url,formData).pipe(catchError(this.handleError));
+  }
 
 }
